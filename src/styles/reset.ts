@@ -1,6 +1,12 @@
+
 import { createGlobalStyle } from "styled-components";
 
+
+
 export const ResetCSSGlobalStyle = createGlobalStyle`
+
+
+
 /* Задаем box-sizing: border-box, чтобы отступы не влияли на размеры элементов */
 *, *::before, *::after {
 	box-sizing: border-box;
@@ -10,6 +16,7 @@ export const ResetCSSGlobalStyle = createGlobalStyle`
 
 html,
 body {
+  
   max-width: 1920px;
   max-height: 1080px;
   width: 100%;
@@ -43,7 +50,6 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
-  font-family: "Open Sans", sans-serif;
 }
 
 `;
