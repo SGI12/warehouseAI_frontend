@@ -10,7 +10,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
-      <body >{children}</body>
+      <body className={opensans.className}>{children}</body>
     </html>
   )
 }

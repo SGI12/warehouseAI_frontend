@@ -17,6 +17,10 @@ background: var(--inputs, #EDEDED);
 border: none;
 padding-left: 24px;
 
+&::placeholder {
+    color: var(--input-text, #AEAEAE);
+}
+
 &:focus {
     outline: none;
 }

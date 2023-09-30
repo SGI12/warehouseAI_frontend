@@ -5,6 +5,7 @@ const opensans = Open_Sans({subsets: ['cyrillic']})
 export const ButtonStyled = styled.button.attrs({
     className: opensans.className
 })`
+    width: 408px;
     padding: 14px 110px;
     background: var(--accent, #E64C8F);
     font-size: 18px;
