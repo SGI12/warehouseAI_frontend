@@ -1,8 +1,9 @@
 
-import { ButtonStyled } from '../buttons/button'
-import { InputStyled } from '../inputs/input'
-import { LinkStyled } from '../links/link'
-import { AuthCardStyled, H1StyledAuth, InputsContainer, LinksContainer } from './styled'
+import { ButtonStyled } from '../buttons/Button'
+import { InputStyled } from '../inputs/Input'
+import { LinkStyled } from '../links/Link'
+import { TextDefaultStyled } from '../paragraphs/P'
+import { AuthCardStyled, H1StyledAuth, InputsContainer, LinksContainer } from './Styled'
 
 
 
@@ -19,7 +20,7 @@ return (
         </InputsContainer>
         <LinksContainer>
                <LinksContainer className='with-margin'>
-                <div>или</div>
+                <TextDefaultStyled>или</TextDefaultStyled>
                 <LinkStyled>Зарегистрироваться</LinkStyled>
                </LinksContainer> 
                <LinkStyled>Забыли пароль?</LinkStyled>

@@ -1,14 +1,12 @@
-'use client'
-import { ResetCSSGlobalStyle } from "@/styles/reset"
-import AuthCard from "@/components/auth-card/auth-card"
-import Auth from "@/pages/Auth/auth"
 
+import Auth from "@/pages/Auth"
+import '../styles/global.css'
 
 
 export default function Home()  {
   return (
     <div>
-      <ResetCSSGlobalStyle/>
+      
       <Auth/>
     </div>
   )

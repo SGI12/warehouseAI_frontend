@@ -1,5 +1,7 @@
 
+import { ResetCSSGlobalStyle } from '@/styles/reset'
 import { Open_Sans } from 'next/font/google'
+import '../styles/global.css'
 
 const opensans = Open_Sans({subsets: ['cyrillic']})
 
@@ -10,7 +12,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ru">
+      <ResetCSSGlobalStyle/>
       <body className={opensans.className}>{children}</body>
+      
     </html>
   )
 }

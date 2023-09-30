@@ -1,21 +1,26 @@
+
 import { NextPage } from 'next'
 import { AuthMainContainer, Logo } from './styled'
-import AuthCard from '@/components/auth-card/auth-card'
+import AuthCard from '@/components/auth-card/AuthCard'
 
 
 
 
-const Auth: NextPage = () => {
+
+
+
+const AuthPage = () => {
   return (
-
+    
     <AuthMainContainer>
         <Logo>
-            <img src="./logo_big.svg" alt="Logo" />
+            <img src={"./logo_big.svg"} alt="Logo" />
         </Logo>
         <AuthCard/>
+          
     </AuthMainContainer>
 
   )
 }
 
-export default Auth
+export default AuthPage
