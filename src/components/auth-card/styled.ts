@@ -1,5 +1,7 @@
+'use client'
 import styled from "styled-components";
 import { H1Styled } from "../headers-text/HeaderText";
+
 
 export const AuthCardStyled = styled.div`
 

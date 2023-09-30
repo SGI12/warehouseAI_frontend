@@ -1,4 +1,3 @@
-
 import { ResetCSSGlobalStyle } from '@/styles/reset'
 import { Open_Sans } from 'next/font/google'
 import '../styles/global.css'
@@ -13,7 +12,7 @@ export default function RootLayout({
   return (
     <html lang="ru">
       <ResetCSSGlobalStyle/>
-      <body className={opensans.className}>{children}</body>
+      <body>{children}</body>
       
     </html>
   )

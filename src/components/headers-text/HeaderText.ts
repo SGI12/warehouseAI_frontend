@@ -1,8 +1,6 @@
+'use client'
 import {styled, css} from "styled-components";
 import { Andika } from "next/font/google";
-import localFont from 'next/font/local'
-const montserrat = localFont({src: '../../assets/fonts/Montserrat-Regular.woff'})
-import Montserrat from '../../assets/fonts/Montserrat-Regular.woff'
 const andika = Andika({
     subsets: ['cyrillic'],
     weight: "400"
@@ -10,8 +8,6 @@ const andika = Andika({
 
 
 const globalstyle = css`
-
-    
     font-size: 50px;
     font-style: normal;
     font-weight: 700;

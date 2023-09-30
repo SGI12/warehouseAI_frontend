@@ -1,3 +1,4 @@
+'use client'
 import styled from 'styled-components'
 import { Open_Sans } from 'next/font/google'
 const opensans = Open_Sans({subsets: ['cyrillic', 'latin']})
