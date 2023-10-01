@@ -1,9 +1,9 @@
 
 import { ButtonStyled } from '../buttons/Button'
 import { InputStyled } from '../inputs/Input'
-import { LinkStyled } from '../links/Link'
+import { LinkNoStyles, LinkStyled } from '../links/Link'
 import { TextDefaultStyled } from '../paragraphs/P'
-import { AuthCardStyled, H1StyledAuth, InputsContainer, LinksContainer } from './Styled'
+import { AuthCardStyled, FormStyled, H1StyledAuth, InputsContainer, LinksContainer } from './styled'
 
 
 
@@ -13,17 +13,21 @@ return (
 
     <AuthCardStyled>
         <H1StyledAuth>Вход</H1StyledAuth>
-        <InputsContainer>
+        <FormStyled>
             <InputStyled placeholder='E-mail'/>
             <InputStyled type='password' placeholder='Пароль'/>
             <ButtonStyled>Войти</ButtonStyled>
-        </InputsContainer>
+        </FormStyled>
         <LinksContainer>
                <LinksContainer className='with-margin'>
                 <TextDefaultStyled>или</TextDefaultStyled>
-                <LinkStyled>Зарегистрироваться</LinkStyled>
+                <LinkNoStyles href={'/Registration'}>
+                <LinkStyled >Зарегистрироваться</LinkStyled>
+                </LinkNoStyles>
                </LinksContainer> 
-               <LinkStyled>Забыли пароль?</LinkStyled>
+               <LinkNoStyles href={'#'}>
+                <LinkStyled >Забыли пароль?</LinkStyled>
+               </LinkNoStyles>
         </LinksContainer>
     </AuthCardStyled>
 

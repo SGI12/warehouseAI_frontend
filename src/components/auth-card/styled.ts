@@ -28,6 +28,19 @@ flex-direction: column;
 align-items: center;
 gap: 16px;
 margin-bottom: 32px;
+max-width: 408px;
+
+`
+
+export const FormStyled = styled.form`
+
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 16px;
+margin-bottom: 32px;
+max-width: 408px;
+
 
 `
 

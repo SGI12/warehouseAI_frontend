@@ -28,3 +28,24 @@ export const ButtonStyled = styled.button.attrs({
     }
 `
 
+export const ButtonShortStyled = styled(ButtonStyled)`
+    padding: 10px 30px;
+    width: 190px;
+    background-color: #ffffff;
+    color: var(--accent, #E64C8F);
+    border: 1px solid var(--accent, #E64C8F);
+    &:hover {
+            background: #FFE1EE;
+        }
+    &.active {
+        background: var(--accent, #E64C8F);
+        border: none;
+        color: #ffffff
+      
+
+        
+    }
+
+
+`
+

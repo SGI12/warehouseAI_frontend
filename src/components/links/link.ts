@@ -1,14 +1,21 @@
 'use client'
 import styled from 'styled-components'
+
 import { Open_Sans } from 'next/font/google'
+import Link from 'next/link'
 const opensans = Open_Sans({subsets: ['cyrillic', 'latin']})
 
 
-export const LinkStyled = styled.a.attrs(({href}) => ({
+export const LinkNoStyles = styled(Link)`
+
+text-decoration: none;
+
+`
+
+export const LinkStyled = styled.div.attrs({
 
     className: opensans.className,
-    href: href || '#'
-}))`
+})`
 
 font-size: 16px;
 font-style: normal;
