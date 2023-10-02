@@ -1,5 +1,6 @@
 'use client'
 import styled from "styled-components";
+import { ButtonShortStyled, ButtonStyled } from "../buttons/Button";
 
 export const HeaderContainer = styled.div`
 
@@ -17,4 +18,6 @@ export const LogoSmall = styled.div`
     margin-right: 87px;
 
 `
+
+
 

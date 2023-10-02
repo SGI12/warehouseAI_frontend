@@ -45,7 +45,16 @@ export const ButtonShortStyled = styled(ButtonStyled)`
 
         
     }
+`
 
+export const AuthButtonHomePage = styled(ButtonStyled)`
+
+padding: 10px 28px;
+border-radius: 30px;
+background: var(--accent, #E64C8F);
+box-shadow: 0px 0px 56px 0px rgba(251, 157, 198, 0.20);
+width: 113px;
+height: 45px;
 
 `
 
