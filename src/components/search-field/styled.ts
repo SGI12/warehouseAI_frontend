@@ -4,7 +4,7 @@ const opensans = Open_Sans({subsets: ['cyrillic']})
 import styled from "styled-components"
 
 export const SearchFieldMainPage = styled.input.attrs({
-    type: 'text',
+    type: 'search',
     placeholder: 'Поиск',
     className: opensans.className
 })`
@@ -20,12 +20,16 @@ font-size: 14px;
 font-style: normal;
 font-weight: 400;
 line-height: 130%;
-padding-left: 40px;
+padding-left: 45px;
 caret-color: var(--inputs, #EDEDED);
 color: var(--inputs, #EDEDED);
 background-image: url('/search-icon.svg');
 background-position: 15px 12px; 
 background-repeat: no-repeat;
+
+&::-webkit-search-cancel-button {
+    appearance: none;
+}
 
 &::placeholder {
     color: var(--inputs, #EDEDED);
@@ -33,7 +37,6 @@ background-repeat: no-repeat;
     font-style: normal;
     font-weight: 400;
     line-height: 130%;
-    padding-left: 5px;
    
     
 }
