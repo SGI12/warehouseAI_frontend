@@ -9,7 +9,7 @@ export const AuthMainContainer = styled.div`
     justify-content: space-around;
 `
 
-export const Logo = styled.div`
+export const LogoBig = styled.div`
     width: 197px;
     height: 197px;
     padding-top: 100px;

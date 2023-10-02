@@ -24,6 +24,7 @@ line-height: 150%; /* 24px */
 color: var(--accent, #E64C8F);
 display: block;
 text-decoration: none;
+cursor: pointer;
 
 &:hover {
     text-decoration: underline;
@@ -33,4 +34,26 @@ text-decoration: none;
 &:active {
     color: #C83575;
 }
+`
+
+export const NavBarLink = styled(LinkStyled)`
+
+    font-weight: 400;
+    color: ${props => props.color  ?  props.color : '#242424' };
+    
+    &.active-bar {
+        color: #F467A4;
+
+        &:hover {
+            color: #F467A4;
+        }
+    }
+
+    &:hover {
+        text-decoration: none;
+        color: #ffffff;
+    
+    }
+
+
 `

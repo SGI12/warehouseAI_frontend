@@ -1,6 +1,6 @@
 
 import { NextPage } from 'next'
-import { AuthMainContainer, Logo } from './styled'
+import { AuthMainContainer, LogoBig } from './styled'
 import AuthCard from '@/components/auth-card/AuthCard'
 
 
@@ -13,9 +13,9 @@ const AuthPage = () => {
   return (
     
     <AuthMainContainer>
-        <Logo>
+        <LogoBig>
             <img src={"./logo_big.svg"} alt="Logo" />
-        </Logo>
+        </LogoBig>
         <AuthCard/>
           
     </AuthMainContainer>
