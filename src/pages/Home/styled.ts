@@ -27,9 +27,9 @@ background-repeat: no-repeat;
 export const BlurImg = styled.div`
 position: absolute;
 z-index: 1;
-right: 15vw;
-width: 719.746px;
-height: 449.343px;
+right: 150px;
+width: 749.746px;
+height: 550.343px;
 background: url('dragon-blur-circle.png');
 border-radius: 2px;
 filter: blur(133px);

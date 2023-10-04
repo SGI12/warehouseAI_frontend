@@ -6,7 +6,7 @@ import { SubHeaderStyled, TextDefaultStyled } from "../paragraphs/P";
 import { ButtonContainer, H2StyledAuth, RegistrationCardStyled, SubHeaderStyledRegistration } from "./styled"
 import { InputStyled } from "../inputs/Input";
 import { LinkNoStyles, LinkStyled } from "../links/Link";
-import type { GetStaticProps } from "next";
+import { RegUser } from "@/api/registration/registration";
 
 
 
@@ -25,18 +25,7 @@ const RegistrationCard = () => {
     }
 
     
-    const RegUser = async (data:any) => {
-        const response = await fetch('http://51.250.98.26:8010/auth/register', {
-            method: "POST",
-            headers: {
-                'Content-Type': 'application/json',
-              },
-            body: JSON.stringify(data)
-        });
-        
-        let result = await response.json();
-        console.log(result.message)
-    }
+
 
     const handleSubmit = (event:any) => {
         event.preventDefault();
@@ -45,9 +34,7 @@ const RegistrationCard = () => {
             email,
             password,         
         };
-        console.log(userData);
         toJson(userData);
-        console.log(toJson(userData));
         RegUser(userData)
 
     }
