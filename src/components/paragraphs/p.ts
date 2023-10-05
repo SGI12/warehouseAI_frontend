@@ -1,7 +1,10 @@
 'use client'
 import styled from 'styled-components'
 import { Open_Sans } from 'next/font/google'
-const opensans = Open_Sans({subsets: ['cyrillic', 'latin']})
+const opensans = Open_Sans({
+    subsets: ['cyrillic', 'latin'],
+    weight: '400'
+})
 
 export const TextDefaultStyled = styled.p.attrs({
 
@@ -29,3 +32,4 @@ export const SubHeaderStyled = styled.p.attrs({
     display: block;
 
 `
+

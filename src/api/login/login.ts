@@ -2,7 +2,7 @@ import axios from "axios";
 
 export const AuthUser = async (data:any) => {
     
-    await axios.post('http://217.25.95.4:8010/auth/register', data, {
+    await axios.post('http://217.25.95.4:8010/auth/login', data, {
         headers: {
             'Content-Type': 'application/json',
           }
@@ -10,11 +10,11 @@ export const AuthUser = async (data:any) => {
     
     )
     .then((res) => {
-        const response = JSON.parse(res.data);
-        console.log(response)
+        if (res.status == 200)
+            console.log('OKJ')
 
     })
     .catch((err) => {
-        console.log(err.response.data)
+        console.log(JSON.parse(err.response?.data))
     })
 }

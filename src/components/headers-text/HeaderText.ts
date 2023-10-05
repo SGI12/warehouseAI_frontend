@@ -12,6 +12,7 @@ const globalstyle = css`
     font-style: normal;
     font-weight: 700;
     line-height: 120%; 
+    letter-spacing: 2px;
 `
 
 export const H1Styled = styled.h1.attrs({

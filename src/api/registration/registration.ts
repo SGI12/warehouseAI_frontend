@@ -11,10 +11,10 @@ export const RegUser = async (data:any) => {
     )
     .then((res) => {
         const response = JSON.parse(res.data);
-        console.log(response)
+        console.log(response.data)
 
     })
     .catch((err) => {
-        console.log(err.response.data)
+        console.log(err.response?.data)
     })
 }

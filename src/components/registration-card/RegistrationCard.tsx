@@ -68,14 +68,16 @@ const RegistrationCard = () => {
                 type="text" 
                 onChange={e => setUsername(e.target.value)}/>
                 <InputStyled 
+                autoComplete="on"
                 placeholder="E-mail"
                 type="email"
                 onChange={e => setEmail(e.target.value)}/>
                 <InputStyled 
+                autoComplete='off'
                 placeholder="Создайте пароль" 
                 type="password"
                 onChange={e => setPassword(e.target.value)}/>
-                <InputStyled placeholder="Повторите пароль" type="password"/>
+                <InputStyled autoComplete='off' placeholder="Повторите пароль" type="password"/>
                 <ButtonStyled type="submit">Зарегистрироваться</ButtonStyled>
             </FormStyled>
             <LinksContainer>

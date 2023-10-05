@@ -1,7 +1,9 @@
 'use client'
 import styled from "styled-components";
 import { Open_Sans } from 'next/font/google'
-const opensans = Open_Sans({subsets: ['cyrillic']})
+const opensans = Open_Sans({
+    subsets: ['cyrillic'],
+})
 
 export const ButtonStyled = styled.button.attrs({
     className: opensans.className
