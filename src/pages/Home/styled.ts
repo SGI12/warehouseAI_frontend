@@ -113,6 +113,7 @@ height: 16px;
 export const BriefCardMainPage = styled(BriefCard)`
     z-index: 3;
     right: 80px;
+    top: 485px;
     bottom: 0;
 
 `
