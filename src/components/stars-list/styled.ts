@@ -24,7 +24,7 @@ line-height: 150%;
 &>li {
     list-style-type: none;
     margin-bottom: 20px;
-    padding-left: 40px; /* Добавьте отступ слева, чтобы сдвинуть текст относительно изображения */
+    padding-left: 40px; 
     background-image: url('Point-star.svg');
     background-repeat: no-repeat;
 }

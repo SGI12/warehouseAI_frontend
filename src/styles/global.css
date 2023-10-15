@@ -7,9 +7,8 @@
 html,
 body {
 
-  max-width: 1920px;
-  max-height: 1080px;
   width: 100%;
+  max-width: 1920px;
   height: 100%;
   background-color: var(--background, #242424);
   font-size: 16px;
@@ -21,6 +20,7 @@ body {
 
 body {
   margin: 0;
+  overflow-x: hidden;
 }
 
 [tabindex='-1']:focus {
@@ -44,4 +44,5 @@ time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
+  
 }

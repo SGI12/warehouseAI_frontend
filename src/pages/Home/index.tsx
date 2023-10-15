@@ -1,6 +1,8 @@
 import Header from "@/components/header/header";
+import Footer from "@/components/footer/footer"; // Импортируйте компонент Footer
 import { Arrow, BlurImg, BriefCardMainPage, DragonBluredBlock, DragonImg, GetNeuralButton, H1MainPage, HeadersMainPageContainer, HomePageMainContainer, SubHeaderPink, TaskSolveInput } from "./styled";
 import { ListStarMarker, ListWithStars } from "@/components/stars-list/styled";
+import Head from "next/head";
 
 
 
@@ -10,7 +12,9 @@ const HomePage = () => {
     return (
         <HomePageMainContainer>
             <Header/>
-            <DragonImg>
+
+            <DragonBluredBlock>
+            <DragonImg/>
             <BriefCardMainPage>
                 <ListWithStars>
                     <li>Быстрый поиск инструмента под нужную задачу</li>
@@ -19,8 +23,7 @@ const HomePage = () => {
                 </ListWithStars>
             </BriefCardMainPage>
             <BlurImg/>
-            </DragonImg>
-          
+            </DragonBluredBlock>
             
             <HeadersMainPageContainer>
                 <SubHeaderPink>Всего лишь в два клика</SubHeaderPink>
@@ -30,12 +33,11 @@ const HomePage = () => {
                     Подобрать нейросеть
                     <Arrow/>
                 </GetNeuralButton>
-            </HeadersMainPageContainer>
-           
+            </HeadersMainPageContainer> 
             
-
-
+            <Footer/>
         </HomePageMainContainer>
+        
     );
 };
 
