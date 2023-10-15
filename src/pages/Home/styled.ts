@@ -9,14 +9,12 @@ import styled from "styled-components";
 export const HomePageMainContainer = styled.div`
 
 width: 100vw;
-height: 100vw;
 max-width: 100vw;
-max-height: 100vh;
-padding: 0px 80px;
-
 `
 
 export const DragonBluredBlock = styled.div`
+overflow: hidden;
+
 
 `
 export const DragonImg = styled.div`
@@ -31,6 +29,7 @@ background-repeat: no-repeat;
 `
 
 export const BlurImg = styled.div`
+
 position: absolute;
 z-index: 1;
 right: 150px;
@@ -57,9 +56,11 @@ margin-bottom: 10px;
 export const HeadersMainPageContainer = styled.div`
 
 max-width: 630px;
+box-sizing: content-box;
 display: flex;
 padding-top: 238px;
 flex-direction: column;
+padding-left: 80px;
 
 `
 
@@ -113,7 +114,7 @@ height: 16px;
 export const BriefCardMainPage = styled(BriefCard)`
     z-index: 3;
     right: 80px;
-    top: 485px;
+    top: 550px;
     bottom: 0;
 
 `

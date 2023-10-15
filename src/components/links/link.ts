@@ -37,8 +37,8 @@ cursor: pointer;
 `
 
 export const NavBarLink = styled(LinkStyled)`
-
-    font-weight: 400;
+    cursor: pointer;
+    font-weight: 300;
     color: ${props => props.color  ?  props.color : '#242424' };
     
     &.active-bar {

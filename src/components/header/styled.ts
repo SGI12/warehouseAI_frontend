@@ -7,14 +7,14 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 width: 100%;
-padding-top: 30px;
+padding: 30px 80px 0px 80px;
 `
 
 export const LogoSmall = styled.div`
 
     width: 80px;
     height: 80px;
-    margin-right: 28px;
+    margin-right: 98px;
 
 `
 

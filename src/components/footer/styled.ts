@@ -1,6 +1,7 @@
 'use client'
 import styled from "styled-components"
 import { Open_Sans } from "next/font/google";
+import { TextDefaultStyled } from "../paragraphs/P";
 const opensans = Open_Sans({
     subsets: ['cyrillic'],
     weight: '300'
@@ -10,38 +11,31 @@ export const FooterContainer = styled.div.attrs({
     className: opensans.className,
 
 })`
-z-index: 99;
-width: auto;
-height: 284px;
+width: 100%;
 background: linear-gradient(0deg, rgba(230, 76, 143, 0.38) 0%, rgba(230, 104, 76, 0.15) 44.79%, rgba(230, 76, 143, 0.00) 100%);
 display: flex;
 justify-content: space-between;
-margin:0 -80px;
-padding: 0 80px;
-
-font-family: Open Sans;
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 150%; /* 24px */
 flex-direction: column;
+padding-top: 200px;
+box-sizing: content-box;
+height: 284px;
 `
 
 
 export const MenuFooter = styled.div`
 display: flex;
 width: 602px;
-z-index: 99;
+
 gap: 130px;
 flex: 1;
 `
 export const Logo = styled.div`
 
-margin-right: 107px;
+margin-right: 197px;
 `
 export const SociaL = styled.div`
 display: flex;
-z-index: 99;
+
 `
 export const ChildBlok = styled.div`
 margin-right: 20px;
@@ -53,23 +47,28 @@ margin-bottom:15px;
 export const UpBlock = styled.div`
 display: flex;
 justify-content: space-between;
+padding: 0px 80px;
 `
 export const DownBlock = styled.div`
-z-index: 99;
-color: white;
+padding: 0px 80px;
 display: flex;
 justify-content: space-between;
 margin-bottom: 50px;
-`
-export const PrivacyPolicy = styled.div`
-
-`
-export const PrivacyOPD = styled.div`
-
 `
 
 export const Block = styled.div`
 color: white;
 display: flex;
+gap: 15px;
 flex-direction: column;
+`
+
+export const Policy = styled(TextDefaultStyled)`
+
+cursor: pointer;
+color: var(--pale-pink, #FFB8D7);
+&:hover {
+    text-decoration: underline;
+}
+
 `

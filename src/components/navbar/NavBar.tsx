@@ -16,7 +16,7 @@ const NavBar = () => {
             <NavBarLink color='#ffffff'>Профиль</NavBarLink>
             <NavBarLink color='#ffffff'>Избранное</NavBarLink>
             <NavBarLink color='#ffffff'>Добавить свою нейросеть</NavBarLink>
-            <NavBarLink color='#ffffff'>Моя нейросеть</NavBarLink>
+            <NavBarLink color='#ffffff'>Мои нейросети</NavBarLink>
         </NavBarContainer>
     );
 };
