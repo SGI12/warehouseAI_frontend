@@ -9,7 +9,7 @@ export const SearchFieldMainPage = styled.input.attrs({
     className: opensans.className
 })`
 
-width: 280px;
+width: 413px;
 height: 44px;
 border-radius: 100px;
 background: rgba(95, 95, 95, 0.46);

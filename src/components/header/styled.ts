@@ -14,7 +14,7 @@ export const LogoSmall = styled.div`
 
     width: 80px;
     height: 80px;
-    margin-right: 87px;
+    margin-right: 28px;
 
 `
 

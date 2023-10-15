@@ -14,9 +14,9 @@ const Header = () => {
             <NavBar/>
             <SearchAndButtonContainer>
             <SearchFieldMainPage/>
-            <LinkNoStyles href={'/Auth'}>
+            {/* <LinkNoStyles href={'/Auth'}>
             <AuthButtonHomePage>Войти</AuthButtonHomePage>
-            </LinkNoStyles>
+            </LinkNoStyles> */}
             </SearchAndButtonContainer>
         </HeaderContainer>
     );
