@@ -17,7 +17,6 @@ const AuthPage = () => {
             <img src={"./logo_big.svg"} alt="Logo" />
         </LogoBig>
         <AuthCard/>
-          
     </AuthMainContainer>
 
   )

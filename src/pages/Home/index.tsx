@@ -1,14 +1,16 @@
 import Header from "@/components/header/header";
-import Footer from "@/components/footer/footer"; // Импортируйте компонент Footer
+import Footer from "@/components/footer/footer"; 
 import { Arrow, BlurImg, BriefCardMainPage, DragonBluredBlock, DragonImg, GetNeuralButton, H1MainPage, HeadersMainPageContainer, HomePageMainContainer, SubHeaderPink, TaskSolveInput } from "./styled";
-import { ListStarMarker, ListWithStars } from "@/components/stars-list/styled";
-import Head from "next/head";
+import { ListWithStars } from "@/components/stars-list/styled";
+import { isUser } from "@/http";
+
 
 
 
 
 
 const HomePage = () => {
+    console.log(isUser());
     return (
         <HomePageMainContainer>
             <Header/>
@@ -34,7 +36,6 @@ const HomePage = () => {
                     <Arrow/>
                 </GetNeuralButton>
             </HeadersMainPageContainer> 
-            
             <Footer/>
         </HomePageMainContainer>
         

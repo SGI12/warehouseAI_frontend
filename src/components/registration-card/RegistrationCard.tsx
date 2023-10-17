@@ -1,18 +1,39 @@
-
+    
+import axios from "axios";
 import { useState } from "react";
 import { FormStyled, InputsContainer, LinksContainer } from "../auth-card/styled";
 import { ButtonShortStyled, ButtonStyled } from "../buttons/Button";
-import { SubHeaderStyled, TextDefaultStyled } from "../paragraphs/P";
+import { TextDefaultStyled } from "../paragraphs/P";
 import { ButtonContainer, H2StyledAuth, RegistrationCardStyled, SubHeaderStyledRegistration } from "./styled"
 import { InputStyled } from "../inputs/Input";
 import { LinkNoStyles, LinkStyled } from "../links/Link";
-import { RegUser } from "@/api/registration/registration";
-
+import { useRouter } from 'next/router'
 
 
 
 
 const RegistrationCard = () => {
+
+    const router = useRouter()
+    const RegUser = async (data:any) => {
+    JSON.stringify(data)
+    await axios.post('http://217.25.95.4:8010/auth/register', data, {
+        withCredentials: true,
+        headers: {
+            'Content-Type': 'application/json',
+          }
+    }
+    
+    )
+    .then((res) => {
+        if (res.status === 201)
+            router.push('/')
+
+    })
+    .catch((err) => {
+        console.log(err.response?.data)
+    })
+}
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -24,8 +45,6 @@ const RegistrationCard = () => {
         return JSON.stringify(obj)
     }
 
-    
-
 
     const handleSubmit = (event:any) => {
         event.preventDefault();
@@ -35,7 +54,7 @@ const RegistrationCard = () => {
             password,         
         };
         toJson(userData);
-        RegUser(userData)
+        RegUser(userData);
 
     }
     return (
