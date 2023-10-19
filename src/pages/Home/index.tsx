@@ -1,3 +1,4 @@
+'use client'
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer"; 
 import { Arrow, BlurImg, BriefCardMainPage, DragonBluredBlock, DragonImg, GetNeuralButton, H1MainPage, HeadersMainPageContainer, HomePageMainContainer, SubHeaderPink, TaskSolveInput } from "./styled";
@@ -10,7 +11,7 @@ import { isUser } from "@/http";
 
 
 const HomePage = () => {
-    console.log(isUser());
+    
     return (
         <HomePageMainContainer>
             <Header/>
@@ -31,6 +32,7 @@ const HomePage = () => {
                 <SubHeaderPink>Всего лишь в два клика</SubHeaderPink>
                 <H1MainPage color="#ffffff">Оживите свои идеи с помощью нейросетей</H1MainPage>
                 <TaskSolveInput placeholder="Какую задачу хотите решить?"/>
+                <button onClick={(e:any) => isUser()}>isUser</button>
                 <GetNeuralButton>
                     Подобрать нейросеть
                     <Arrow/>
