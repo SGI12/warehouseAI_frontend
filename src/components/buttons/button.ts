@@ -4,10 +4,12 @@ import { Open_Sans } from 'next/font/google'
 const opensans = Open_Sans({
     subsets: ['cyrillic'],
 })
-
+interface ButtonProps {
+    hidden?: boolean;
+}
 export const ButtonStyled = styled.button.attrs({
     className: opensans.className
-})`
+})<ButtonProps>`
     width: 408px;
     padding: 14px 110px;
     background: var(--accent, #E64C8F);
@@ -19,7 +21,7 @@ export const ButtonStyled = styled.button.attrs({
     border-radius: 30px;
     border: none;
     cursor: pointer;
-
+    display: ${props => (props.hidden == true) ? 'none' : 'block'};
     &:hover {
         background: #F467A4;
 

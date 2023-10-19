@@ -1,14 +1,17 @@
+'use client'
 import Header from "@/components/header/header";
-import Footer from "@/components/footer/footer"; // Импортируйте компонент Footer
+import Footer from "@/components/footer/footer"; 
 import { Arrow, BlurImg, BriefCardMainPage, DragonBluredBlock, DragonImg, GetNeuralButton, H1MainPage, HeadersMainPageContainer, HomePageMainContainer, SubHeaderPink, TaskSolveInput } from "./styled";
-import { ListStarMarker, ListWithStars } from "@/components/stars-list/styled";
-import Head from "next/head";
+import { ListWithStars } from "@/components/stars-list/styled";
+import { isUser } from "@/http";
+
 
 
 
 
 
 const HomePage = () => {
+    
     return (
         <HomePageMainContainer>
             <Header/>
@@ -29,12 +32,12 @@ const HomePage = () => {
                 <SubHeaderPink>Всего лишь в два клика</SubHeaderPink>
                 <H1MainPage color="#ffffff">Оживите свои идеи с помощью нейросетей</H1MainPage>
                 <TaskSolveInput placeholder="Какую задачу хотите решить?"/>
+                <button onClick={(e:any) => isUser()}>isUser</button>
                 <GetNeuralButton>
                     Подобрать нейросеть
                     <Arrow/>
                 </GetNeuralButton>
             </HeadersMainPageContainer> 
-            
             <Footer/>
         </HomePageMainContainer>
         

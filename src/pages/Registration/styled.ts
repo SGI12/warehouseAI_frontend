@@ -1,6 +1,6 @@
 'use client'
 import styled from "styled-components";
-import { AuthMainContainer } from "../Auth/styled";
+import { AuthMainContainer } from "../auth/styled";
 
 
 export const RegistrationMainContainer = styled(AuthMainContainer)`
