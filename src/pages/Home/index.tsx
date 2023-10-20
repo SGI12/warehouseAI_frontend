@@ -3,18 +3,31 @@ import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer"; 
 import { Arrow, BlurImg, BriefCardMainPage, DragonBluredBlock, DragonImg, GetNeuralButton, H1MainPage, HeadersMainPageContainer, HomePageMainContainer, SubHeaderPink, TaskSolveInput } from "./styled";
 import { ListWithStars } from "@/components/stars-list/styled";
-import { isUser } from "@/http";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 
 
 
 
 
-const HomePage = () => {
-    
+const HomePage = ()  => {
+    const [loggedIn, setLoggedIn] = useState(false)
+    useEffect(() => {
+    const apiUrl = 'https://api.warehousai.com/api/auth/whoami';
+      axios.get(apiUrl, {withCredentials: true})
+      .then((res) => {
+        
+        if (res.status === 20)
+            setLoggedIn(true);   
+      })
+      .catch((err) => {
+        console.log(err.response?.data)
+    });
+    }, [setLoggedIn]);
     return (
         <HomePageMainContainer>
-            <Header/>
+            <Header loggedIn={loggedIn}/>
 
             <DragonBluredBlock>
             <DragonImg/>

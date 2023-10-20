@@ -6,6 +6,7 @@ import { LinkNoStyles, LinkStyled } from '../links/link'
 import { TextDefaultStyled } from '../paragraphs/P'
 import { AuthCardStyled, FormStyled, H1StyledAuth, InputsContainer, LinksContainer } from './styled'
 import { useRouter } from 'next/router'
+import {isUser} from "@/http";
 
 
 
@@ -32,6 +33,7 @@ const AuthUser = async (data:any) => {
     .catch((err) => {
         console.log(err.response?.data)
     })
+    isUser();
 }
 
 const [email, setEmail] = useState('');
