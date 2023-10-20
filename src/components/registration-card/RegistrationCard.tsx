@@ -2,11 +2,11 @@
 import axios from "axios";
 import { useState } from "react";
 import { FormStyled, InputsContainer, LinksContainer } from "../auth-card/styled";
-import { ButtonShortStyled, ButtonStyled } from "../buttons/Button";
+import { ButtonShortStyled, ButtonStyled } from "../buttons/button";
 import { TextDefaultStyled } from "../paragraphs/P";
 import { ButtonContainer, H2StyledAuth, RegistrationCardStyled, SubHeaderStyledRegistration } from "./styled"
 import { InputStyled } from "../inputs/Input";
-import { LinkNoStyles, LinkStyled } from "../links/Link";
+import { LinkNoStyles, LinkStyled } from "../links/link";
 import { useRouter } from 'next/router'
 
 
@@ -17,7 +17,7 @@ const RegistrationCard = () => {
     const router = useRouter()
     const RegUser = async (data:any) => {
     JSON.stringify(data)
-    await axios.post('http://217.25.95.4:8010/auth/register', data, {
+    await axios.post('https://api.warehousai.com/api/auth/register', data, {
         withCredentials: true,
         headers: {
             'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ const RegistrationCard = () => {
             </FormStyled>
             <LinksContainer>
                 <TextDefaultStyled>или</TextDefaultStyled>
-                <LinkNoStyles prefetch href={'/Auth'} passHref>
+                <LinkNoStyles prefetch href={'/auth'} passHref>
                 <LinkStyled >Войти</LinkStyled>
                 </LinkNoStyles>
             </LinksContainer>

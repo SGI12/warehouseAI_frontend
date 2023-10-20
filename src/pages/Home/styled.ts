@@ -1,6 +1,6 @@
 'use client'
 import { BriefCard } from "@/components/brief-card/styled";
-import { ButtonStyled } from "@/components/buttons/Button";
+import { ButtonStyled } from "@/components/buttons/button";
 import { H1Styled } from "@/components/headers-text/HeaderText";
 import { InputStyled } from "@/components/inputs/Input";
 import { TextDefaultStyled } from "@/components/paragraphs/P";

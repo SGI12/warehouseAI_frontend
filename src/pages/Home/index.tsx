@@ -32,7 +32,6 @@ const HomePage = () => {
                 <SubHeaderPink>Всего лишь в два клика</SubHeaderPink>
                 <H1MainPage color="#ffffff">Оживите свои идеи с помощью нейросетей</H1MainPage>
                 <TaskSolveInput placeholder="Какую задачу хотите решить?"/>
-                <button onClick={(e:any) => isUser()}>isUser</button>
                 <GetNeuralButton>
                     Подобрать нейросеть
                     <Arrow/>

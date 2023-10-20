@@ -2,13 +2,11 @@
 import React from 'react';
 import { FooterContainer, Block, MenuFooter, SociaL, ChildBlok, Logo, DownBlock, UpBlock, Policy} from './styled';
 import { usePathname } from 'next/navigation';
-import { NavBarLink } from '../links/Link';
+import { NavBarLink } from '../links/link';
 import Image from 'next/image';
-import { TextDefaultStyled } from '../paragraphs/P';
 
 const Footer = () => {
     const pathname = usePathname();
-    console.log(pathname === '/');
     return (
         <FooterContainer>
             <UpBlock>

@@ -1,5 +1,4 @@
 
-import { NextPage } from 'next'
 import { AuthMainContainer, LogoBig } from './styled'
 import AuthCard from '@/components/auth-card/AuthCard'
 

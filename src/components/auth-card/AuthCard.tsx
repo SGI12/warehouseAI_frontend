@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useState } from 'react'
-import { ButtonStyled } from '../buttons/Button'
+import { ButtonStyled } from '../buttons/button'
 import { InputStyled } from '../inputs/Input'
-import { LinkNoStyles, LinkStyled } from '../links/Link'
+import { LinkNoStyles, LinkStyled } from '../links/link'
 import { TextDefaultStyled } from '../paragraphs/P'
 import { AuthCardStyled, FormStyled, H1StyledAuth, InputsContainer, LinksContainer } from './styled'
 import { useRouter } from 'next/router'
@@ -15,24 +15,23 @@ const AuthCard = () => {
 const router = useRouter()
 const AuthUser = async (data:any) => {
     await JSON.stringify(data)
-    await axios.post('http://217.25.95.4:8010/auth/login', data, {
-        withCredentials: false,
+    await axios.post('https://api.warehousai.com/api/auth/login', data, {
+        withCredentials: true,
         headers: {
             'Content-Type': 'application/json',
+            
           }
-    }
-    
-    )
-    .then((res) => {
+    }).then((res) => {
         if (res.status === 200)  {
-            router.push('/');
+            
+            console.log(res.status);
+            router.push('/')
            
         }
     })
     .catch((err) => {
         console.log(err.response?.data)
     })
-    
 }
 
 const [email, setEmail] = useState('');
@@ -47,7 +46,6 @@ const LoginUserOnSubmit = (event:any) => {
         password,         
     };
     AuthUser(userData);
-
 
 }
 return (
@@ -67,7 +65,7 @@ return (
         <LinksContainer>
                <LinksContainer className='with-margin'>
                 <TextDefaultStyled>или</TextDefaultStyled>
-                <LinkNoStyles href={'/Registration'}>
+                <LinkNoStyles href={'/registration'}>
                 <LinkStyled >Зарегистрироваться</LinkStyled>
                 </LinkNoStyles>
                </LinksContainer> 

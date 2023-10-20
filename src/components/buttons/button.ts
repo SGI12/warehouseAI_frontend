@@ -5,11 +5,10 @@ const opensans = Open_Sans({
     subsets: ['cyrillic'],
 })
 interface ButtonProps {
-    hidden?: boolean;
+    hidden?: boolean | Promise<any>;
+    // className: opensans.className
 }
-export const ButtonStyled = styled.button.attrs({
-    className: opensans.className
-})<ButtonProps>`
+export const ButtonStyled = styled.button<ButtonProps>`
     width: 408px;
     padding: 14px 110px;
     background: var(--accent, #E64C8F);
@@ -21,7 +20,7 @@ export const ButtonStyled = styled.button.attrs({
     border-radius: 30px;
     border: none;
     cursor: pointer;
-    display: ${props => (props.hidden == true) ? 'none' : 'block'};
+    display: ${({ hidden }) => hidden === true ? "none" : "block"};
     &:hover {
         background: #F467A4;
 
@@ -62,3 +61,9 @@ height: 45px;
 
 `
 
+export const AddAiButton = styled(ButtonStyled)`
+
+box-shadow: 0px 0px 56px 0px rgba(251, 157, 198, 0.20);
+padding: 14px 30px;
+
+`
