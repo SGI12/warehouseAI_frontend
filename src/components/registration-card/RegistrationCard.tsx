@@ -101,7 +101,7 @@ const RegistrationCard = () => {
             </FormStyled>
             <LinksContainer>
                 <TextDefaultStyled>или</TextDefaultStyled>
-                <LinkNoStyles prefetch href={'/auth'} passHref>
+                <LinkNoStyles prefetch href={'/authpage'} passHref>
                 <LinkStyled >Войти</LinkStyled>
                 </LinkNoStyles>
             </LinksContainer>
