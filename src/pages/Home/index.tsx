@@ -11,7 +11,7 @@ import { DragonImg } from "@/components/absolute-blocks/DragonImg";
 import { BlurDragonImg, BluredOrangeCircleMainPageLeft, BluredOrangeCircleMainPageRight } from "@/components/absolute-blocks/blur-circles/BlurCircle";
 import { SubHeaderPink } from "@/components/paragraphs/Paragraphs";
 import { H1MainPage, TopAIHeader } from "@/components/headers-text/HeaderText";
-import { TaskSolveInput } from "@/components/inputs/Input";
+import { TaskSolveInput } from "@/components/inputs/TextInputs";
 import { Arrow } from "@/components/arrows/arrows";
 import { BriefCardMainPage } from "@/components/brief-card/styled";
 import AiSlider from "@/components/ai-slider/AiSlider";

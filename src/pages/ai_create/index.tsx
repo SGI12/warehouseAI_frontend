@@ -4,7 +4,7 @@ import Footer from "@/components/footer/footer"
 import { AddAiButton } from "@/components/buttons/button"
 import { AiCreateContainer, TypeChooseContainer } from "@/components/containers/containers"
 import { AiCreateHeader } from "@/components/headers-text/HeaderText"
-import { TypeChooseInput } from "@/components/inputs/Input"
+import { TypeChooseInput } from "@/components/inputs/TextInputs"
 
 
 const AiCreatePage = () => {

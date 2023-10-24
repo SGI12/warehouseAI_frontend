@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from 'react'
 import { ButtonStyled } from '../buttons/button'
-import { InputStyled } from '../inputs/Input'
+import { InputStyled } from '../inputs/TextInputs'
 import { LinkNoStyles, LinkStyled } from '../links/link'
 import { TextDefaultStyled } from '../paragraphs/Paragraphs'
 import { AuthCardStyled, FormStyled, H1StyledAuth, InputsContainer, LinksContainer } from './styled'

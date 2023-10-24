@@ -5,7 +5,7 @@ import { FormStyled, InputsContainer, LinksContainer } from "../auth-card/styled
 import { ButtonShortStyled, ButtonStyled } from "../buttons/button";
 import { TextDefaultStyled } from "../paragraphs/Paragraphs";
 import { ButtonContainer, H2StyledAuth, RegistrationCardStyled, SubHeaderStyledRegistration } from "./styled"
-import { InputStyled } from "../inputs/Input";
+import { InputStyled } from "../inputs/TextInputs";
 import { LinkNoStyles, LinkStyled } from "../links/link";
 import { useRouter } from 'next/router'
 
