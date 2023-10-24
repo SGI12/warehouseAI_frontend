@@ -2,7 +2,7 @@
 import styled from "styled-components"
 import { AuthCardStyled } from "../auth-card/styled"
 import { H2Styled } from "../headers-text/HeaderText"
-import { SubHeaderStyled } from "../paragraphs/P"
+import { SubHeaderStyled } from "../paragraphs/Paragraphs"
 
 export const RegistrationCardStyled = styled(AuthCardStyled)``
 

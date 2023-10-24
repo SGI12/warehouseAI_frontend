@@ -68,3 +68,9 @@ padding-top: 240px;
 
 `
 
+export const AiCreateHeader = styled(H1Styled)`
+
+padding-top: 100px;
+
+`
+

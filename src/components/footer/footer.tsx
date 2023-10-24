@@ -2,7 +2,7 @@
 import React from 'react';
 import { FooterContainer, Block, MenuFooter, SociaL, ChildBlok, Logo, DownBlock, UpBlock, Policy, BorderFooter} from './styled';
 import { usePathname } from 'next/navigation';
-import { NavBarLink } from '../links/link';
+import { FooterLink, NavBarLink } from '../links/link';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -15,16 +15,16 @@ const Footer = () => {
                 </Logo>
                 <MenuFooter>
                     <Block>
-                        <NavBarLink color='#ffffff'>Главная</NavBarLink>
-                        <NavBarLink color='#ffffff'>Профиль</NavBarLink>
+                        <FooterLink color='#ffffff'>Главная</FooterLink>
+                        <FooterLink color='#ffffff'>Профиль</FooterLink>
                     </Block>
                     <Block>
-                        <NavBarLink color='#ffffff'>Избранное</NavBarLink>
-                        <NavBarLink color='#ffffff'>Поддержка</NavBarLink>
+                        <FooterLink color='#ffffff'>Избранное</FooterLink>
+                        <FooterLink color='#ffffff'>Поддержка</FooterLink>
                     </Block>
                     <Block>
-                        <NavBarLink color='#ffffff'>Стать разработчиком</NavBarLink>
-                        <NavBarLink color='#ffffff'>Отдел разработки</NavBarLink>
+                        <FooterLink color='#ffffff'>Стать разработчиком</FooterLink>
+                        <FooterLink color='#ffffff'>Отдел разработки</FooterLink>
 
                     </Block>
                 </MenuFooter>

@@ -1,6 +1,6 @@
 import Image from "next/image"
 import { AiBriefCard, AiBriefCardImage } from "./styled"
-import { AiCardHeader, TextDefaultStyled } from "../paragraphs/P"
+import { AiCardHeader, TextDefaultStyled } from "../paragraphs/Paragraphs"
 import { StarsContainer, TagsContainer } from "../containers/containers"
 import React, { ReactElement } from "react"
 import { AiCardButton } from "../buttons/button"

@@ -57,3 +57,12 @@ export const NavBarLink = styled(LinkStyled)`
 
 
 `
+
+export const FooterLink = styled(NavBarLink)`
+
+    &:hover{
+        text-decoration: underline;
+    }
+    
+
+`

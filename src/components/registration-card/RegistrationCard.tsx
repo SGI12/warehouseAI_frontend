@@ -3,7 +3,7 @@ import axios from "axios";
 import { useState } from "react";
 import { FormStyled, InputsContainer, LinksContainer } from "../auth-card/styled";
 import { ButtonShortStyled, ButtonStyled } from "../buttons/button";
-import { TextDefaultStyled } from "../paragraphs/P";
+import { TextDefaultStyled } from "../paragraphs/Paragraphs";
 import { ButtonContainer, H2StyledAuth, RegistrationCardStyled, SubHeaderStyledRegistration } from "./styled"
 import { InputStyled } from "../inputs/Input";
 import { LinkNoStyles, LinkStyled } from "../links/link";

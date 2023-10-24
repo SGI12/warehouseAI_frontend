@@ -1,6 +1,7 @@
 
-import { AuthMainContainer, LogoBig } from './styled'
+import { AuthMainContainer } from '@/components/containers/containers'
 import AuthCard from '@/components/auth-card/AuthCard'
+import { LogoBig } from '@/components/logo/logo'
 
 
 

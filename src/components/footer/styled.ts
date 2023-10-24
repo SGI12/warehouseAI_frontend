@@ -1,7 +1,7 @@
 'use client'
 import styled from "styled-components"
 import { Open_Sans } from "next/font/google";
-import { TextDefaultStyled } from "../paragraphs/P";
+import { TextDefaultStyled } from "../paragraphs/Paragraphs";
 const opensans = Open_Sans({
     subsets: ['cyrillic'],
     weight: '300'

@@ -55,3 +55,33 @@ display: flex;
 gap: 15px;
 margin-bottom: 30px;
 `
+
+export const AuthMainContainer = styled.div`
+    background: url('./auth_bg.jpg') no-repeat;
+    background-size: 100% 100%; 
+    display: flex;
+    justify-content: space-around;
+`
+
+
+export const RegistrationMainContainer = styled(AuthMainContainer)`
+
+background: url('./register_bg.jpg') no-repeat;
+background-size: 100% 100%;
+`
+
+export const AiCreateContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100vw;
+`
+
+export const TypeChooseContainer = styled.div`
+
+padding: 64px 80px 0px 80px;
+width: 70%;
+height: 472px;
+margin-bottom: 64px;
+`

@@ -1,6 +1,6 @@
 
-import { LogoBig } from "../auth/styled";
-import { RegistrationMainContainer } from "./styled"
+import { RegistrationMainContainer } from "@/components/containers/containers";
+import { LogoBig } from "@/components/logo/logo";
 import RegistrationCard from "@/components/registration-card/RegistrationCard";
 
 

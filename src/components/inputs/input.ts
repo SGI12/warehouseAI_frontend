@@ -49,3 +49,10 @@ export const TaskSolveInput = styled(InputStyled)`
     }
 
 `
+export const TypeChooseInput = styled.div`
+
+width: 100%;
+border-radius: 30px;
+border: 1px solid var(--accent, #E64C8F);
+height: 100%;
+`

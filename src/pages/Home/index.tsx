@@ -9,7 +9,7 @@ import { HeadersMainPageContainer, HomePageMainContainer } from "@/components/co
 import { DragonBluredBlock } from "@/components/absolute-blocks/DragonBluredBlock";
 import { DragonImg } from "@/components/absolute-blocks/DragonImg";
 import { BlurDragonImg, BluredOrangeCircleMainPageLeft, BluredOrangeCircleMainPageRight } from "@/components/absolute-blocks/blur-circles/BlurCircle";
-import { SubHeaderPink } from "@/components/paragraphs/P";
+import { SubHeaderPink } from "@/components/paragraphs/Paragraphs";
 import { H1MainPage, TopAIHeader } from "@/components/headers-text/HeaderText";
 import { TaskSolveInput } from "@/components/inputs/Input";
 import { Arrow } from "@/components/arrows/arrows";

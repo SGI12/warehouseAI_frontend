@@ -1,8 +1,10 @@
 
 import Header from "@/components/header/header"
-import { AiCreateContainer, AiCreateHeader, TypeChooseContainer, TypeChooseInput } from "./styled"
 import Footer from "@/components/footer/footer"
 import { AddAiButton } from "@/components/buttons/button"
+import { AiCreateContainer, TypeChooseContainer } from "@/components/containers/containers"
+import { AiCreateHeader } from "@/components/headers-text/HeaderText"
+import { TypeChooseInput } from "@/components/inputs/Input"
 
 
 const AiCreatePage = () => {

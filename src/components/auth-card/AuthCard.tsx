@@ -3,7 +3,7 @@ import { useState } from 'react'
 import { ButtonStyled } from '../buttons/button'
 import { InputStyled } from '../inputs/Input'
 import { LinkNoStyles, LinkStyled } from '../links/link'
-import { TextDefaultStyled } from '../paragraphs/P'
+import { TextDefaultStyled } from '../paragraphs/Paragraphs'
 import { AuthCardStyled, FormStyled, H1StyledAuth, InputsContainer, LinksContainer } from './styled'
 import { useRouter } from 'next/router'
 import {isUser} from "@/http";
