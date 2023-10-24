@@ -1,6 +1,6 @@
 
 import '../styles/global.css'
-import HomePage from "@/pages/homepage"
+import HomePage from "@/pages/home"
 
 
 export default function Home()  {
