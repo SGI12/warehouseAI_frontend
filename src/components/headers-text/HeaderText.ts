@@ -56,3 +56,15 @@ ${globalstyle}
 font-size: 24px;
 font-weight: 600;
 `
+
+export const H1MainPage = styled(H1Styled)`
+
+margin-bottom: 42px;
+
+`
+export const TopAIHeader = styled(H2Styled)`
+
+padding-top: 240px;
+
+`
+

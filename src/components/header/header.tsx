@@ -6,8 +6,6 @@ import { SearchFieldMainPage } from "../search-field/styled";
 import { HeaderContainer, LogoSmall, SearchAndButtonContainer } from "./styled";
 
 import Image from "next/image";
-import { useEffect, useState } from "react";
-import axios from "axios";
 
 
 const Header = ({...props}) => {

@@ -33,3 +33,19 @@ line-height: 130%;
 
 `
 
+export const TaskSolveInput = styled(InputStyled)`
+
+    width: 630px;
+    height: 58px;
+    border-radius: 100px;
+    border: 1px solid var(--accent, #E64C8F);
+    background: rgba(255, 184, 215, 0.08);
+    backdrop-filter: blur(5px);
+    caret-color: #ffffff;
+    color: #ffffff;
+    margin-bottom: 20px;
+    &:focus {
+        box-shadow: 0px 0px 56px 0px rgba(251, 157, 198, 0.20);
+    }
+
+`

@@ -4,6 +4,6 @@ import styled from "styled-components"
 export const NavBarContainer = styled.div`
 
 display: flex;
-gap: 27px;
+gap: 48px;
 flex: 1;
 `

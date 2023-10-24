@@ -1,10 +1,20 @@
 'use client'
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer"; 
-import { Arrow, BlurImg, BriefCardMainPage, DragonBluredBlock, DragonImg, GetNeuralButton, H1MainPage, HeadersMainPageContainer, HomePageMainContainer, SubHeaderPink, TaskSolveInput } from "./styled";
 import { ListWithStars } from "@/components/stars-list/styled";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { GetNeuralButton } from "@/components/buttons/button";
+import { HeadersMainPageContainer, HomePageMainContainer } from "@/components/containers/containers";
+import { DragonBluredBlock } from "@/components/absolute-blocks/DragonBluredBlock";
+import { DragonImg } from "@/components/absolute-blocks/DragonImg";
+import { BlurDragonImg, BluredOrangeCircleMainPageLeft, BluredOrangeCircleMainPageRight } from "@/components/absolute-blocks/blur-circles/BlurCircle";
+import { SubHeaderPink } from "@/components/paragraphs/P";
+import { H1MainPage, TopAIHeader } from "@/components/headers-text/HeaderText";
+import { TaskSolveInput } from "@/components/inputs/Input";
+import { Arrow } from "@/components/arrows/arrows";
+import { BriefCardMainPage } from "@/components/brief-card/styled";
+import AiSlider from "@/components/ai-slider/AiSlider";
 
 
 
@@ -18,7 +28,7 @@ const HomePage = ()  => {
       axios.get(apiUrl, {withCredentials: true})
       .then((res) => {
         
-        if (res.status === 20)
+        if (res.status === 200)
             setLoggedIn(true);   
       })
       .catch((err) => {
@@ -38,7 +48,7 @@ const HomePage = ()  => {
                     <li>Удобный интерфейс для любого пользователя</li>
                 </ListWithStars>
             </BriefCardMainPage>
-            <BlurImg/>
+            <BlurDragonImg/>
             </DragonBluredBlock>
             
             <HeadersMainPageContainer>
@@ -49,7 +59,20 @@ const HomePage = ()  => {
                     Подобрать нейросеть
                     <Arrow/>
                 </GetNeuralButton>
+                
             </HeadersMainPageContainer> 
+            <TopAIHeader color="#ffffff">
+            <BluredOrangeCircleMainPageLeft/>
+                Топ нейронок этой недели
+            </TopAIHeader>
+            <AiSlider/>
+
+            <TopAIHeader color="#ffffff">
+            <BluredOrangeCircleMainPageRight/>
+                Топ нейронок этого месяца
+            </TopAIHeader>
+            <AiSlider/>
+
             <Footer/>
         </HomePageMainContainer>
         

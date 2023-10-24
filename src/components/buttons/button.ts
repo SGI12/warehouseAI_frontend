@@ -65,3 +65,28 @@ box-shadow: 0px 0px 56px 0px rgba(251, 157, 198, 0.20);
 padding: 14px 30px;
 
 `
+export const GetNeuralButton = styled(ButtonStyled)`
+
+box-shadow: 0px 0px 56px 0px rgba(251, 157, 198, 0.20);
+width: 286px;
+height: 53px;
+font-size: 18px;
+font-style: normal;
+font-weight: 600;
+line-height: 140%;
+padding: 0px 0px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 14px;
+`
+
+export const AiCardButton = styled(GetNeuralButton)`
+
+
+font-weight: 400;
+width: 353px;
+height: 49px;
+padding: 12px 91px;
+
+`

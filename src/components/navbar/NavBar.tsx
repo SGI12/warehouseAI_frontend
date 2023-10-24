@@ -14,10 +14,10 @@ const NavBar = ({...props}) => {
             </LinkNoStyles>
             <NavBarLink color='#ffffff'>Профиль</NavBarLink>
             <NavBarLink color='#ffffff'>Избранное</NavBarLink>
-            <LinkNoStyles href={props.loggedIn ? '/ai_create' : '/auth'}>
+            {/* <LinkNoStyles href={props.loggedIn ? '/ai_create' : '/auth'}>
                 <NavBarLink className={`${pathname === '/ai_create' ? 'active-bar' : ''}`} color='#ffffff'>Добавить свою нейросеть</NavBarLink>
-            </LinkNoStyles>
-            <NavBarLink color='#ffffff'>Мои нейросети</NavBarLink>
+            </LinkNoStyles> */}
+            <NavBarLink color='#ffffff'>Стать разработчиком</NavBarLink>
         </NavBarContainer>
     );
 };

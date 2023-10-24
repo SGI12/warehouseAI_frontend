@@ -11,3 +11,11 @@ backdrop-filter: blur(5px);
 position: absolute;
 
 `
+
+export const BriefCardMainPage = styled(BriefCard)`
+    z-index: 3;
+    right: 80px;
+    top: 550px;
+    bottom: 0;
+
+`

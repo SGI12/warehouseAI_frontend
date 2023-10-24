@@ -1,14 +1,14 @@
 'use client'
 import React from 'react';
-import { FooterContainer, Block, MenuFooter, SociaL, ChildBlok, Logo, DownBlock, UpBlock, Policy} from './styled';
+import { FooterContainer, Block, MenuFooter, SociaL, ChildBlok, Logo, DownBlock, UpBlock, Policy, BorderFooter} from './styled';
 import { usePathname } from 'next/navigation';
 import { NavBarLink } from '../links/link';
 import Image from 'next/image';
 
 const Footer = () => {
-    const pathname = usePathname();
     return (
         <FooterContainer>
+            <BorderFooter/>
             <UpBlock>
                 <Logo>
                     <Image src={'/logo-medium.svg'} alt='logo_footer' width={110} height={110}/>
@@ -39,6 +39,7 @@ const Footer = () => {
                     <Image src={'/twitter-icon.svg'} alt='twitter_logo' width={32} height={32}/>
                     </ChildBlok>
                 </SociaL>
+
             </UpBlock>
             <DownBlock>
                 <Policy>
