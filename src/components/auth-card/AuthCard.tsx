@@ -67,7 +67,7 @@ return (
         <LinksContainer>
                <LinksContainer className='with-margin'>
                 <TextDefaultStyled>или</TextDefaultStyled>
-                <LinkNoStyles href={'/registration'}>
+                <LinkNoStyles href={'/Registration'}>
                 <LinkStyled >Зарегистрироваться</LinkStyled>
                 </LinkNoStyles>
                </LinksContainer> 

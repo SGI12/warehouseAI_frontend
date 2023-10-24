@@ -19,7 +19,7 @@ const Header = ({...props}) => {
             <SearchAndButtonContainer>
             <SearchFieldMainPage/>
             {!props.loggedIn &&
-            <LinkNoStyles href={'/auth'}>
+            <LinkNoStyles href={'/Auth'}>
                 <AuthButtonHomePage> Войти </AuthButtonHomePage>
             </LinkNoStyles>
             }
