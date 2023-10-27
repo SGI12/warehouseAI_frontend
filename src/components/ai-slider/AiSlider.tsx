@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import AiSliderCard from "../ai-slider-card/AiSliderCard";
+import { useRef } from "react";
+import AiCard from "../ai-card/AiCard";
 import { AiSliderContainer } from "../containers/containers";
 import { LeftScrollBlock, RightScrollBlock } from "../absolute-blocks/ScrollBlocks";
 
@@ -22,24 +22,16 @@ const AiSlider = () => {
           requestAnimationFrame(moveLeft);
         }    
       };
-    const stopScrolling = () => {
-  
-    }
-    
-
-    const handleScrollRight = () => {
-       
-      };
     return(
         <AiSliderContainer ref={scrollRef} >
             <RightScrollBlock  onMouseEnter={() => { setMove(true); moveRight();}}   onMouseLeave={() => setMove(false)}/>
             <LeftScrollBlock onMouseEnter={() => { setMove(true); moveLeft();}}   onMouseLeave={() => setMove(false)}/>
-            <AiSliderCard ></AiSliderCard>
-            <AiSliderCard ></AiSliderCard>
-            <AiSliderCard ></AiSliderCard>
-            <AiSliderCard ></AiSliderCard>
-            <AiSliderCard ></AiSliderCard>
-            <AiSliderCard ></AiSliderCard>
+            <AiCard ></AiCard>
+            <AiCard ></AiCard>
+            <AiCard ></AiCard>
+            <AiCard ></AiCard>
+            <AiCard ></AiCard>
+            <AiCard ></AiCard>
 
         </AiSliderContainer>
     );

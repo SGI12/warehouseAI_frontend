@@ -85,3 +85,9 @@ width: 70%;
 height: 472px;
 margin-bottom: 64px;
 `
+export const AiDescriptionContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+
+`

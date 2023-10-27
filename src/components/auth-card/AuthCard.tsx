@@ -6,13 +6,14 @@ import { LinkNoStyles, LinkStyled } from '../links/link'
 import { TextDefaultStyled } from '../paragraphs/Paragraphs'
 import { AuthCardStyled, FormStyled, H1StyledAuth, InputsContainer, LinksContainer } from './styled'
 import { useRouter } from 'next/router'
-import {isUser} from "@/http";
+
+import { useUserContext } from "@/context";
+import { isUser } from "@/http";
 
 
 
 const AuthCard = () => {
-
-
+const {isUser, setIsUser} = useUserContext()
 const router = useRouter()
 const AuthUser = async (data:any) => {
     await JSON.stringify(data)
@@ -24,16 +25,14 @@ const AuthUser = async (data:any) => {
           }
     }).then((res) => {
         if (res.status === 200)  {
-            
-            console.log(res.status);
+            setIsUser(true)
+            console.log(isUser)
             router.push('/')
-           
         }
     })
     .catch((err) => {
         console.log(err.response?.data)
     })
-    isUser();
 }
 
 const [email, setEmail] = useState('');
@@ -47,6 +46,7 @@ const LoginUserOnSubmit = (event:any) => {
         email,
         password,         
     };
+    console.log(toJson(userData));
     AuthUser(userData);
 
 }
@@ -56,9 +56,11 @@ return (
         <H1StyledAuth>Вход</H1StyledAuth>
         <FormStyled onSubmit={LoginUserOnSubmit}>
             <InputStyled 
+            autoComplete="true"
             placeholder='E-mail'
             onChange={e => setEmail(e.target.value)}/>
             <InputStyled 
+            autoComplete="true"
             type='password' 
             placeholder='Пароль'
             onChange={e => setPassword(e.target.value)}/>

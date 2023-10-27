@@ -5,17 +5,21 @@ import { StarsContainer, TagsContainer } from "../containers/containers"
 import React, { ReactElement } from "react"
 import { AiCardButton } from "../buttons/button"
 import { Arrow } from "../arrows/arrows"
+import { LinkNoStyles } from "../links/link"
+import { useUserContext } from "@/context"
 
 
 interface AiCardProps {
-  
+    id?: number,
     img?: string,
     title?: string,
     rate?: number,
     tags?: Array<string>,
     aiPageUrl?: string
 }
-const AiSliderCard = ({...props}:AiCardProps)  => {
+const AiCard = ({...props}:AiCardProps)  => {
+    const {isUser} = useUserContext()
+    props.id = 1
     //Временная залупа 
     const tags:Array<string> = ['code', 'php', 'apiplatform'];
     
@@ -35,13 +39,15 @@ const AiSliderCard = ({...props}:AiCardProps)  => {
                {starArray}
             </StarsContainer>
             <TagsContainer>
-                {tags.map((tag, index) =>{
-                    return <TextDefaultStyled key={index}>{`#`+ tag}</TextDefaultStyled>
+                {tags.map((tag) =>{
+                    return <TextDefaultStyled key={tag}>{`#`+ tag}</TextDefaultStyled>
                 })}
             </TagsContainer>
+            <LinkNoStyles href={ isUser ? `/ai_description/${props.id}` : `/authpage`}>
             <AiCardButton>Подробнее <Arrow/></AiCardButton>
+            </LinkNoStyles>
         </AiBriefCard>
     )
 }
 
-export default AiSliderCard
+export default AiCard

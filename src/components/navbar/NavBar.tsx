@@ -5,12 +5,14 @@ import { LinkNoStyles, NavBarLink } from '../links/link';
 import { usePathname } from 'next/navigation';
 import axios from 'axios';
 
-const NavBar = ({...props}) => {
+const NavBar = () => {
+    
     const pathname = usePathname();
+    
     return (
         <NavBarContainer>
             <LinkNoStyles href={'/'}>
-                <NavBarLink className={`${pathname === '/' ? 'active-bar' : ''}`} color='#ffffff'>Главная</NavBarLink>
+                <NavBarLink className={`${pathname === '/' || pathname?.startsWith('/ai')  ? 'active-bar' : ''}`} color='#ffffff'>Главная</NavBarLink>
             </LinkNoStyles>
             <NavBarLink color='#ffffff'>Профиль</NavBarLink>
             <NavBarLink color='#ffffff'>Избранное</NavBarLink>

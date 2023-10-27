@@ -2,7 +2,7 @@
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer"; 
 import { ListWithStars } from "@/components/stars-list/styled";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { GetNeuralButton } from "@/components/buttons/button";
 import { HeadersMainPageContainer, HomePageMainContainer } from "@/components/containers/containers";
@@ -15,6 +15,8 @@ import { TaskSolveInput } from "@/components/inputs/TextInputs";
 import { Arrow } from "@/components/arrows/arrows";
 import { BriefCardMainPage } from "@/components/brief-card/styled";
 import AiSlider from "@/components/ai-slider/AiSlider";
+import { useUserContext } from "@/context";
+
 
 
 
@@ -22,22 +24,26 @@ import AiSlider from "@/components/ai-slider/AiSlider";
 
 
 const HomePage = ()  => {
-    const [loggedIn, setLoggedIn] = useState(false)
+    
+    const {isUser, setIsUser} = useUserContext()
+    
     useEffect(() => {
     const apiUrl = 'https://api.warehousai.com/api/auth/whoami';
       axios.get(apiUrl, {withCredentials: true})
       .then((res) => {
-        
-        if (res.status === 200)
-            setLoggedIn(true);   
+        if (res.status === 200) {
+            setIsUser(true);
+        }
       })
       .catch((err) => {
         console.log(err.response?.data)
     });
-    }, [setLoggedIn]);
+    });
+
     return (
+       
         <HomePageMainContainer>
-            <Header loggedIn={loggedIn}/>
+            <Header/>
 
             <DragonBluredBlock>
             <DragonImg/>

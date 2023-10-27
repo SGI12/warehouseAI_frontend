@@ -1,18 +1,24 @@
 import { ResetCSSGlobalStyle } from '@/styles/reset'
-import { Open_Sans } from 'next/font/google'
 import '../styles/global.css'
+import { AuthContextProvider } from '@/context'
 
-const opensans = Open_Sans({subsets: ['cyrillic']})
+
+
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="ru">
       <ResetCSSGlobalStyle/>
-      <body>{children}</body>
+      <body>
+       <AuthContextProvider>
+        {children}
+      </AuthContextProvider>
+      </body>
       
     </html>
   )
