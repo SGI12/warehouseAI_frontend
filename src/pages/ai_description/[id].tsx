@@ -2,9 +2,11 @@ import Loader from "@/components/Loader/Loader";
 import { AiDescriptionBg } from "@/components/absolute-blocks/ai-description/AiDesciptionBg";
 import AiBriefInfo from "@/components/ai-brief-info-block/AiBriefInfoBlock";
 
-import { AIDescTag, AIDescTagsContainer, AiBriefInfoContainer, AiDescriptionContainer, UseAiContainer } from "@/components/containers/containers";
+import { AIDescTag, AIDescTagsContainer, AiBriefInfoContainer, AiDescriptionContainer, AiInfo, AiInfoAndDeveloperContaner, UseAiContainer } from "@/components/containers/containers";
+import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header"
-import { TextLargeStyled } from "@/components/paragraphs/Paragraphs";
+import { H2Styled } from "@/components/headers-text/HeaderText";
+import { TextDefaultStyled, TextLargeStyled } from "@/components/paragraphs/Paragraphs";
 import { useUserContext } from "@/context/context"
 import { check } from "@/http/UserAPI";
 import axios from "axios";
@@ -47,7 +49,19 @@ const AiDescriptionPage = () => {
                     <AIDescTag><TextLargeStyled color="#ffffff"> #apiplaform</TextLargeStyled></AIDescTag>
                 </AIDescTagsContainer>
             </UseAiContainer>
-          
+            <AiInfoAndDeveloperContaner>
+                <AiInfo>
+                    <H2Styled color="#ffffff">Описание</H2Styled>
+                    <TextDefaultStyled color="#ffffff">
+                    ChatGPT — чат-бот с искусственным интеллектом, 
+                    разработанный компанией OpenAI и способный работать в диалоговом режиме, 
+                    поддерживающий запросы на естественных языках. Система способна отвечать на вопросы,
+                    генерировать тексты на разных языках, включая русский, относящиеся к различным предметным областям.
+                    </TextDefaultStyled>
+                </AiInfo>
+                
+            </AiInfoAndDeveloperContaner>
+            <Footer/>
             
         </AiDescriptionContainer>
     )

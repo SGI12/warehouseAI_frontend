@@ -2,7 +2,7 @@
 import React from 'react';
 import { FooterContainer, Block, MenuFooter, SociaL, ChildBlok, Logo, DownBlock, UpBlock, Policy, BorderFooter} from './styled';
 import { usePathname } from 'next/navigation';
-import { FooterLink, NavBarLink } from '../links/link';
+import { FooterLink, LinkNoStyles, NavBarLink } from '../links/link';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -15,7 +15,9 @@ const Footer = () => {
                 </Logo>
                 <MenuFooter>
                     <Block>
+                        <LinkNoStyles href={'/'}>
                         <FooterLink color='#ffffff'>Главная</FooterLink>
+                        </LinkNoStyles>
                         <FooterLink color='#ffffff'>Профиль</FooterLink>
                     </Block>
                     <Block>

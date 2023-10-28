@@ -96,7 +96,7 @@ export const UseAiContainer = styled.div`
 z-index: 1;
 display: flex;
 padding-top: 46px;
-
+margin-bottom: 154px;
 `
 
 export const BackLinkontainer = styled.div`
@@ -160,4 +160,21 @@ width: 100vw;
 height: 100vh;
 justify-content: center;
 align-items: center;
+`
+
+export const AiInfoAndDeveloperContaner = styled.div`
+
+z-index: 1;
+display: flex;
+
+`
+
+export const AiInfo = styled.div`
+
+max-width: 630px;
+display: flex;
+flex-direction: column;
+gap: 40px;
+padding-left: 80px;
+
 `
