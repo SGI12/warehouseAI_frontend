@@ -101,6 +101,9 @@ margin-bottom: 154px;
 
 export const BackLinkontainer = styled.div`
 
+z-index: 1;
+padding-left: 80px;
+padding-top: 47px;
 cursor: pointer;
 display: flex;
 gap: 14px;

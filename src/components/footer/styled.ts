@@ -17,7 +17,7 @@ background: linear-gradient(0deg, rgba(230, 76, 143, 0.38) 0%, rgba(230, 104, 76
 display: flex;
 justify-content: space-between;
 flex-direction: column;
-padding-top: 200px;
+padding-top: 168px;
 box-sizing: content-box;
 height: 284px;
 `

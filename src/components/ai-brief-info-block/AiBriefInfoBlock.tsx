@@ -14,7 +14,6 @@ const AiBriefInfo = () => {
         }
     return(
         <AiBriefInfoContainer>
-            <BackLink/>
             <AiDescriptionH1>Chat GPT<Image src={'/favorite-icon.svg'} alt="bookmark" width={32} height={32}/></AiDescriptionH1>
             <StarsContainer>
             {starArray}

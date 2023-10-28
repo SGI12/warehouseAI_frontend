@@ -1,6 +1,7 @@
 import Loader from "@/components/Loader/Loader";
 import { AiDescriptionBg } from "@/components/absolute-blocks/ai-description/AiDesciptionBg";
 import AiBriefInfo from "@/components/ai-brief-info-block/AiBriefInfoBlock";
+import BackLink from "@/components/back-link/BackLink";
 
 import { AIDescTag, AIDescTagsContainer, AiBriefInfoContainer, AiDescriptionContainer, AiInfo, AiInfoAndDeveloperContaner, UseAiContainer } from "@/components/containers/containers";
 import Footer from "@/components/footer/footer";
@@ -41,6 +42,7 @@ const AiDescriptionPage = () => {
         <AiDescriptionContainer>
             <AiDescriptionBg/>
             <Header/>
+            <BackLink/>
             <UseAiContainer>
                 <AiBriefInfo/>  
                 <AIDescTagsContainer>
@@ -59,7 +61,6 @@ const AiDescriptionPage = () => {
                     генерировать тексты на разных языках, включая русский, относящиеся к различным предметным областям.
                     </TextDefaultStyled>
                 </AiInfo>
-                
             </AiInfoAndDeveloperContaner>
             <Footer/>
             

@@ -46,7 +46,7 @@ const AuthUser = async (data:any) => {
     
     } catch (e:any) {
 
-        alert (e.response?.data.message)
+        console.log (e.response?.data.message)
     }
     
 }
