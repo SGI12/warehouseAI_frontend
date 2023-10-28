@@ -36,6 +36,7 @@ const HomePage = ()  => {
         setTimeout(() => setLoading(false), 1000)
       })
       .catch((err) => {
+        setLoading(false)
         console.log(err.response?.data)
     });
     });
