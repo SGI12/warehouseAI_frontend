@@ -74,3 +74,12 @@ padding-top: 100px;
 
 `
 
+export const AiDescriptionH1 = styled(H1Styled)`
+
+margin-bottom: 30px;
+max-width: 541px;
+color: #ffffff;
+padding-top: 48px;
+
+`
+

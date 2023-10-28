@@ -1,5 +1,5 @@
 
-import { useUserContext } from "@/context";
+import { useUserContext } from "@/context/context";
 import { AuthButtonHomePage } from "../buttons/button";
 import { LinkNoStyles } from "../links/link";
 import NavBar from "../navbar/NavBar";
@@ -7,12 +7,13 @@ import { SearchFieldMainPage } from "../search-field/styled";
 import { HeaderContainer, LogoSmall, SearchAndButtonContainer } from "./styled";
 
 import Image from "next/image";
+import { observer } from "mobx-react-lite";
 
 
-const Header = () => {
+const Header = observer(() => {
     
-    const {isUser} = useUserContext()
-   
+    const {user} = useUserContext()
+    
     return (
         <HeaderContainer>
             <LogoSmall>
@@ -21,7 +22,7 @@ const Header = () => {
             <NavBar/>
             <SearchAndButtonContainer>
             <SearchFieldMainPage/>
-            {!isUser &&
+            {!user.isAuth &&
             <LinkNoStyles href={'/authpage'}>
                 <AuthButtonHomePage> Войти </AuthButtonHomePage>
             </LinkNoStyles>
@@ -29,6 +30,6 @@ const Header = () => {
             </SearchAndButtonContainer>
         </HeaderContainer>
     );
-};
+});
 
 export default Header;

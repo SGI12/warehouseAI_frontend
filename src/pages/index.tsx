@@ -1,13 +1,13 @@
 'use client'
 import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer"; 
-import { ListWithStars } from "@/components/stars-list/styled";
-import { useContext, useEffect, useState } from "react";
+import { ListWithStars } from "@/components/lists/styled";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { GetNeuralButton } from "@/components/buttons/button";
 import { HeadersMainPageContainer, HomePageMainContainer } from "@/components/containers/containers";
-import { DragonBluredBlock } from "@/components/absolute-blocks/DragonBluredBlock";
-import { DragonImg } from "@/components/absolute-blocks/DragonImg";
+import { DragonBluredBlock } from "@/components/absolute-blocks/home/DragonBluredBlock";
+import { DragonImg } from "@/components/absolute-blocks/home/DragonImg";
 import { BlurDragonImg, BluredOrangeCircleMainPageLeft, BluredOrangeCircleMainPageRight } from "@/components/absolute-blocks/blur-circles/BlurCircle";
 import { SubHeaderPink } from "@/components/paragraphs/Paragraphs";
 import { H1MainPage, TopAIHeader } from "@/components/headers-text/HeaderText";
@@ -15,7 +15,9 @@ import { TaskSolveInput } from "@/components/inputs/TextInputs";
 import { Arrow } from "@/components/arrows/arrows";
 import { BriefCardMainPage } from "@/components/brief-card/styled";
 import AiSlider from "@/components/ai-slider/AiSlider";
-import { useUserContext } from "@/context";
+import { useUserContext } from "@/context/context";
+import { check } from "@/http/UserAPI";
+import Loader from "@/components/Loader/Loader";
 
 
 
@@ -24,22 +26,23 @@ import { useUserContext } from "@/context";
 
 
 const HomePage = ()  => {
-    
-    const {isUser, setIsUser} = useUserContext()
+    const [isLoading, setLoading] = useState(true);
+    const {user} = useUserContext()
     
     useEffect(() => {
-    const apiUrl = 'https://api.warehousai.com/api/auth/whoami';
-      axios.get(apiUrl, {withCredentials: true})
+    check()
       .then((res) => {
-        if (res.status === 200) {
-            setIsUser(true);
-        }
+        user.setIsAuth(true)
+        setTimeout(() => setLoading(false), 1000)
       })
       .catch((err) => {
-        console.log(err.response?.data)
+        alert(err.response?.data)
     });
     });
-
+    if (isLoading) {
+        return <Loader/>
+    }
+    else 
     return (
        
         <HomePageMainContainer>

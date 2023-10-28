@@ -6,35 +6,50 @@ import { LinkNoStyles, LinkStyled } from '../links/link'
 import { TextDefaultStyled } from '../paragraphs/Paragraphs'
 import { AuthCardStyled, FormStyled, H1StyledAuth, InputsContainer, LinksContainer } from './styled'
 import { useRouter } from 'next/router'
+import { useUserContext } from "@/context/context";
+import { observer } from 'mobx-react-lite';
+import { auth } from "@/http/UserAPI";
 
-import { useUserContext } from "@/context";
-import { isUser } from "@/http";
 
 
-
-const AuthCard = () => {
-const {isUser, setIsUser} = useUserContext()
+const AuthCard = observer (() => {
+const {user} = useUserContext()
 const router = useRouter()
-const AuthUser = async (data:any) => {
-    await JSON.stringify(data)
-    await axios.post('https://api.warehousai.com/api/auth/login', data, {
-        withCredentials: true,
-        headers: {
-            'Content-Type': 'application/json',
+// const AuthUser = async (data:any) => {
+//     await JSON.stringify(data)
+//     await axios.post('https://api.warehousai.com/api/auth/login', data, {
+//         withCredentials: true,
+//         headers: {
+//             'Content-Type': 'application/json',
             
-          }
-    }).then((res) => {
-        if (res.status === 200)  {
-            setIsUser(true)
-            console.log(isUser)
-            router.push('/')
-        }
-    })
-    .catch((err) => {
-        console.log(err.response?.data)
-    })
-}
+//           }
+//     }).then((res) => {
+//         if (res.status === 200)  {
+//             user.setIsAuth(true)
+//             console.log(user.isAuth)
+//             router.push('/')
+//         }
+//     })
+//     .catch((err) => {
+//         console.log(err.response?.data)
+//     })
+// }
 
+const AuthUser = async (data:any) => {
+    
+   try {
+
+    await auth(data)
+    user.setIsAuth(true)
+    
+    router.push('/')
+    
+    } catch (e:any) {
+
+        alert (e.response?.data.message)
+    }
+    
+}
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const toJson = (obj:object) => {
@@ -50,6 +65,7 @@ const LoginUserOnSubmit = (event:any) => {
     AuthUser(userData);
 
 }
+console.log(user)
 return (
 
     <AuthCardStyled>
@@ -82,6 +98,6 @@ return (
 
 )
 
-}
+});
 
 export default AuthCard

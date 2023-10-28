@@ -7,7 +7,9 @@ const opensans = Open_Sans({
 
 export const ButtonStyled = styled.button.attrs({
     className: opensans.className
-})`
+})` 
+    display: flex;
+    justify-content: center;
     width: 408px;
     padding: 14px 110px;
     background: var(--accent, #E64C8F);
@@ -88,5 +90,11 @@ font-weight: 400;
 width: 353px;
 height: 49px;
 padding: 12px 91px;
+
+`
+export const UseAIButton = styled(ButtonStyled)`
+
+box-shadow: 0px 0px 56px 0px rgba(251, 157, 198, 0.20);
+width: 218px;
 
 `

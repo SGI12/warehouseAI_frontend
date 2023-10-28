@@ -6,7 +6,7 @@ import Image from "next/image";
 
 
 const RegistrationPage = () => {
-    
+   
     return (
         <RegistrationMainContainer>
             <LogoBig>

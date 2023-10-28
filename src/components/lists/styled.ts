@@ -40,3 +40,17 @@ background-repeat: no-repeat;
 
 `
 
+export const UserCountList = styled.li.attrs({
+    className: opensans.className,
+})`
+
+
+align-self: center;
+color: var(--pale-pink, #FFB8D7);
+font-size: 20px;
+font-style: normal;
+font-weight: 400;
+line-height: 140%; 
+
+`
+

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import AiCard from "../ai-card/AiCard";
 import { AiSliderContainer } from "../containers/containers";
-import { LeftScrollBlock, RightScrollBlock } from "../absolute-blocks/ScrollBlocks";
+import { LeftScrollBlock, RightScrollBlock } from "../absolute-blocks/home/ScrollBlocks";
 
 
 const AiSlider = () => {

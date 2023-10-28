@@ -6,10 +6,10 @@ import React, { ReactElement } from "react"
 import { AiCardButton } from "../buttons/button"
 import { Arrow } from "../arrows/arrows"
 import { LinkNoStyles } from "../links/link"
-import { useUserContext } from "@/context"
+import { useUserContext } from "@/context/context"
 
 
-interface AiCardProps {
+export interface AiCardProps {
     id?: number,
     img?: string,
     title?: string,
@@ -21,13 +21,13 @@ const AiCard = ({...props}:AiCardProps)  => {
     const {isUser} = useUserContext()
     props.id = 1
     //Временная залупа 
-    const tags:Array<string> = ['code', 'php', 'apiplatform'];
+    props.tags = ['code', 'php', 'apiplatform'];
     
      //Временная залупа 
-    const rating = props.rate=5
+   props.rate=5
 
     const starArray:Array<ReactElement> = [];
-        for (let i = 0; i < rating; i++) {
+        for (let i = 0; i < props.rate; i++) {
             starArray.push(<Image src={'/star-rate.svg'} alt="star" width={16} height={16}/>)
         }
 
@@ -39,11 +39,11 @@ const AiCard = ({...props}:AiCardProps)  => {
                {starArray}
             </StarsContainer>
             <TagsContainer>
-                {tags.map((tag) =>{
+                {props.tags.map((tag) =>{
                     return <TextDefaultStyled key={tag}>{`#`+ tag}</TextDefaultStyled>
                 })}
             </TagsContainer>
-            <LinkNoStyles href={ isUser ? `/ai_description/${props.id}` : `/authpage`}>
+            <LinkNoStyles href={`/ai_description/${props.id}`}>
             <AiCardButton>Подробнее <Arrow/></AiCardButton>
             </LinkNoStyles>
         </AiBriefCard>

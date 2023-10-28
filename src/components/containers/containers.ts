@@ -91,3 +91,73 @@ display: flex;
 flex-direction: column;
 
 `
+
+export const UseAiContainer = styled.div`
+z-index: 1;
+display: flex;
+padding-top: 46px;
+
+`
+
+export const BackLinkontainer = styled.div`
+
+cursor: pointer;
+display: flex;
+gap: 14px;
+&:active {
+    filter: invert(37%) sepia(71%) saturate(1243%) hue-rotate(300deg) brightness(97%) contrast(85%);
+}
+`
+
+export const AiBriefInfoContainer = styled.div`
+
+padding-left: 80px;
+display: flex;
+flex-direction: column;
+
+`
+
+export const ButtonAndStatsContainer = styled.div`
+
+padding-top: 28px;
+gap: 32px;
+display: flex;
+
+`
+
+export const AIDescTagsContainer = styled.div`
+
+align-content: flex-start;
+align-items: flex-end;
+padding-right: 80px;
+margin-left: auto;
+display: flex;
+flex-direction: column;
+gap: 14px;
+
+`
+
+export const AIDescTag = styled.div`
+
+
+display: inline-block;
+padding: 8px 14px;
+border-radius: 30px;
+border: 1px solid var(--white, #FFF);
+
+
+`
+
+
+export const LoaderContainer = styled.div`
+
+background: var(--background, #242424);
+position: absolute;
+z-index: 3;
+display: flex;
+flex-direction: column;
+width: 100vw;
+height: 100vh;
+justify-content: center;
+align-items: center;
+`
