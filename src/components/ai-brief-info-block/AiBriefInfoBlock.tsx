@@ -20,7 +20,7 @@ const AiBriefInfo = () => {
             </StarsContainer>
             <ButtonAndStatsContainer>
                 <UseAIButton>Воспользоваться</UseAIButton>
-                <UserCountList>127K пользователей</UserCountList>
+                <UserCountList>127K запросов</UserCountList>
             </ButtonAndStatsContainer>
         </AiBriefInfoContainer>
     )

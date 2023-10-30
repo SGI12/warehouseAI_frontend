@@ -36,7 +36,7 @@ const HomePage = ()  => {
         setTimeout(() => setLoading(false), 1000)
       })
       .catch((err) => {
-        setLoading(false)
+        setTimeout(() => setLoading(false), 1000)
         console.log(err.response?.data)
     });
     });
@@ -48,9 +48,8 @@ const HomePage = ()  => {
        
         <HomePageMainContainer>
             <Header/>
-
             <DragonBluredBlock>
-            <DragonImg/>
+            <DragonImg src={'/dragon-img.png'} alt="dragonimg" width={880} height={650}/>
             <BriefCardMainPage>
                 <ListWithStars>
                     <li>Быстрый поиск инструмента под нужную задачу</li>
