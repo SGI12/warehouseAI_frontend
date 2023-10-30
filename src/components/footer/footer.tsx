@@ -2,7 +2,7 @@
 import React from 'react';
 import { FooterContainer, Block, MenuFooter, SociaL, ChildBlok, Logo, DownBlock, UpBlock, Policy, BorderFooter} from './styled';
 import { usePathname } from 'next/navigation';
-import { FooterLink, LinkNoStyles, NavBarLink } from '../links/link';
+import { AStyled, FooterLink, LinkNoStyles, NavBarLink } from '../links/link';
 import Image from 'next/image';
 
 const Footer = () => {
@@ -22,7 +22,9 @@ const Footer = () => {
                     </Block>
                     <Block>
                         <FooterLink color='#ffffff'>Избранное</FooterLink>
+                        <AStyled href="https://t.me/gurevnind" target="_blank" rel="noopener noreferrer">
                         <FooterLink color='#ffffff'>Поддержка</FooterLink>
+                        </AStyled>
                     </Block>
                     <Block>
                         <FooterLink color='#ffffff'>Стать разработчиком</FooterLink>

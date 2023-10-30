@@ -66,3 +66,9 @@ export const FooterLink = styled(NavBarLink)`
     
 
 `
+
+export const AStyled = styled.a`
+
+text-decoration: none;
+
+`
