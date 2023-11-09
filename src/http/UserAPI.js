@@ -26,6 +26,10 @@ export const logOut = async() => {
     return response
 }
 
+export const passResetReq = async(data) => {
+    const response = await $auth.post('/reset/request', data)
+    return response
+}
 
 
 

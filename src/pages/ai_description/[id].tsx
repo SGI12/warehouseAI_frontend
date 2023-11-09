@@ -10,7 +10,6 @@ import { H2Styled } from "@/components/headers-text/HeaderText";
 import { TextDefaultStyled, TextLargeStyled } from "@/components/paragraphs/Paragraphs";
 import { useUserContext } from "@/context/context"
 import { check } from "@/http/UserAPI";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
@@ -31,7 +30,7 @@ const AiDescriptionPage = () => {
             if (err.response?.status === 401)
                  router.push('/authpage')
             
-            else console.log(err.message)
+            else console.log(err.response?.data.message)
         });
         });
     if (isLoading) {

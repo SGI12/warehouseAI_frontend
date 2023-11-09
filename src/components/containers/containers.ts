@@ -181,3 +181,26 @@ gap: 40px;
 padding-left: 80px;
 
 `
+
+export const PasswordRecoveryMainContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100vw;
+height: 100vh;
+background-color: #ffffff;
+
+`
+
+export const PassResetInputContainer = styled.div`
+
+padding-top: 152px;
+display: flex;
+flex-direction: column;
+gap: 24px;
+align-items: center;
+max-width: 510px;
+text-align: center;
+
+`

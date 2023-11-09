@@ -8,7 +8,8 @@ const opensans = Open_Sans({subsets: ['cyrillic', 'latin']})
 export const InputStyled = styled.input.attrs(({ placeholder, type }) => ({
     placeholder:  placeholder || "E-mail",
     className: opensans.className,
-    type: type || 'email',
+    type: type || 'text',
+    
   }))`
 
 width: 408px;

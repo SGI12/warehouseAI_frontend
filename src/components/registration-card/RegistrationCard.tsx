@@ -20,7 +20,7 @@ const RegistrationCard = () => {
     await axios.post('https://api.warehousai.com/api/auth/register', data, {
         withCredentials: true,
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'multipart/form-data',
           }
     }
     
@@ -38,6 +38,7 @@ const RegistrationCard = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [active, setActive] = useState("1");
+    const [picture, setPicture] = useState('')
     const handleClick = (event:any) => {
         setActive(event.target.id);
     }
@@ -51,7 +52,9 @@ const RegistrationCard = () => {
         const userData = {
             username,
             email,
-            password,         
+            password,
+            picture
+                     
         };
         toJson(userData);
         RegUser(userData);

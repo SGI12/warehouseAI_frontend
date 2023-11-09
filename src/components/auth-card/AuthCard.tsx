@@ -15,25 +15,6 @@ import { auth } from "@/http/UserAPI";
 const AuthCard = observer (() => {
 const {user} = useUserContext()
 const router = useRouter()
-// const AuthUser = async (data:any) => {
-//     await JSON.stringify(data)
-//     await axios.post('https://api.warehousai.com/api/auth/login', data, {
-//         withCredentials: true,
-//         headers: {
-//             'Content-Type': 'application/json',
-            
-//           }
-//     }).then((res) => {
-//         if (res.status === 200)  {
-//             user.setIsAuth(true)
-//             console.log(user.isAuth)
-//             router.push('/')
-//         }
-//     })
-//     .catch((err) => {
-//         console.log(err.response?.data)
-//     })
-// }
 
 const AuthUser = async (data:any) => {
     
@@ -89,7 +70,7 @@ return (
                 <LinkStyled >Зарегистрироваться</LinkStyled>
                 </LinkNoStyles>
                </LinksContainer> 
-               <LinkNoStyles href={'#'}>
+               <LinkNoStyles href={'/password-recovery'}>
                 <LinkStyled >Забыли пароль?</LinkStyled>
                </LinkNoStyles>
         </LinksContainer>

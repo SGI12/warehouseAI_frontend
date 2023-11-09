@@ -83,3 +83,8 @@ export const TextLargeStyled = styled(TextDefaultStyled)`
 font-size: 16px;
 
 `
+
+export const TextSmallStyled = styled(TextDefaultStyled)`
+
+font-size: 14px;
+`

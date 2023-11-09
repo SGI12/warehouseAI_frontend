@@ -14,7 +14,7 @@ const AiCreatePage = () => {
         <AiCreateHeader color="#ffffff">Выберите тип нейросети</AiCreateHeader>
         <TypeChooseContainer>
             <TypeChooseInput>
-
+                
             </TypeChooseInput>
         </TypeChooseContainer>
         <AddAiButton>Подключить нейронную сеть</AddAiButton>

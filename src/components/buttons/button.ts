@@ -10,6 +10,7 @@ export const ButtonStyled = styled.button.attrs({
 })` 
     display: flex;
     justify-content: center;
+    white-space: nowrap;
     width: 408px;
     padding: 14px 110px;
     background: var(--accent, #E64C8F);

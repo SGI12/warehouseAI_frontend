@@ -37,7 +37,7 @@ const HomePage = ()  => {
       })
       .catch((err) => {
         setTimeout(() => setLoading(false), 1000)
-        console.log(err.response?.data)
+        console.log(err.response?.data.message)
     });
     });
     if (isLoading) {
