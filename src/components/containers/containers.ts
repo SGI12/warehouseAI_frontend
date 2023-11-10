@@ -2,6 +2,8 @@
 import { Open_Sans } from "next/font/google";
 import styled from "styled-components";
 
+
+
 const opensans = Open_Sans({
     weight: '300',
     subsets: ['latin']
@@ -154,7 +156,8 @@ border: 1px solid var(--white, #FFF);
 
 export const LoaderContainer = styled.div`
 
-background: var(--background, #242424);
+
+background: var(--background, #242424) ;
 position: absolute;
 z-index: 3;
 display: flex;
@@ -202,5 +205,23 @@ gap: 24px;
 align-items: center;
 max-width: 510px;
 text-align: center;
+
+`
+
+export const EmailCodeScreenMainContainer = styled.div`
+
+z-index: 3;
+background: rgba(0, 0, 0, 0.20);
+width: 100vw;
+height: 100vh;
+position: absolute;
+
+`
+
+export const VerificationCodeContainer = styled.div`
+
+
+display: flex;
+gap: 20px;
 
 `

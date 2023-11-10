@@ -10,7 +10,7 @@ import { useUserContext } from "@/context/context"
 
 
 export interface AiCardProps {
-    id?: number,
+    id?: string,
     img?: string,
     title?: string,
     rate?: number,
@@ -19,7 +19,7 @@ export interface AiCardProps {
 }
 const AiCard = ({...props}:AiCardProps)  => {
     const {isUser} = useUserContext()
-    props.id = 1
+    props.id = '70caddf8-fa0e-4649-99cb-c6274eb88e43'
     //Временная залупа 
     props.tags = ['code', 'php', 'apiplatform'];
     

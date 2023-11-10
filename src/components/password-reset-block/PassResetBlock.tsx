@@ -5,22 +5,26 @@ import { H2Styled } from "../headers-text/HeaderText"
 import { InputStyled } from "../inputs/TextInputs"
 import { TextSmallStyled } from "../paragraphs/Paragraphs"
 import BackLink from "../back-link/BackLink"
-import {  passResetReq } from "@/http/UserAPI"
+import {  checkCookies, passResetReq } from "@/http/UserAPI"
 import { FormStyled } from "../auth-card/styled"
 
 
-const PassResetBlock = () => {
+const PassResetBlock = ({setShowPopUp}:any) => {
+    checkCookies()
     const [email, setEmail] = useState('')
     const PassResetRequest = async (data:any) => {
     
         try {
-     
-         await passResetReq(data)
          
+         await passResetReq(data)
+         setShowPopUp(true)
          } catch (e:any) {
              console.log (e.response?.data.message)
-             if (e.response.status === 404) 
+             if (e.response.status === 404)
                 alert('E-mail не найден')
+             if (e.response.status === 409)
+                setShowPopUp(true)
+
          }
          
      }
@@ -46,7 +50,10 @@ const PassResetBlock = () => {
             
             onChange={e => setEmail(e.target.value)} 
             placeholder="E-mail"/>
-            <ButtonStyled type="submit">Восстановить пароль</ButtonStyled>
+            <ButtonStyled
+
+            type="submit">Восстановить пароль
+            </ButtonStyled>
             </FormStyled>
         </PassResetInputContainer>
     )

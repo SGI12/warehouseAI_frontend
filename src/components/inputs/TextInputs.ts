@@ -1,7 +1,10 @@
 'use client'
 import styled from 'styled-components'
 import { Open_Sans } from 'next/font/google'
+import { Andika } from "next/font/google";
 const opensans = Open_Sans({subsets: ['cyrillic', 'latin']})
+
+
 
 
 
@@ -56,4 +59,14 @@ width: 100%;
 border-radius: 30px;
 border: 1px solid var(--accent, #E64C8F);
 height: 100%;
+`
+
+export const VerificationCodeInput = styled(InputStyled)`
+
+height: 138px;
+width: 415px;
+font-size: 40px;
+text-align: center;
+padding-left: 0px;
+
 `
