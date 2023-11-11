@@ -1,5 +1,5 @@
 
-import { getCookies, setCookie } from "cookies-next";
+import { getCookie, getCookies, setCookie } from "cookies-next";
 import { $auth } from ".";
 import axios from "axios";
 
@@ -30,7 +30,20 @@ export const logOut = async() => {
 
 export const passResetReq = async(data) => {
     const response = await $auth.post('/reset/request', data)
-    setCookie('passResetTokenId', response.data?.id, {maxAge: 60*10})
+    if (response.status === 200) {
+        setCookie('passResetTokenId', response.data?.id, {maxAge: 60*7})
+    }
+    return response
+}
+
+export const passResetVerify = async(code) => {
+    const token = getCookie('passResetTokenId')
+    const response = await $auth.get('/reset/verify', {
+        params: {
+            'verification': code,
+            'token_id': token
+        }
+    })
     return response
 }
 

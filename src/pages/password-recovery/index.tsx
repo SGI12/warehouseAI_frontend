@@ -1,3 +1,4 @@
+import BackLinkBlack from "@/components/back-link/BackLinkBlack"
 import { PasswordRecoveryMainContainer } from "@/components/containers/containers"
 import EmailCodeScreen from "@/components/email-code-screen/EmailCodeScreen"
 import {  LogoResetPass, LogoResetPassContainer } from "@/components/logo/logo"
@@ -6,10 +7,11 @@ import Image from "next/image"
 import {useState} from 'react'
 
 const PasswordRecovery  = () => {
+    
     const [showPopUp, setShowPopUp] = useState(false)
-    console.log(showPopUp)
     return (
         <PasswordRecoveryMainContainer>
+            <BackLinkBlack/>
             {showPopUp && <EmailCodeScreen setShowPopUp={setShowPopUp}/>}
             <LogoResetPassContainer>
             <LogoResetPass>
@@ -17,6 +19,7 @@ const PasswordRecovery  = () => {
             </LogoResetPass>
             </LogoResetPassContainer>
             <PassResetBlock setShowPopUp={setShowPopUp}/>
+            
         </PasswordRecoveryMainContainer>
     )
 }

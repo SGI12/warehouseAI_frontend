@@ -6,15 +6,25 @@ import { TextSmallStyled } from "../paragraphs/Paragraphs"
 import { VerificationCodeInput } from "../inputs/TextInputs"
 import { ButtonContainer } from "../registration-card/styled"
 import { ButtonShortStyled } from "../buttons/button"
+import { passResetVerify } from "@/http/UserAPI"
 
 
 const EmailCodeScreen = ({setShowPopUp}:any) => {
     const [code, setCode] = useState('')
     const [animation, setAnimation] = useState('open')
-
+    console.log(code)
     const hide = async () => {
         setAnimation('close')
-        setTimeout(() => setShowPopUp(false), 500)
+        setTimeout(() => setShowPopUp(false), 400)
+    }
+
+    const sendCodeOnClick = async () => {
+        try {
+            await passResetVerify(code)
+            hide()
+        } catch(e:any) {
+            console.log (e.response?.data)
+        }
     }
     return (
         <EmailCodeScreenMainContainer>
@@ -31,7 +41,7 @@ const EmailCodeScreen = ({setShowPopUp}:any) => {
             </VerificationCodeInput>
             <ButtonContainer>
                 <ButtonShortStyled onClick={() => hide()}>Отмена</ButtonShortStyled>
-                <ButtonShortStyled className="active">Подтвердить</ButtonShortStyled>
+                <ButtonShortStyled onClick={() => sendCodeOnClick()} className="active">Подтвердить</ButtonShortStyled>
             </ButtonContainer>
             </PassResetPopUp>
             

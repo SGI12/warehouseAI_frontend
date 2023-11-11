@@ -61,14 +61,14 @@ line-height: 140%; /* 42px */
 
 export const BackLinkText = styled(TextDefaultStyled)`
 
-color: #ffffff;
+color: ${props => props.color  ?  props.color : '#ffffff' };
 font-size: 18px;
 font-style: normal;
 font-weight: 400;
 line-height: 120%;
 
 &:hover {
-    border-bottom: 1px solid #ffffff;
+    text-decoration: underline;
 }
 
 

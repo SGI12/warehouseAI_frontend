@@ -44,10 +44,12 @@ export const ButtonShortStyled = styled(ButtonStyled)`
     &.active {
         background: var(--accent, #E64C8F);
         border: none;
-        color: #ffffff
-      
+        color: #ffffff      
+    }
 
-        
+    &:active {
+        color: #ffffff;
+        background: #C83575;
     }
 `
 

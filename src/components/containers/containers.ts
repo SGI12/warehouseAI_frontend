@@ -97,18 +97,39 @@ flex-direction: column;
 export const UseAiContainer = styled.div`
 z-index: 1;
 display: flex;
-padding-top: 46px;
+padding-top: 118px;
 margin-bottom: 154px;
 `
 
-export const BackLinkontainer = styled.div`
+export const BackLinkWhiteContainer = styled.div`
 
-z-index: 1;
+left: 10px;
+top: 107px;
+position: absolute;
+z-index: 3;
 padding-left: 80px;
 padding-top: 47px;
 cursor: pointer;
 display: flex;
 gap: 14px;
+
+&:hover {
+    filter: invert(37%) sepia(71%) saturate(1243%) hue-rotate(300deg) brightness(97%) contrast(85%);
+}
+`
+
+export const BackLinkBlackContainer = styled.div`
+
+left: 10px;
+top: 107px;
+position: absolute;
+z-index: 3;
+padding-left: 80px;
+padding-top: 47px;
+cursor: pointer;
+display: flex;
+gap: 14px;
+
 &:active {
     filter: invert(37%) sepia(71%) saturate(1243%) hue-rotate(300deg) brightness(97%) contrast(85%);
 }

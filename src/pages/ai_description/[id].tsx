@@ -1,7 +1,7 @@
 import Loader from "@/components/Loader/Loader";
 import { AiDescriptionBg } from "@/components/absolute-blocks/ai-description/AiDesciptionBg";
 import AiBriefInfo from "@/components/ai-brief-info-block/AiBriefInfoBlock";
-import BackLink from "@/components/back-link/BackLink";
+import BackLinkWhite from "@/components/back-link/BackLinkWhite";
 
 import { AIDescTag, AIDescTagsContainer, AiBriefInfoContainer, AiDescriptionContainer, AiInfo, AiInfoAndDeveloperContaner, UseAiContainer } from "@/components/containers/containers";
 import Footer from "@/components/footer/footer";
@@ -41,7 +41,7 @@ const AiDescriptionPage = () => {
         <AiDescriptionContainer>
             <AiDescriptionBg/>
             <Header/>
-            <BackLink/>
+            <BackLinkWhite/>
             <UseAiContainer>
                 <AiBriefInfo/>  
                 <AIDescTagsContainer>

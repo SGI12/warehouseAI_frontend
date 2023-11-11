@@ -4,7 +4,7 @@ import { PassResetInputContainer } from "../containers/containers"
 import { H2Styled } from "../headers-text/HeaderText"
 import { InputStyled } from "../inputs/TextInputs"
 import { TextSmallStyled } from "../paragraphs/Paragraphs"
-import BackLink from "../back-link/BackLink"
+import BackLink from "../back-link/BackLinkWhite"
 import {  checkCookies, passResetReq } from "@/http/UserAPI"
 import { FormStyled } from "../auth-card/styled"
 
@@ -19,7 +19,7 @@ const PassResetBlock = ({setShowPopUp}:any) => {
          await passResetReq(data)
          setShowPopUp(true)
          } catch (e:any) {
-             console.log (e.response?.data.message)
+             console.log (e.response?.data)
              if (e.response.status === 404)
                 alert('E-mail не найден')
              if (e.response.status === 409)

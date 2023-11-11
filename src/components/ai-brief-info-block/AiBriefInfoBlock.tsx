@@ -1,4 +1,4 @@
-import BackLink from "../back-link/BackLink"
+import BackLink from "../back-link/BackLinkWhite"
 import { AiBriefInfoContainer, ButtonAndStatsContainer, StarsContainer } from "../containers/containers"
 import { AiDescriptionH1 } from "../headers-text/HeaderText"
 import { AiCardProps } from "../ai-card/AiCard"
