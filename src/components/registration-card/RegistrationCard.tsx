@@ -162,13 +162,14 @@ const RegistrationCard = () => {
                 <InputStyled 
                
                 name="username"
+                autoComplete="off"
                 placeholder="Введите имя пользователя" 
                 type="text" 
                 onChange={handleChange}
                 onBlur={handleBlur}/>
                 {usernameValid.isUserNameEmpty && dirtyInputs.username && <InputErrorText className={usernameValid.animation}>{usernameValid.errors.usernameError}</InputErrorText>}
                 <InputStyled 
-                
+                autoComplete="off"
                 name='firstname'
                 placeholder="Введите имя"
                 onChange={handleChange}
@@ -178,6 +179,7 @@ const RegistrationCard = () => {
                
              
                 <InputStyled 
+                autoComplete="off"
                 onBlur={handleBlur}
                 name="lastname"
                 placeholder="Введите фамилию"
@@ -204,6 +206,7 @@ const RegistrationCard = () => {
                 onBlur={handleBlur}
                 onChange={newPasswordHandle}
                 name="new_password"
+                autoComplete="off"
                 placeholder="Повторите пароль" 
                 type="password"/>
                 {!passRepeatValid.isChecked && dirtyInputs.new_password && <InputErrorText className={passRepeatValid.animation}>Пароли не совпадают</InputErrorText>}

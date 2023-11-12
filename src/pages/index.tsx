@@ -31,7 +31,7 @@ const HomePage = ()  => {
     
     useEffect(() => {
     check()
-      .then((res) => {
+      .then(() => {
         user.setIsAuth(true)
         setTimeout(() => setLoading(false), 1000)
       })
