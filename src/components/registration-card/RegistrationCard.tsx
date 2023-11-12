@@ -9,7 +9,7 @@ import { InputStyled, LoadFileInput } from "../inputs/TextInputs";
 import { LinkNoStyles, LinkStyled } from "../links/link";
 import { useRouter } from 'next/router'
 import { registration } from "@/http/UserAPI";
-import {usePassRepeatCheck, useValidation} from '@/validation/validation'
+import { usePassRepeatCheck, useValidation} from '@/validation/validation'
 
 
 
@@ -21,8 +21,7 @@ const RegistrationCard = () => {
     // JSON.stringify(data)
     try {
         await registration(data)
-        console.log('УСПЕХ')
-        router.push('/')
+        router.push('/authpage')
     } catch (e:any) {
         if (e.response.status == 409) {
             setIsRegister(true)

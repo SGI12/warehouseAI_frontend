@@ -9,44 +9,43 @@ import { FormStyled } from "../auth-card/styled"
 import { useRouter } from "next/navigation"
 import { getCookie } from "cookies-next"
 import { useUserContext } from "@/context/context"
+import { usePassRepeatCheck, useValidation } from "@/validation/validation"
 
 
 
 const ChangePassBlock = () => {
-    const {user} = useUserContext() 
     const router = useRouter()
     const [password, setPassword] = useState('')
     const [repeatPassword, setRepeatPassword] = useState('')
     const [isError, setIsError] = useState(false)
     const [errorMessage, setErrorMessage] = useState('')
     const [animation, setAnimation] = useState('none')
-    console.log(password, repeatPassword)
-    console.log(isError)
 
-    const PassValidate = () => {
-        let isValid:boolean = false
-        if (password != repeatPassword) {
-            setErrorMessage('Пароли не совпадают')
-            setAnimation('animated')
-            setIsError(true)
-            setTimeout(() => setAnimation('none'), 500)
-        }
+    // const PassValidate = () => {
+    //     let isValid:boolean = false
+    //     if (password != repeatPassword) {
+    //         setErrorMessage('Пароли не совпадают')
+    //         setAnimation('animated')
+    //         setIsError(true)
+    //         setTimeout(() => setAnimation('none'), 500)
+    //     }
 
-        else if ((password=='') || (repeatPassword =='')) {
-            setErrorMessage('Поля не должны быть пустыми')
-            setAnimation('animated')
-            setIsError(true)
-            setTimeout(() => setAnimation('none'), 500)
-        }
+    //     else if ((password=='') || (repeatPassword =='')) {
+    //         setErrorMessage('Поля не должны быть пустыми')
+    //         setAnimation('animated')
+    //         setIsError(true)
+    //         setTimeout(() => setAnimation('none'), 500)
+    //     }
 
-        else isValid = true
+    //     else isValid = true
 
-        return isValid
-    }
-
+    //     return isValid
+    // }
+    const passwordCheck = usePassRepeatCheck(password, repeatPassword)
+    const passwordValid = useValidation(password, {isPasswordInvalid: true})
     const PassUpdate = async (data:any) => {
 
-            if (PassValidate()) {
+            if (passwordCheck.isChecked) {
                 try {
          
                     await passResetConfirm(data)
@@ -95,7 +94,7 @@ const ChangePassBlock = () => {
             placeholder="Новый пароль"
             autoComplete="disabled"
             />
-            
+            {passwordValid.isPasswordInvalid && <InputErrorText className={passwordValid.animation}>{passwordValid.errors.passwordInvalidError}</InputErrorText>}
             <InputStyled
             onChange={e => {
               
@@ -104,6 +103,7 @@ const ChangePassBlock = () => {
             type="password"
             autoComplete="disabled"
             placeholder="Повторите пароль"/>
+            {!passwordCheck.isChecked && <InputErrorText className={passwordCheck.animation}>{passwordCheck.error}</InputErrorText>}
             {isError && <InputErrorText className={animation}>{errorMessage}</InputErrorText>}
             <ButtonStyled
 

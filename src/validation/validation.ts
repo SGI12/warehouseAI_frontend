@@ -1,6 +1,8 @@
+import { error } from "console"
 import { useEffect, useState } from "react"
 
-export const useValidation = (value, validations) => {
+
+export const useValidation = (value:string, validations:object) => {
     const [isUserNameEmpty, setUserNameEmpty] = useState(true)
     const [isFirstnameEmpty, setFirstnameEmpty] = useState(true)
     const [isLastnameEmpty, setLastnameEmpty] = useState(true)
@@ -86,18 +88,23 @@ export const useValidation = (value, validations) => {
     }
 }
 
-export const usePassRepeatCheck = (password, repeat) => {
+export const usePassRepeatCheck = (password:string, repeat:string) => {
     
     const [animation, setAnimation] = useState('none')
     const [isChecked, setChecked] = useState(false)
+    const [error, setError] = useState('')
     useEffect(() => {
-        password === repeat ? setChecked(true) : setChecked(false);
-       
-        
+        if (password === repeat) {
+            setChecked(true)
+        }   
+        else {
+        setChecked(false);
+        setError('Пароли не совпадают')
         setAnimation('animated')
         setTimeout(() => setAnimation('none'), 500) 
+        }
     }, [password, repeat])
     
-    return {isChecked, animation}
+    return {isChecked, animation, error}
 
 }
