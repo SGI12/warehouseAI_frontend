@@ -30,15 +30,18 @@ const HomePage = ()  => {
     const {user} = useUserContext()
     
     useEffect(() => {
-    check()
-      .then(() => {
-        user.setIsAuth(true)
-        setTimeout(() => setLoading(false), 1000)
-      })
-      .catch((err) => {
-        setTimeout(() => setLoading(false), 1000)
-        console.log(err.response?.data.message)
-    });
+    const checkSession = async () => {
+        try {
+            await check()
+            user.setIsAuth(true)
+            setTimeout(() => setLoading(false), 1000)
+        }
+            catch(err:any)  {
+            setTimeout(() => setLoading(false), 1000)
+            console.log(err.response?.data.message)
+        };
+    }
+    checkSession();
     });
     if (isLoading) {
         return <Loader/>

@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import { useUserContext } from "@/context/context";
 import { observer } from 'mobx-react-lite';
 import { auth } from "@/http/UserAPI";
+import { useValidation } from "@/validation/validation";
 
 
 
@@ -45,18 +46,19 @@ const LoginUserOnSubmit = (event:any) => {
     AuthUser(userData);
 
 }
-
+const emailValid  = useValidation(email, {isEmailInvalid: true})
 return (
 
     <AuthCardStyled>
         <H1StyledAuth>Вход</H1StyledAuth>
         <FormStyled onSubmit={LoginUserOnSubmit}>
             <InputStyled 
-            autoComplete="true"
+            autoComplete="on"
             placeholder='E-mail'
             onChange={e => setEmail(e.target.value)}/>
+            
             <InputStyled 
-            autoComplete="true"
+            autoComplete="on"
             type='password' 
             placeholder='Пароль'
             onChange={e => setPassword(e.target.value)}/>
