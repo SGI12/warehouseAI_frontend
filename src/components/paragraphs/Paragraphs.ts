@@ -1,5 +1,5 @@
 'use client'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 import { Andika, Open_Sans } from 'next/font/google'
 const opensans = Open_Sans({
     subsets: ['cyrillic', 'latin'],
@@ -11,6 +11,14 @@ const andika = Andika({
     weight: '400'
 })
 
+
+const horizontalShaking = keyframes`
+    0% { transform: translateX(0) }
+    25% { transform: translateX(5px) }
+    50% { transform: translateX(-5px) }
+    75% { transform: translateX(5px) }
+    100% { transform: translateX(0) }
+` 
 export const TextDefaultStyled = styled.p.attrs({
 
     className: opensans.className,
@@ -87,4 +95,20 @@ font-size: 16px;
 export const TextSmallStyled = styled(TextDefaultStyled)`
 
 font-size: 14px;
+`
+
+export const InputErrorText = styled.p.attrs({
+    className: opensans.className
+})`
+
+&.animated {
+    animation: ${horizontalShaking} 0.5s infinite;
+}
+align-self: flex-start;
+color: #DB0F0F;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 130%; /* 18.2px */
+
 `

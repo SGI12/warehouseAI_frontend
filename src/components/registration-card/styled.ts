@@ -7,8 +7,8 @@ import { SubHeaderStyled } from "../paragraphs/Paragraphs"
 export const RegistrationCardStyled = styled(AuthCardStyled)``
 
 
-export const H2StyledAuth = styled(H2Styled)`
-    padding: 172px 0px 64px 0px;
+export const H2StyledRegister= styled(H2Styled)`
+    padding: 52px 0px 64px 0px;
 `
 
 export const SubHeaderStyledRegistration = styled(SubHeaderStyled)`

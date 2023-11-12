@@ -7,9 +7,11 @@ import { VerificationCodeInput } from "../inputs/TextInputs"
 import { ButtonContainer } from "../registration-card/styled"
 import { ButtonShortStyled } from "../buttons/button"
 import { passResetVerify } from "@/http/UserAPI"
+import { useRouter } from "next/navigation"
 
 
 const EmailCodeScreen = ({setShowPopUp}:any) => {
+    const router = useRouter();
     const [code, setCode] = useState('')
     const [animation, setAnimation] = useState('open')
     console.log(code)
@@ -21,8 +23,10 @@ const EmailCodeScreen = ({setShowPopUp}:any) => {
     const sendCodeOnClick = async () => {
         try {
             await passResetVerify(code)
-            hide()
+            router.push('/new-password')
+
         } catch(e:any) {
+            
             console.log (e.response?.data)
         }
     }

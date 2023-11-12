@@ -70,3 +70,9 @@ text-align: center;
 padding-left: 0px;
 
 `
+
+export const LoadFileInput = styled.input`
+
+
+display: none;
+`

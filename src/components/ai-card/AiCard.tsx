@@ -18,7 +18,7 @@ export interface AiCardProps {
     aiPageUrl?: string
 }
 const AiCard = ({...props}:AiCardProps)  => {
-    const {isUser} = useUserContext()
+   
     props.id = '70caddf8-fa0e-4649-99cb-c6274eb88e43'
     //Временная залупа 
     props.tags = ['code', 'php', 'apiplatform'];

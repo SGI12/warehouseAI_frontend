@@ -30,6 +30,10 @@ export const ButtonStyled = styled.button.attrs({
     &:active {
         background: #C83575;
     }
+    &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
 `
 
 export const ButtonShortStyled = styled(ButtonStyled)`

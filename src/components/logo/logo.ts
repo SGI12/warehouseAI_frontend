@@ -19,6 +19,7 @@ export const LogoBig = styled.div`
     padding-top: 100px;
     padding-right: 25%;
 
+
 `
 
 

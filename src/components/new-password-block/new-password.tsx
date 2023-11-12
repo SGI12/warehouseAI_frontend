@@ -1,0 +1,100 @@
+import { useState } from "react"
+import { ButtonStyled } from "../buttons/button"
+import { PassResetInputContainer } from "../containers/containers"
+import { H2Styled } from "../headers-text/HeaderText"
+import { InputStyled } from "../inputs/TextInputs"
+import { InputErrorText, TextSmallStyled } from "../paragraphs/Paragraphs"
+import {  checkCookies, passResetConfirm, passResetReq } from "@/http/UserAPI"
+import { FormStyled } from "../auth-card/styled"
+import { useRouter } from "next/navigation"
+import { getCookie } from "cookies-next"
+import { useUserContext } from "@/context/context"
+import { usePassRepeatCheck } from "@/validation/validation"
+
+
+
+const ChangePassBlock = () => {
+    const {user} = useUserContext() 
+    const router = useRouter()
+    const [password, setPassword] = useState('')
+    const [repeatPassword, setRepeatPassword] = useState('')
+    const [isError, setIsError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+    const [animation, setAnimation] = useState('none')
+    console.log(password, repeatPassword)
+    console.log(isError)
+
+  
+
+    const PassUpdate = async (data:any) => {
+
+            if (usePassRepeatCheck(password, repeatPassword).isChecked === true) {
+                try {
+         
+                    await passResetConfirm(data)
+                    router.push('/authpage')
+                    
+                    
+                    } catch (e:any) {
+                        console.log (e.response?.data)
+                        if (e.response?.status === 404) {
+                           setAnimation('animated')
+                           setErrorMessage('Время на восстановление пароля закончилось. Пожалуйста, отправьте запрос на восстановление еще раз')
+                           setIsError(true)
+                           setTimeout(() => setAnimation('none'), 500)
+                        }
+                   }
+            }   
+         
+     }
+
+
+    const ResetPasswordOnClick =  (event:any) => {
+        event.preventDefault();
+        const data = {
+            userId: getCookie('userId'),
+            password,
+                  
+        };
+        PassUpdate(data);
+        
+    }
+    return (
+        <PassResetInputContainer>
+            
+            <H2Styled>Смена пароля</H2Styled>
+            <TextSmallStyled>
+            Придумайте новый пароль от аккаунта, 
+            содержащий не менее 8 символов, а также заглавные буквы и спецсимволы.
+            </TextSmallStyled>
+            <FormStyled onSubmit={ResetPasswordOnClick}>
+            <InputStyled
+            onChange={e => {
+                
+                setPassword(e.target.value)
+            }} 
+            type="password"
+            placeholder="Новый пароль"
+            autoComplete="disabled"
+            />
+            
+            <InputStyled
+            onChange={e => {
+              
+                setRepeatPassword(e.target.value)
+            }} 
+            type="password"
+            autoComplete="disabled"
+            placeholder="Повторите пароль"/>
+            {isError && <InputErrorText className={animation}>{errorMessage}</InputErrorText>}
+            <ButtonStyled
+
+            type="submit">
+                Подтвердить
+            </ButtonStyled>
+            </FormStyled>
+        </PassResetInputContainer>
+    )
+}
+
+export default ChangePassBlock

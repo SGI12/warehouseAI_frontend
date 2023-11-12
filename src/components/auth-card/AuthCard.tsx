@@ -15,7 +15,6 @@ import { auth } from "@/http/UserAPI";
 const AuthCard = observer (() => {
 const {user} = useUserContext()
 const router = useRouter()
-
 const AuthUser = async (data:any) => {
     
    try {
@@ -46,7 +45,7 @@ const LoginUserOnSubmit = (event:any) => {
     AuthUser(userData);
 
 }
-console.log(user)
+
 return (
 
     <AuthCardStyled>

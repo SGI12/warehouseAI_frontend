@@ -3,7 +3,7 @@ import { ButtonStyled } from "../buttons/button"
 import { PassResetInputContainer } from "../containers/containers"
 import { H2Styled } from "../headers-text/HeaderText"
 import { InputStyled } from "../inputs/TextInputs"
-import { TextSmallStyled } from "../paragraphs/Paragraphs"
+import { InputErrorText, TextSmallStyled } from "../paragraphs/Paragraphs"
 import BackLink from "../back-link/BackLinkWhite"
 import {  checkCookies, passResetReq } from "@/http/UserAPI"
 import { FormStyled } from "../auth-card/styled"
@@ -12,6 +12,9 @@ import { FormStyled } from "../auth-card/styled"
 const PassResetBlock = ({setShowPopUp}:any) => {
     checkCookies()
     const [email, setEmail] = useState('')
+    const [isError, setIsError] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+    const [animation, setAnimation] = useState('none')
     const PassResetRequest = async (data:any) => {
     
         try {
@@ -20,11 +23,24 @@ const PassResetBlock = ({setShowPopUp}:any) => {
          setShowPopUp(true)
          } catch (e:any) {
              console.log (e.response?.data)
-             if (e.response.status === 404)
-                alert('E-mail не найден')
-             if (e.response.status === 409)
+             if (e.response.status === 404) {
+                setAnimation('animated')
+                setErrorMessage('E-mail не зарегистрирован.')
+                setIsError(true)
+                setTimeout(() => setAnimation('none'), 500)
+             }
+                
+             if (e.response.status === 409) {
                 setShowPopUp(true)
+             }
 
+             if (e.response.status === 500) {
+                setAnimation('animated')
+                setErrorMessage('Введите адрес электронной почты.')
+                setIsError(true)
+                setTimeout(() => setAnimation('none'), 500)
+             }
+                
          }
          
      }
@@ -50,6 +66,8 @@ const PassResetBlock = ({setShowPopUp}:any) => {
             
             onChange={e => setEmail(e.target.value)} 
             placeholder="E-mail"/>
+            {isError && <InputErrorText className={animation}>{errorMessage}</InputErrorText>}
+            {}
             <ButtonStyled
 
             type="submit">Восстановить пароль
