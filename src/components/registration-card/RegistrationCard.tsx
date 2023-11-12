@@ -22,6 +22,7 @@ const RegistrationCard = () => {
     try {
         await registration(data)
         console.log('УСПЕХ')
+        router.push('/')
     } catch (e:any) {
         if (e.response.status == 409) {
             setIsRegister(true)
