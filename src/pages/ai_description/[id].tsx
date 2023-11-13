@@ -9,7 +9,7 @@ import Header from "@/components/header/header"
 import { H2Styled } from "@/components/headers-text/HeaderText";
 import { TextDefaultStyled, TextLargeStyled } from "@/components/paragraphs/Paragraphs";
 import { useUserContext } from "@/context/context"
-import { check } from "@/http/UserAPI";
+import { check } from "@/http/AuthAPI";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
