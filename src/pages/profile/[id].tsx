@@ -102,7 +102,8 @@ const UserProfile = () => {
                     borderRadius: '50%',
                     border: '2px solid #FFB8D7',
                     boxShadow: '0px -3px 105px -1px rgba(251, 157, 198, 0.32)'
-                    }} src={userData.picture} alt="avatar" width={305} height={305}/>
+                    }} 
+                    src={userData.picture} alt="avatar" width={305} height={305}/>
                 <UserNameAndButtonContainer>
                     <H1Styled color="#ffffff">{userData.firstname + ' ' +  userData.lastname} </H1Styled>
                     <GetNeuralButton onClick={() => {

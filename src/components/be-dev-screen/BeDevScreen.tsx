@@ -11,7 +11,7 @@ import { useRouter } from "next/navigation"
 import Footer from "../footer/footer"
 
 
-const BeDevScreen = ({setShowPopUp}:any) => {
+const BeDevScreen = ({showPopUp, setShowPopUp}:any) => {
     const router = useRouter();
     const [code, setCode] = useState('')
     const [animation, setAnimation] = useState('open')

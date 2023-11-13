@@ -121,11 +121,6 @@ const RegistrationCard = () => {
     const ClickLoadhandler = () => {
         if (inputFile.current?.files) {
             inputFile.current.click()
-            setUserData({
-                ...userData,
-                picture: inputFile.current.files[0]
-            })
-
 
         }
         
@@ -214,7 +209,11 @@ const RegistrationCard = () => {
                 <LinkStyled onClick={ClickLoadhandler}><LoadFileInput 
                 onChange={(e:any) => 
                     {
-                    setPictureName(e.target.files[0]?.name || 'Загрузить аватарку')
+                    setPictureName(e.target.files[0]?.name || 'Загрузить аватарку');
+                    setUserData({
+                        ...userData,
+                        picture: e.target.files[0]
+                    })
                 }} 
                 ref={inputFile} 
                 type="file"></LoadFileInput>{pictureName}</LinkStyled>
