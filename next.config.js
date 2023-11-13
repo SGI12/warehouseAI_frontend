@@ -6,6 +6,9 @@ const nextConfig = {
     compiler:{
         styledComponents: true
     },
+    images: {
+        domains: ['https://s3.warehousai.com/'],
+    },
     
 }
 

@@ -10,7 +10,7 @@ import Image from "next/image";
 import { observer } from "mobx-react-lite";
 
 
-const Header = observer(() => {
+const Header = observer(({showPopUp}:any) => {
     
     const {user} = useUserContext()
     
@@ -19,7 +19,7 @@ const Header = observer(() => {
             <LogoSmall>
                 <Image src="/logo_small.svg" alt="logo_small" width={80} height={80}/>
             </LogoSmall>
-            <NavBar/>
+            <NavBar />
             <SearchAndButtonContainer>
             <SearchFieldMainPage/>
             {!user.isAuth &&

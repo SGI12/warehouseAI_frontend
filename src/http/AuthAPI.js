@@ -38,7 +38,9 @@ export const check = async() => {
 }
 
 export const logOut = async() => {
-    const response = await axios.delete('https://api.warehousai.com/api/auth/logout');
+    const response = await axios.delete('https://api.warehousai.com/api/auth/logout', {
+        withCredentials: true
+    });
     return response
 }
 
@@ -78,6 +80,8 @@ export const passResetConfirm = async(data) => {
     })
     return response
 }
+
+
 
 
 

@@ -3,7 +3,6 @@ import Header from "@/components/header/header";
 import Footer from "@/components/footer/footer"; 
 import { ListWithStars } from "@/components/lists/styled";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { GetNeuralButton } from "@/components/buttons/button";
 import { HeadersMainPageContainer, HomePageMainContainer } from "@/components/containers/containers";
 import { DragonBluredBlock } from "@/components/absolute-blocks/home/DragonBluredBlock";
@@ -16,7 +15,7 @@ import { Arrow } from "@/components/arrows/arrows";
 import { BriefCardMainPage } from "@/components/brief-card/styled";
 import AiSlider from "@/components/ai-slider/AiSlider";
 import { useUserContext } from "@/context/context";
-import { check } from "@/http/UserAPI";
+import { check, checkCookies } from "@/http/AuthAPI";
 import Loader from "@/components/Loader/Loader";
 
 
@@ -26,6 +25,7 @@ import Loader from "@/components/Loader/Loader";
 
 
 const HomePage = ()  => {
+    console.log(checkCookies())
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
     
@@ -42,7 +42,7 @@ const HomePage = ()  => {
         };
     }
     checkSession();
-    });
+    },[user]);
     if (isLoading) {
         return <Loader/>
     }

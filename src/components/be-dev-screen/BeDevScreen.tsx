@@ -3,14 +3,15 @@ import { DefaultPopUp } from "../Popup/Popup"
 import { PopupMainContainer, VerificationCodeContainer } from "../containers/containers"
 import { H2Styled } from "../headers-text/HeaderText"
 import { TextSmallStyled } from "../paragraphs/Paragraphs"
-import { VerificationCodeInput } from "../inputs/TextInputs"
+import { InputStyled, VerificationCodeInput } from "../inputs/TextInputs"
 import { ButtonContainer } from "../registration-card/styled"
 import { ButtonShortStyled } from "../buttons/button"
 import { passResetVerify } from "@/http/AuthAPI"
 import { useRouter } from "next/navigation"
+import Footer from "../footer/footer"
 
 
-const EmailCodeScreen = ({setShowPopUp}:any) => {
+const BeDevScreen = ({setShowPopUp}:any) => {
     const router = useRouter();
     const [code, setCode] = useState('')
     const [animation, setAnimation] = useState('open')
@@ -20,38 +21,32 @@ const EmailCodeScreen = ({setShowPopUp}:any) => {
         setTimeout(() => setShowPopUp(false), 400)
     }
 
-    const sendCodeOnClick = async () => {
-        try {
-            await passResetVerify(code)
-            router.push('/new-password')
 
-        } catch(e:any) {
-            
-            console.log (e.response?.data)
-        }
-    }
     return (
+        
         <PopupMainContainer>
             <DefaultPopUp className={animation}>
-            <H2Styled>Введите код</H2Styled>
+            <H2Styled>Хотите стать разработчиком?</H2Styled>
             <TextSmallStyled>
-                Мы отправили код для восстановления доступа на Ваш email. 
-                Если письмо все ещё не пришло, проверьте папку «Спам» и «Промоакции».
+                Залупу тебе на воротник, а не разработчиком. 
+                Но ты можешь указать свою почту, нам придет письмо и, возможно, мы подумаем, чтобы дать тебе 
+                возможности разработчика.
             </TextSmallStyled>
-            <VerificationCodeInput 
+            <InputStyled
                 onChange={e => setCode(e.target.value)}
-                placeholder="Проверочный код"
+                placeholder="E-mail"
                 >
-            </VerificationCodeInput>
+            </InputStyled>
             <ButtonContainer>
-                <ButtonShortStyled onClick={() => hide()}>Отмена</ButtonShortStyled>
-                <ButtonShortStyled onClick={() => sendCodeOnClick()} className="active">Подтвердить</ButtonShortStyled>
+                <ButtonShortStyled onClick={() => hide()}>Назад</ButtonShortStyled>
+                <ButtonShortStyled onClick={() => hide()} className="active">Подтвердить</ButtonShortStyled>
             </ButtonContainer>
             </DefaultPopUp>
+            
             
         </PopupMainContainer>
     )
 
 }
 
-export default EmailCodeScreen
+export default BeDevScreen

@@ -8,7 +8,7 @@ import { AuthCardStyled, FormStyled, H1StyledAuth, InputsContainer, LinksContain
 import { useRouter } from 'next/router'
 import { useUserContext } from "@/context/context";
 import { observer } from 'mobx-react-lite';
-import { auth } from "@/http/UserAPI";
+import { auth } from "@/http/AuthAPI";
 import { useValidation } from "@/validation/validation";
 
 

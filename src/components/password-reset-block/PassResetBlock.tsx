@@ -4,8 +4,8 @@ import { PassResetInputContainer } from "../containers/containers"
 import { H2Styled } from "../headers-text/HeaderText"
 import { InputStyled } from "../inputs/TextInputs"
 import { InputErrorText, TextSmallStyled } from "../paragraphs/Paragraphs"
-import BackLink from "../back-link/BackLinkWhite"
-import {  checkCookies, passResetReq } from "@/http/UserAPI"
+
+import {  checkCookies, passResetReq } from "@/http/AuthAPI"
 import { FormStyled } from "../auth-card/styled"
 
 
@@ -67,7 +67,6 @@ const PassResetBlock = ({setShowPopUp}:any) => {
             onChange={e => setEmail(e.target.value)} 
             placeholder="E-mail"/>
             {isError && <InputErrorText className={animation}>{errorMessage}</InputErrorText>}
-            {}
             <ButtonStyled
 
             type="submit">Восстановить пароль

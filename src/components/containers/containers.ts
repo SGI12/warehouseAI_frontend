@@ -229,13 +229,14 @@ text-align: center;
 
 `
 
-export const EmailCodeScreenMainContainer = styled.div`
+export const PopupMainContainer = styled.div`
 
 z-index: 3;
 background: rgba(0, 0, 0, 0.20);
 width: 100vw;
 height: 100vh;
-position: absolute;
+position: fixed;
+
 
 `
 
@@ -244,5 +245,40 @@ export const VerificationCodeContainer = styled.div`
 
 display: flex;
 gap: 20px;
+
+`
+
+export const UserProfileMainContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+`
+
+export const UserProfileDataContainer = styled.div`
+padding-left: 80px;
+padding-right: 80px;
+padding-top: 100px;
+display: flex;
+justify-content: flex-start;
+`
+
+export const UserNameAndButtonContainer = styled.div`
+
+align-self: center;
+padding-left: 128px;
+display: flex;
+flex-direction: column;
+gap: 60px;
+
+`
+
+export const ProfileButtonsContainer = styled.div`
+
+display: flex;
+justify-content: space-between;
+padding-left: 80px;
+padding-right: 80px;
+padding-top: 100px;
 
 `

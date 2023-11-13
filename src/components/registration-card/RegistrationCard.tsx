@@ -8,7 +8,7 @@ import { ButtonContainer, H2StyledRegister, RegistrationCardStyled, SubHeaderSty
 import { InputStyled, LoadFileInput } from "../inputs/TextInputs";
 import { LinkNoStyles, LinkStyled } from "../links/link";
 import { useRouter } from 'next/router'
-import { registration } from "@/http/UserAPI";
+import { registration } from "@/http/AuthAPI";
 import { usePassRepeatCheck, useValidation} from '@/validation/validation'
 
 

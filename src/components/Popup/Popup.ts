@@ -27,7 +27,7 @@ const slideOutDown = keyframes`
   }
 
 `
-export const PassResetPopUp = styled.div`
+export const DefaultPopUp = styled.div`
 
 &.open {
   animation: ${slideInUp} 0.5s;
@@ -40,7 +40,6 @@ export const PassResetPopUp = styled.div`
 border-radius: 20px;
 display: flex;
 background-color: #ffffff;
-height: 514px;
 align-items: center;
 text-align: center;
 flex-direction: column;
@@ -49,6 +48,7 @@ position: absolute;
 left: 50%;
 top: 50%;
 margin:-257px 0 0 -315px;
+
 width: 630px;
 padding: 100px 108px;
 

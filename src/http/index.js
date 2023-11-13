@@ -12,9 +12,18 @@ const $AI = axios.create({
     baseURL: 'https://api.warehousai.com/api/ai'
 })
 
+const $USER = axios.create({
+    baseURL: 'https://api.warehousai.com/api/user',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    withCredentials: true
+})
+
 
 
 export {
     $auth,
-    $AI
+    $AI,
+    $USER,
 }

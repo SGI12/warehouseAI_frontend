@@ -105,3 +105,35 @@ box-shadow: 0px 0px 56px 0px rgba(251, 157, 198, 0.20);
 width: 218px;
 
 `
+
+export const ProfileBigButton = styled.button.attrs({
+    className: opensans.className
+})`
+
+width: 413px;
+height: 170px;
+border-radius: 20px;
+border: 1px solid var(--accent, #E64C8F);
+color: var(--accent, #E64C8F);
+text-align: center;
+font-size: 30px;
+font-style: normal;
+font-weight: 600;
+line-height: 130%;
+background-color: transparent;
+cursor: pointer;
+
+&:hover {
+    background: #2E2227;
+}
+
+&:active {
+    background: var(--accent, #E64C8F);
+    color: #ffffff;
+}
+
+&:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+` 
