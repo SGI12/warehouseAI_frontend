@@ -8,7 +8,7 @@ import { H1Styled } from "@/components/headers-text/HeaderText";
 import { AStyled } from "@/components/links/link";
 import { useUserContext } from "@/context/context";
 import { check, logOut } from "@/http/AuthAPI";
-import { getUserById } from "@/http/UserAPI";
+import { getUserById } from "@/http/UserApi";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
