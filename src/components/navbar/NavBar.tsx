@@ -13,7 +13,6 @@ const NavBar = ({activeModal}:any) => {
     const pathname = usePathname();
     const userid = getCookie('userId')
     const [active, setActive] = useState(false)
-    console.log(activeModal.activeModal)
     return (
         <>
 

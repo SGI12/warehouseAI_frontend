@@ -193,6 +193,8 @@ export const AiInfoAndDeveloperContaner = styled.div`
 
 z-index: 1;
 display: flex;
+justify-content: space-between;
+padding: 50px 80px;
 
 `
 
@@ -202,7 +204,6 @@ max-width: 630px;
 display: flex;
 flex-direction: column;
 gap: 40px;
-padding-left: 80px;
 
 `
 
@@ -284,5 +285,26 @@ justify-content: space-between;
 padding-left: 80px;
 padding-right: 80px;
 padding-top: 100px;
+
+`
+
+export const AiDeveloperInfoMainContainer = styled.div`
+
+width: 413px;
+border-radius: 20px;
+border: 1px solid var(--accent, #E64C8F);
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 40px;
+`
+
+export const DeveloperPictureAndNickNameContainer = styled.div`
+
+padding-top: 20px;
+display: flex;
+align-items: center;
+
+gap: 38px;
 
 `

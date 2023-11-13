@@ -9,7 +9,8 @@ const $auth = axios.create({
 })
 
 const $AI = axios.create({
-    baseURL: 'https://api.warehousai.com/api/ai'
+    baseURL: 'https://api.warehousai.com/api/ai',
+    withCredentials: true,
 })
 
 const $USER = axios.create({

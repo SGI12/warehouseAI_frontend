@@ -4,10 +4,14 @@ import { FooterContainer, Block, MenuFooter, SociaL, ChildBlok, Logo, DownBlock,
 import { usePathname } from 'next/navigation';
 import { AStyled, FooterLink, LinkNoStyles, NavBarLink } from '../links/link';
 import Image from 'next/image';
-
+import { getCookie } from 'cookies-next';
+import BeDevScreen from '../be-dev-screen/BeDevScreen';
+import {useState} from 'react'
 const Footer = () => {
+    const [active, setActive] = useState(false)
     return (
         <FooterContainer>
+             {active && <BeDevScreen setActive={setActive}/>}
             <BorderFooter/>
             <UpBlock>
                 <Logo>
@@ -18,7 +22,9 @@ const Footer = () => {
                         <LinkNoStyles href={'/'}>
                         <FooterLink color='#ffffff'>Главная</FooterLink>
                         </LinkNoStyles>
+                        <LinkNoStyles href={`/profile/${getCookie('userId')}`}>
                         <FooterLink color='#ffffff'>Профиль</FooterLink>
+                        </LinkNoStyles>
                     </Block>
                     <Block>
                         <FooterLink color='#ffffff'>Избранное</FooterLink>
@@ -27,7 +33,10 @@ const Footer = () => {
                         </AStyled>
                     </Block>
                     <Block>
-                        <FooterLink color='#ffffff'>Стать разработчиком</FooterLink>
+                        <FooterLink onClick={() => {
+                            setActive(true)
+
+                        }} color='#ffffff'>Стать разработчиком</FooterLink>
                         <FooterLink color='#ffffff'>Отдел разработки</FooterLink>
 
                     </Block>

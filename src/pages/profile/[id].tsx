@@ -9,6 +9,7 @@ import { AStyled } from "@/components/links/link";
 import { useUserContext } from "@/context/context";
 import { check, logOut } from "@/http/AuthAPI";
 import { getUserById } from "@/http/UserApi";
+import { getCookie } from "cookies-next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -62,8 +63,9 @@ const UserProfile = () => {
     }
     const getUserData = async () => {
         let pictureUrl = '/mock-avatar.jpg'
+        const userId = getCookie('userId')
         try {
-        await getUserById().then(res => {
+        await getUserById(userId).then(res => {
             console.log((res.data.picture !== ''))
             if (res.data.picture != '') {
                 pictureUrl = res.data.picture

@@ -1,12 +1,13 @@
-import { getCookie } from "cookies-next"
+
 import { $USER } from "."
 
 
-export const getUserById = async() => {
+export const getUserById = async(id) => {
     const response = $USER.get('/get', {
         params: {
-            'id': getCookie('userId')
+            'id': id
         }
     })
     return response
 }
+

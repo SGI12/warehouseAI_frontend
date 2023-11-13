@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 import { useUserContext } from "@/context/context";
 import { observer } from 'mobx-react-lite';
 import { auth } from "@/http/AuthAPI";
-import { useValidation } from "@/validation/validation";
+
 
 
 
@@ -26,8 +26,15 @@ const AuthUser = async (data:any) => {
     router.push('/')
     
     } catch (e:any) {
-        if (e.response.status === 400) {
+        if (e.response.status === 400 ) {
             setError(true)
+            setErrorText('Неверный пароль')
+            setAnimation('animated')
+            setTimeout(() => setAnimation('none'), 500)
+        }
+        if (e.response.status === 404) {
+            setError(true)
+            setErrorText('Неверный e-mail')
             setAnimation('animated')
             setTimeout(() => setAnimation('none'), 500)
         }
@@ -38,7 +45,7 @@ const AuthUser = async (data:any) => {
 }
 const [isError, setError] = useState(false)
 const [animation, setAnimation] = useState('none')
-
+const [errorText, setErrorText] = useState('')
 const [email, setEmail] = useState('');
 const [password, setPassword] = useState('');
 const toJson = (obj:object) => {
@@ -61,7 +68,7 @@ return (
         <H1StyledAuth>Вход</H1StyledAuth>
         
         <FormStyled onSubmit={LoginUserOnSubmit}>
-        {isError && <InputErrorText className={animation}>Неверные E-mail или пароль</InputErrorText>}
+        {isError && <InputErrorText className={animation}>{errorText}</InputErrorText>}
             <InputStyled 
             autoComplete="on"
             placeholder='E-mail'
