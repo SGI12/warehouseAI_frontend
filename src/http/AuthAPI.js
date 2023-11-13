@@ -27,6 +27,9 @@ export const registration = async(data) => {
 
 export const auth = async( data) => {
     const response = await $auth.post('/login', data) 
+    if (response.status === 200) {
+        setCookie('userId', response.data?.user_id)
+    }
     return response
 }
 

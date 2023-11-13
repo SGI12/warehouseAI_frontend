@@ -7,7 +7,7 @@ const nextConfig = {
         styledComponents: true
     },
     images: {
-        domains: ['https://s3.warehousai.com/'],
+        domains: ['s3.warehousai.com'],
     },
     
 }

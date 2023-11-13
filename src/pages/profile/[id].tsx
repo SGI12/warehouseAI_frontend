@@ -28,7 +28,7 @@ const UserProfile = () => {
         firstname: '',
         lastname: '',
         username: '',
-        picture: '/mock-avatar.jpg',
+        picture: '',
 
     })
     const logOutHandler = async () => {
@@ -52,29 +52,32 @@ const UserProfile = () => {
             catch(err:any)  {
             if (err.response.status === 404) {
                 user.setIsAuth(false)
-                // router.push('/authpage')
+                router.push('/authpage')
             }
+
             console.log(err.response?.data.message)
         }
 
     }
     const getUserData = async () => {
+        let pictureUrl = '/mock-avatar.jpg'
         try {
         await getUserById().then(res => {
+            console.log((res.data.picture !== ''))
             if (res.data.picture != '') {
-                setUserData({
-                    ...userData,
-                    picture: res.data.picture
-                })
+                pictureUrl = res.data.picture
             }
             setUserData({
                 ...userData,
                 username: res.data.username,
                 firstname: res.data.firstname,
-                lastname: res.data.lastname
+                lastname: res.data.lastname,
+                picture: pictureUrl,
             })
         });
         } catch (e:any) {
+            if (e.response.status === 500)
+                router.push('/')
             console.log(e.response.status)
         }
         

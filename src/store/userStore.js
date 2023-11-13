@@ -6,6 +6,7 @@ import { makeAutoObservable } from "mobx";
 export default class UserStore {
     constructor() {
         this._isAuth = false
+        this._isPopup = false
         makeAutoObservable(this)
     }
 
@@ -13,8 +14,18 @@ export default class UserStore {
         this._isAuth = bool
     }
 
+
     get isAuth() {
         return this._isAuth
+    }
+
+    
+    setPopup(bool) {
+        this._isPopup = bool
+    }
+
+    get isPopup() {
+        return this._isPopup
     }
 
 }
