@@ -17,7 +17,8 @@ const UserProfile = () => {
     const router = useRouter()
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
-    const [showPopUp, setShowPopUp] = useState(false)
+    const [activeModal, setActiveModal] = useState(false)
+    const [NavLinkColor, setNavLinkColor] = useState(false)
     interface IUserData {
         username:string,
         firstname:string,
@@ -87,16 +88,17 @@ const UserProfile = () => {
     setTimeout(() => setLoading(false), 1000)
     }, [user]);
     console.log(userData)
+   
     if (isLoading) {
         return <Loader/>
     }
     else 
     return (
         <>
-        {showPopUp && <BeDevScreen setShowPopUp={setShowPopUp}/>}
+        {activeModal && <BeDevScreen setActive={setActiveModal}/>}
         <UserProfileMainContainer>
             
-            <Header />
+            <Header activeModal={activeModal}/>
             <UserProfileDataContainer>
                 <Image style={{
                     borderRadius: '50%',
@@ -107,7 +109,7 @@ const UserProfile = () => {
                 <UserNameAndButtonContainer>
                     <H1Styled color="#ffffff">{userData.firstname + ' ' +  userData.lastname} </H1Styled>
                     <GetNeuralButton onClick={() => {
-                        setShowPopUp(true)
+                        setActiveModal(true)
                     }}>Стать разработчиком</GetNeuralButton>
                 </UserNameAndButtonContainer>
             </UserProfileDataContainer>

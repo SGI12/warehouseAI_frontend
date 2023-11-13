@@ -6,7 +6,7 @@ export const DragonImg = styled(Image)`
 
 position: absolute;
 right: 0;
-z-index: 2;
+z-index: 0;
 width: 880px;
 height: 650px;
 /* background: url('dragon-img.png'); */

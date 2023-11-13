@@ -11,14 +11,14 @@ import { useRouter } from "next/navigation"
 import Footer from "../footer/footer"
 
 
-const BeDevScreen = ({showPopUp, setShowPopUp}:any) => {
+const BeDevScreen = ({setActive}:any) => {
     const router = useRouter();
     const [code, setCode] = useState('')
     const [animation, setAnimation] = useState('open')
     console.log(code)
-    const hide = async () => {
+    const hide = () => {
         setAnimation('close')
-        setTimeout(() => setShowPopUp(false), 400)
+        setTimeout(() => setActive(false), 400)
     }
 
 

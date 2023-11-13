@@ -18,7 +18,7 @@ max-width: 100vw;
 `
 
 export const HeadersMainPageContainer = styled.div`
-z-index: 3;
+z-index: 0;
 align-self: flex-start;
 max-width: 630px;
 box-sizing: content-box;
@@ -32,7 +32,7 @@ padding-left: 80px;
 
 export const AiSliderContainer = styled.div`
 padding-top: 64px;
-z-index: 1;
+z-index: 0;
 display: flex;
 gap: 20px;
 width: 100%;
@@ -231,12 +231,16 @@ text-align: center;
 
 export const PopupMainContainer = styled.div`
 
-z-index: 3;
+z-index: 6;
 background: rgba(0, 0, 0, 0.20);
 width: 100vw;
 height: 100vh;
 position: fixed;
-
+top: 0;
+left: 0;
+display: flex;
+align-items: center;
+justify-content: center;
 
 `
 

@@ -152,18 +152,18 @@ const RegistrationCard = () => {
                 </ButtonContainer>
             
             </InputsContainer>
-            <FormStyled noValidate onSubmit={handleSubmit}>
+            <FormStyled noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <InputStyled 
                
                 name="username"
-                autoComplete="off"
+                autoComplete="new-password"
                 placeholder="Введите имя пользователя" 
                 type="text" 
                 onChange={handleChange}
                 onBlur={handleBlur}/>
                 {usernameValid.isUserNameEmpty && dirtyInputs.username && <InputErrorText className={usernameValid.animation}>{usernameValid.errors.usernameError}</InputErrorText>}
                 <InputStyled 
-                autoComplete="off"
+                autoComplete="new-password"
                 name='firstname'
                 placeholder="Введите имя"
                 onChange={handleChange}
@@ -173,7 +173,7 @@ const RegistrationCard = () => {
                
              
                 <InputStyled 
-                autoComplete="off"
+                autoComplete="new-password"
                 onBlur={handleBlur}
                 name="lastname"
                 placeholder="Введите фамилию"
@@ -191,7 +191,7 @@ const RegistrationCard = () => {
                 <InputStyled 
                 onBlur={handleBlur}
                 name="password"
-                autoComplete='off'
+                autoComplete='new-password'
                 placeholder="Создайте пароль" 
                 type="password"
                 onChange={handleChange}/>
@@ -200,7 +200,7 @@ const RegistrationCard = () => {
                 onBlur={handleBlur}
                 onChange={newPasswordHandle}
                 name="new_password"
-                autoComplete="off"
+                autoComplete="new-password"
                 placeholder="Повторите пароль" 
                 type="password"/>
                 {!passRepeatValid.isChecked && dirtyInputs.new_password && <InputErrorText className={passRepeatValid.animation}>Пароли не совпадают</InputErrorText>}

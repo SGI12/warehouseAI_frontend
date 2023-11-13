@@ -37,6 +37,7 @@ export const DefaultPopUp = styled.div`
   animation: ${slideOutDown} 0.5s;
 }
 
+
 border-radius: 20px;
 display: flex;
 background-color: #ffffff;
@@ -44,10 +45,7 @@ align-items: center;
 text-align: center;
 flex-direction: column;
 gap: 24px;
-position: absolute;
-left: 50%;
-top: 50%;
-margin:-257px 0 0 -315px;
+
 
 width: 630px;
 padding: 100px 108px;
