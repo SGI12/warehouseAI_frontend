@@ -1,10 +1,10 @@
 import Loader from "@/components/Loader/Loader";
-import { AiDescriptionBg } from "@/components/absolute-blocks/ai-description/AiDesciptionBg";
+import { AiDescriptionBg } from "@/components/absolute-blocks/ai/AiDesciptionBg";
 import AiBriefInfo from "@/components/ai-brief-info-block/AiBriefInfoBlock";
 import AiDeveloperBlock from "@/components/ai-description-developer-info/AiDeveloperInfoBlock";
 import BackLinkWhite from "@/components/back-link/BackLinkWhite";
 
-import { AIDescTag, AIDescTagsContainer, AiBriefInfoContainer, AiDescriptionContainer, AiInfo, AiInfoAndDeveloperContaner, UseAiContainer } from "@/components/containers/containers";
+import { AIDescTag, AITagsContainer, AiBriefInfoContainer, AiDescriptionContainer, AiInfo, AiInfoAndDeveloperContaner, UseAiContainer } from "@/components/containers/containers";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header"
 import { H2Styled } from "@/components/headers-text/HeaderText";
@@ -101,16 +101,16 @@ const AiDescriptionPage = () => {
     else 
     return (
         <AiDescriptionContainer>
-            <AiDescriptionBg/>
+            <AiDescriptionBg backgroundUrl='/ai-desc-background.png'/>
             <Header/>
             <BackLinkWhite/>
             <UseAiContainer>
                 <AiBriefInfo AIData={AIData}/>  
-                <AIDescTagsContainer>
+                <AITagsContainer>
                     <AIDescTag><TextLargeStyled color="#ffffff">#code</TextLargeStyled></AIDescTag>
                     <AIDescTag><TextLargeStyled color="#ffffff"> #php</TextLargeStyled></AIDescTag>
                     <AIDescTag><TextLargeStyled color="#ffffff"> #apiplaform</TextLargeStyled></AIDescTag>
-                </AIDescTagsContainer>
+                </AITagsContainer>
             </UseAiContainer>
             <AiInfoAndDeveloperContaner>
                 <AiInfo>

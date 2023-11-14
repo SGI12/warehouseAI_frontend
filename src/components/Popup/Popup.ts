@@ -1,32 +1,9 @@
 'use client'
 
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
+import { slideInUp, slideOutDown } from "../animations/animations"
 
-const slideInUp = keyframes`
 
-  from {
-    transform: translate3d(0, 100%, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-
-`
-
-const slideOutDown = keyframes`
-
-  from {
-    transform: translate3d(0, 0, 0);
-  }
-
-  to {
-    transform: translate3d(0, 150%, 0);
-    visibility: none;
-  }
-
-`
 export const DefaultPopUp = styled.div`
 
 &.open {

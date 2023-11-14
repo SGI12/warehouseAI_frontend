@@ -76,3 +76,28 @@ export const LoadFileInput = styled.input`
 
 display: none;
 `
+
+export const InputGray = styled.textarea.attrs({
+    className: opensans.className,
+})`
+
+width: 846px;
+height: 270px;
+border-radius: 20px;
+border: 1px solid #5F5F5F;
+background:  rgba(95, 95, 95, 0.46);
+&:focus {
+    outline: none;
+}
+padding: 32px;
+color: #ffffff;
+font-size: 18px;
+font-style: normal;
+font-weight: 400;
+line-height: 150%; /* 27px */
+backdrop-filter: blur(5px);
+resize: none;
+
+
+
+`

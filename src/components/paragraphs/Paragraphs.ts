@@ -1,6 +1,7 @@
 'use client'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
 import { Andika, Open_Sans } from 'next/font/google'
+import { horizontalShaking } from '../animations/animations'
 const opensans = Open_Sans({
     subsets: ['cyrillic', 'latin'],
     weight: '400'
@@ -12,13 +13,7 @@ const andika = Andika({
 })
 
 
-const horizontalShaking = keyframes`
-    0% { transform: translateX(0) }
-    25% { transform: translateX(5px) }
-    50% { transform: translateX(-5px) }
-    75% { transform: translateX(5px) }
-    100% { transform: translateX(0) }
-` 
+ 
 export const TextDefaultStyled = styled.p.attrs({
 
     className: opensans.className,
@@ -112,3 +107,24 @@ font-weight: 400;
 line-height: 130%; /* 18.2px */
 
 `
+
+export const CharCounterText = styled(TextDefaultStyled)`
+
+align-self: flex-end;
+&.empty {
+    animation: ${horizontalShaking} linear 0.5s;
+    color: red;
+}
+`
+
+export const SuccessText = styled.p.attrs({
+    className: opensans.className
+})`
+
+color: green;
+font-size: 14px;
+font-style: normal;
+font-weight: 400;
+line-height: 130%; /* 18.2px */
+`
+

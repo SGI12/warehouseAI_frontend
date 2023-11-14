@@ -25,7 +25,7 @@ right: 75%;
 z-index: 0;
 width: 544.585px;
 height: 505.707px;
-background: url('top-ai-main-page-left.jpg');
+background: url('wave.jpg');
 border-radius: 2px;
 background-repeat: no-repeat;
 border-radius: 504px;
@@ -50,4 +50,20 @@ border-radius: 504px;
 transform: rotate(-39.577deg);
 background-position: center;
 filter: blur(200px);
+`
+
+export const AiRequestCircle = styled.div`
+
+z-index: -1;
+
+position: absolute;
+width: 1044.585px;
+height: 486.109px;
+border-radius: 504px;
+transform: rotate(9.577deg);
+background: url('/wave.jpg'), no-repeat lightgray 50% / cover  ;
+background-position: center;
+background-size: 100% auto;
+transform: scaleX(-1);
+filter: blur(150px);
 `

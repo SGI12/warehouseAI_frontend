@@ -41,6 +41,7 @@ overflow-x: hidden;
 
 export const StarsContainer = styled.div`
 
+z-index: 0;
 display: flex;
 gap: 3px;
 padding-top: 14px;
@@ -89,13 +90,14 @@ margin-bottom: 64px;
 `
 export const AiDescriptionContainer = styled.div`
 
+
 display: flex;
 flex-direction: column;
 
 `
 
 export const UseAiContainer = styled.div`
-z-index: 1;
+z-index: 0;
 display: flex;
 padding-top: 118px;
 margin-bottom: 154px;
@@ -151,9 +153,9 @@ display: flex;
 
 `
 
-export const AIDescTagsContainer = styled.div`
+export const AITagsContainer = styled.div`
 
-align-content: flex-start;
+
 align-items: flex-end;
 padding-right: 80px;
 margin-left: auto;
@@ -191,10 +193,10 @@ align-items: center;
 
 export const AiInfoAndDeveloperContaner = styled.div`
 
-z-index: 1;
+z-index: 0;
 display: flex;
 justify-content: space-between;
-padding: 50px 80px;
+padding: 30px 80px;
 
 `
 
@@ -306,5 +308,46 @@ display: flex;
 align-items: center;
 
 gap: 38px;
+
+`
+
+export const UseAiPageMainContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+align-items: center;
+width: 100vw;
+height: 100vh;
+background-color: #1A1A1A;
+`
+
+export const UseAiTagsHorizontalContainer = styled.div`
+
+margin-bottom: 32px;
+gap: 14px;
+display: flex;
+justify-content: center;
+margin-left: 0;
+padding-top: 48px;
+z-index: 0;
+`
+
+export const UseAiRequestContainer = styled.div`
+
+justify-content: center;
+align-items: center;
+padding-top: 142px;
+display: flex;
+flex-direction: column;
+gap: 48px;
+z-index: 0;
+
+`
+
+export const AiRequestInputContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+
 
 `

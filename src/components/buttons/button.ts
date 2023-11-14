@@ -1,6 +1,7 @@
 'use client'
 import styled from "styled-components";
 import { Open_Sans } from 'next/font/google'
+import { ButtonDisappearing } from "../animations/animations";
 const opensans = Open_Sans({
     subsets: ['cyrillic'],
 })
@@ -99,7 +100,7 @@ height: 49px;
 padding: 12px 91px;
 
 `
-export const UseAIButton = styled(ButtonStyled)`
+export const ShadowButton = styled(ButtonStyled)`
 
 box-shadow: 0px 0px 56px 0px rgba(251, 157, 198, 0.20);
 width: 218px;
@@ -137,3 +138,14 @@ cursor: pointer;
     opacity: 0.5;
 }
 ` 
+
+export const SpinnerButton = styled(ShadowButton)`
+
+
+animation: ${ButtonDisappearing} 2s infinite;
+&.animated {
+
+}
+
+
+`

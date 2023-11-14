@@ -1,8 +1,8 @@
-import Image from "next/image"
+
 import { LoaderContainer } from "../containers/containers"
 import { LoaderSpinner, LoaderText } from "./styled"
 import { motion } from "framer-motion"
-import { H1Styled } from "../headers-text/HeaderText"
+
 
 
 

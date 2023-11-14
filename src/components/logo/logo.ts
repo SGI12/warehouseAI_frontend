@@ -1,17 +1,10 @@
 'use client'
 
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
+import { rotate360 } from "../animations/animations"
 
 
-const rotate360 = keyframes`
 
-from {
-        transform:rotate(0deg);
-    }
-    to {
-        transform:rotate(360deg);
-    }
-`
 
 export const LogoBig = styled.div`
     width: 197px;

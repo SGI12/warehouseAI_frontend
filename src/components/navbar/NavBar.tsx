@@ -9,17 +9,17 @@ import BeDevScreen from '../be-dev-screen/BeDevScreen';
 
 
 const NavBar = ({activeModal}:any) => {
-    
+   
     const pathname = usePathname();
     const userid = getCookie('userId')
     const [active, setActive] = useState(false)
     return (
         <>
-
+        
         <NavBarContainer>
             {active && <BeDevScreen setActive={setActive}/>}
             <LinkNoStyles href={'/'}>
-                <NavBarLink className={`${pathname === '/' || pathname?.startsWith('/ai')  ? 'active-bar' : ''}`} color='#ffffff'>Главная</NavBarLink>
+                <NavBarLink className={`${pathname === '/' || pathname?.startsWith('/ai') || pathname?.startsWith('/use-ai') ? 'active-bar' : ''}`} color='#ffffff'>Главная</NavBarLink>
             </LinkNoStyles>
             <LinkNoStyles href={`/profile/${userid}`}>
             <NavBarLink color='#ffffff' className={`${pathname?.startsWith('/profile')  ? 'active-bar' : ''}`}>Профиль</NavBarLink>

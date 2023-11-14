@@ -19,7 +19,7 @@ export interface AiCardProps {
 }
 const AiCard = ({...props}:AiCardProps)  => {
    
-    props.id = '70caddf8-fa0e-4649-99cb-c6274eb88e43'
+    props.id = '069c6d96-4ccd-4f65-a48b-5d51d39a9cd1'
     //Временная залупа 
     props.tags = ['code', 'php', 'apiplatform'];
     

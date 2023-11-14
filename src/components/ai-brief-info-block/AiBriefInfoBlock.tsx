@@ -4,9 +4,10 @@ import { AiDescriptionH1 } from "../headers-text/HeaderText"
 import { AiCardProps } from "../ai-card/AiCard"
 import { ReactElement } from "react"
 import Image from "next/image"
-import { ButtonStyled, UseAIButton } from "../buttons/button"
+import { ButtonStyled, ShadowButton } from "../buttons/button"
 import { UserCountList } from "../lists/styled"
 import { useParams } from "next/navigation"
+import { LinkNoStyles } from "../links/link"
 
 const AiBriefInfo = ({AIData}:any) => {
     const {id}:any = useParams()
@@ -21,7 +22,9 @@ const AiBriefInfo = ({AIData}:any) => {
             {starArray}
             </StarsContainer>
             <ButtonAndStatsContainer>
-                <UseAIButton>Воспользоваться</UseAIButton>
+                <LinkNoStyles href={`/use-ai/${id}`}>
+                <ShadowButton>Воспользоваться</ShadowButton>
+                </LinkNoStyles>
                 <UserCountList>{AIData.used} запросов</UserCountList>
             </ButtonAndStatsContainer>
         </AiBriefInfoContainer>
