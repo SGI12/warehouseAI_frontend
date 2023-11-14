@@ -97,8 +97,6 @@ const UseAiPage = () => {
         getAIData();
         },[user]);
 
-
-    console.log(reqText)
     if (isLoading) {
         return <Loader/>
     }
