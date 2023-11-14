@@ -41,6 +41,7 @@ const UseAiPage = () => {
     const [answer, setAnwser] = useState('')
     const [requestLoading, setRequestLoading] = useState(false)
     const [copied, setCopied] = useState(false)
+    const [animatedText, setAnimated] = useState(false)
     const sendRequsetHandler = () => {
         if (reqText != '' && reqText != 'Запрос не может быть пустым.') {
         setRequestLoading(true)
@@ -65,7 +66,9 @@ const UseAiPage = () => {
     const copyClickHandler = () => {
 
         navigator.clipboard.writeText(answer)
+        setAnimated(true)
         setCopied(true)
+        setTimeout(() => setAnimated(false), 500)
     }
 
     useEffect(() => {
@@ -77,7 +80,7 @@ const UseAiPage = () => {
             }
                 catch(err:any)  {
                 if (err.response?.status === 401 || err.response?.status === 404)
-                    router.push('/authpage')
+                    router.push('/')
                 console.log(err.response?.data.message)
             };
         }
@@ -132,9 +135,11 @@ const UseAiPage = () => {
             </UseAiRequestContainer>
             <UseAiRequestContainer>
                 <H2Styled ref={ref} color="#ffffff">Примите результат</H2Styled>
+            
                 <UseAIInput  text={answer} readonly />
-                {copied && <SuccessText>Текст скопирован в буфер обмена.</SuccessText>}
-                <ShadowButton  onClick={copyClickHandler}>Скопировать текст</ShadowButton>
+               
+                {copied && <SuccessText className={animatedText ? 'animated' : ''}>Текст скопирован в буфер обмена.</SuccessText>}
+                <ShadowButton onClick={copyClickHandler}>Скопировать текст</ShadowButton>
             </UseAiRequestContainer>
             <Footer/>
         </UseAiPageMainContainer>

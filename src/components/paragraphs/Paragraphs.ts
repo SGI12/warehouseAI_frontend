@@ -121,6 +121,9 @@ export const SuccessText = styled.p.attrs({
     className: opensans.className
 })`
 
+&.animated {
+    animation: ${horizontalShaking} 0.5s infinite;
+}
 color: green;
 font-size: 14px;
 font-style: normal;

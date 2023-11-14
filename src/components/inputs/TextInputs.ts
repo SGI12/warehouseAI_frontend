@@ -98,6 +98,21 @@ line-height: 150%; /* 27px */
 backdrop-filter: blur(5px);
 resize: none;
 
+&::-webkit-scrollbar {
+    border-radius: 50%;
+    width: 5px;
+
+}
+&::-webkit-scrollbar-track {
+    background: rgba(95, 95, 95, 0.46);
+    border-radius: 20px; 
+    margin: 12px;
+}
+&::-webkit-scrollbar-thumb {
+  background-color: #E64C8F;
+  border-radius: 20px; 
+  
+}
 
 
 `
