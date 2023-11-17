@@ -24,7 +24,6 @@ const FavoritesPage = () => {
     const [isFilterOpen, setFilterOpen] = useState(false)
     const [activeIndex, setActiveIndex] = useState(0)
     const [isLoading, setLoading] = useState(true);
-    const [isDataEmpty, setDataEmpty] = useState(false)
     const {user} = useUserContext()
     const [FavoriteAIData, setAIData] = useState<Array<any>>([])
     const filterHandler = (e:React.MouseEvent<HTMLButtonElement>) => {
