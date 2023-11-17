@@ -12,6 +12,7 @@ export const InputStyled = styled.input.attrs(({ placeholder, type }) => ({
     placeholder:  placeholder || "E-mail",
     className: opensans.className,
     type: type || 'text',
+    name: 'input'
     
   }))`
 

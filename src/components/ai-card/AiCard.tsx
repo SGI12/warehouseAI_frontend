@@ -29,7 +29,7 @@ const AiCard = ({props}:any)  => {
 
     const starArray:Array<ReactElement> = [];
         for (let i = 0; i < rate; i++) {
-            starArray.push(<Image src={'/star-rate.svg'} alt="star" width={16} height={16}/>)
+            starArray.push(<Image key={i} src={'/star-rate.svg'} alt="star" width={16} height={16}/>)
         }
 
     return (

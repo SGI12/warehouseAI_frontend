@@ -32,7 +32,7 @@ const UseAiPage = () => {
     })
     const starArray:Array<React.ReactElement> = [];
     for (let i = 0; i < 5; i++) {
-        starArray.push(<Image src={'/star-rate.svg'} alt="star" width={32} height={32}/>)
+        starArray.push(<Image key={i} src={'/star-rate.svg'} alt="star" width={32} height={32}/>)
     }
     const [reqText, setText] = useState('')
     const router = useRouter()
@@ -70,17 +70,17 @@ const UseAiPage = () => {
         setCopied(true)
         setTimeout(() => setAnimated(false), 500)
     }
-    const checkSession = async () => {
-        try {
-            await check()
-            user.setIsAuth(true)
-            setTimeout(() => setLoading(false), 1000)
-        }
-            catch(err:any)  {
-            if (err.response?.status === 401 || err.response?.status === 404)
-                router.push('/')
-            console.log(err.response?.data.message)
-        };
+    const fetchData =  () => {
+        
+            check().then(() => { 
+                getAIData()
+                user.setIsAuth(true)
+            })
+            .catch((err) => {
+                if (err.response?.status === 401 || err.response?.status === 404)
+                    router.push('/')
+                console.log(err.response?.data.message)
+            })  
     }
 
     const getAIData = () => {
@@ -91,13 +91,11 @@ const UseAiPage = () => {
             name: AIres.data.name,
             description: AIres.data.description,
         })
+        setTimeout(() => setLoading(false), 1000)
     })
 }
     useEffect(() => {
-        
-
-        checkSession();
-        getAIData();
+        fetchData();
         },[user]);
 
     if (isLoading) {

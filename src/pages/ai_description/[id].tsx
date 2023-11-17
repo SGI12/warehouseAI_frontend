@@ -51,18 +51,21 @@ const AiDescriptionPage = () => {
     })
  
     useEffect(() => {
-        const checkSession = async () => {
-            try {
-                await check()
-                user.setIsAuth(true)
-    
-            }
-            catch(err:any)  {
-                if (err.response?.status === 401 || err.response?.status === 404)
-                    router.push('/authpage')
-    
-                console.log(err.response?.data.message)
-            };
+        const fetchData = () => {
+                check().then(() => {
+                    user.setIsAuth(true)
+                    getAIData()
+                    
+                })
+                
+            .catch((err) => {
+                {
+                    if (err.response?.status === 401 || err.response?.status === 404)
+                        router.push('/authpage')
+        
+                    console.log(err.response?.data.message)
+                };
+            }) 
         }
         const getAIData = () => {
                     getAIById(id)
@@ -93,8 +96,7 @@ const AiDescriptionPage = () => {
                                 
     
             }
-    checkSession();
-    getAIData();
+    fetchData();
     },[user]);
     if (isLoading) {
         return <Loader/>

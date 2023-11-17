@@ -62,7 +62,6 @@ const FavoritesPage = () => {
             })  
     }
     fetchData();
-    
     },[user]);
     if (isLoading) {
         return <Loader/>

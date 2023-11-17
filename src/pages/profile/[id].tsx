@@ -19,7 +19,6 @@ const UserProfile = () => {
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
     const [activeModal, setActiveModal] = useState(false)
-    const [NavLinkColor, setNavLinkColor] = useState(false)
     interface IUserData {
         username:string,
         firstname:string,
@@ -47,12 +46,11 @@ const UserProfile = () => {
  
 
     useEffect(() => {
-        const getUserData = async () => {
+        const getUserData = () => {
             let pictureUrl = '/mock-avatar.jpg'
             const userId = getCookie('userId')
-            try {
-            await getUserById(userId).then(res => {
-                console.log((res.data.picture !== ''))
+            
+                getUserById(userId).then(res => {
                 if (res.data.picture != '') {
                     pictureUrl = res.data.picture
                 }
@@ -63,36 +61,39 @@ const UserProfile = () => {
                     lastname: res.data.lastname,
                     picture: pictureUrl,
                 })
-            });
-            } catch (e:any) {
-                if (e.response.status === 500)
+                setTimeout(() => setLoading(false), 1000)
+            })
+             .catch ((err) => {
+                if (err.response.status === 500)
                     router.push('/')
-                console.log(e.response.status)
-            }
+                console.log(err.response.status)
+            }) 
             
         }
-        const checkSession = async () => {
-            try {
-                await check()
-                user.setIsAuth(true)
+        const fetchData = () => {
+           
+                check().then(() => {
+                    getUserData()
+                    user.setIsAuth(true)
+                })
                 
-            }
-                catch(err:any)  {
-                if (err.response.status === 404) {
-                    user.setIsAuth(false)
-                    router.push('/authpage')
-                }
+                
     
-                console.log(err.response?.data.message)
-            }
+                .catch((err) => {
+                    if (err.response.status === 404) {
+                        user.setIsAuth(false)
+                        router.push('/authpage')
+                    }
+        
+                    console.log(err.response?.data.message)
+                })  
     
         }
-    checkSession();
-    getUserData();
-    setTimeout(() => setLoading(false), 1000)
-    }, [user]);
-    console.log(userData)
+    fetchData();
+      
    
+    }, [user]);
+  
     if (isLoading) {
         return <Loader/>
     }
