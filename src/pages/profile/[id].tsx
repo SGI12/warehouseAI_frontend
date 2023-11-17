@@ -42,66 +42,51 @@ const UserProfile = () => {
         catch (e:any) {
             console.log(e.response.status)
         }
-         const checkSession = async () => {
-        try {
-            await check()
-            user.setIsAuth(true)
-            
-        }
-            catch(err:any)  {
-            if (err.response.status === 404) {
-                user.setIsAuth(false)
-                router.push('/authpage')
-            }
-
-            console.log(err.response?.data.message)
-        }
 
     }
-    }
-    const checkSession = async () => {
-        try {
-            await check()
-            user.setIsAuth(true)
-            
-        }
-            catch(err:any)  {
-            if (err.response.status === 404) {
-                user.setIsAuth(false)
-                router.push('/authpage')
-            }
+ 
 
-            console.log(err.response?.data.message)
-        }
-
-    }
-    const getUserData = async () => {
-        let pictureUrl = '/mock-avatar.jpg'
-        const userId = getCookie('userId')
-        try {
-        await getUserById(userId).then(res => {
-            console.log((res.data.picture !== ''))
-            if (res.data.picture != '') {
-                pictureUrl = res.data.picture
-            }
-            setUserData({
-                ...userData,
-                username: res.data.username,
-                firstname: res.data.firstname,
-                lastname: res.data.lastname,
-                picture: pictureUrl,
-            })
-        });
-        } catch (e:any) {
-            if (e.response.status === 500)
-                router.push('/')
-            console.log(e.response.status)
-        }
-        
-    }
     useEffect(() => {
-   
+        const getUserData = async () => {
+            let pictureUrl = '/mock-avatar.jpg'
+            const userId = getCookie('userId')
+            try {
+            await getUserById(userId).then(res => {
+                console.log((res.data.picture !== ''))
+                if (res.data.picture != '') {
+                    pictureUrl = res.data.picture
+                }
+                setUserData({
+                    ...userData,
+                    username: res.data.username,
+                    firstname: res.data.firstname,
+                    lastname: res.data.lastname,
+                    picture: pictureUrl,
+                })
+            });
+            } catch (e:any) {
+                if (e.response.status === 500)
+                    router.push('/')
+                console.log(e.response.status)
+            }
+            
+        }
+        const checkSession = async () => {
+            try {
+                await check()
+                user.setIsAuth(true)
+                
+            }
+                catch(err:any)  {
+                if (err.response.status === 404) {
+                    user.setIsAuth(false)
+                    router.push('/authpage')
+                }
     
+                console.log(err.response?.data.message)
+            }
+    
+        }
     checkSession();
     getUserData();
     setTimeout(() => setLoading(false), 1000)

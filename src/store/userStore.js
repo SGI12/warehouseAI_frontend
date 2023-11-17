@@ -19,13 +19,4 @@ export default class UserStore {
         return this._isAuth
     }
 
-    
-    setPopup(bool) {
-        this._isPopup = bool
-    }
-
-    get isPopup() {
-        return this._isPopup
-    }
-
 }

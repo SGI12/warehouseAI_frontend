@@ -49,50 +49,50 @@ const AiDescriptionPage = () => {
         name: '',
         picture: ''
     })
-    const checkSession = async () => {
-        try {
-            await check()
-            user.setIsAuth(true)
-
-        }
-        catch(err:any)  {
-            if (err.response?.status === 401 || err.response?.status === 404)
-                router.push('/authpage')
-
-            console.log(err.response?.data.message)
-        };
-    }
-    const getAIData = () => {
-                getAIById(id)
-                .then((AIres) => {
-                setAIData({
-                    ...AIData,
-                    name: AIres.data.name,
-                    description: AIres.data.description,
-                    used: AIres.data.used,
-                })
-                getUserById(AIres.data.owner)
-                .then((devRes) => {
-                    let pictureUrl = '/mock-avatar.jpg'
-                    if (devRes.data.picture != '') {
-                        pictureUrl = devRes.data.picture
-                    }
-                    setDevData({
-                        ...developerData,
-                        name: devRes.data.username,
-                        picture: pictureUrl
-                    })
-                })
-                setTimeout(() => setLoading(false), 1000)
  
-            }).catch((err) => {
-                console.log(err.response.status)
-            })
-                            
-
-        }
     useEffect(() => {
-
+        const checkSession = async () => {
+            try {
+                await check()
+                user.setIsAuth(true)
+    
+            }
+            catch(err:any)  {
+                if (err.response?.status === 401 || err.response?.status === 404)
+                    router.push('/authpage')
+    
+                console.log(err.response?.data.message)
+            };
+        }
+        const getAIData = () => {
+                    getAIById(id)
+                    .then((AIres) => {
+                    setAIData({
+                        ...AIData,
+                        name: AIres.data.name,
+                        description: AIres.data.description,
+                        used: AIres.data.used,
+                    })
+                    getUserById(AIres.data.owner)
+                    .then((devRes) => {
+                        let pictureUrl = '/mock-avatar.jpg'
+                        if (devRes.data.picture != '') {
+                            pictureUrl = devRes.data.picture
+                        }
+                        setDevData({
+                            ...developerData,
+                            name: devRes.data.username,
+                            picture: pictureUrl
+                        })
+                    })
+                    setTimeout(() => setLoading(false), 1000)
+     
+                }).catch((err) => {
+                    console.log(err.response.status)
+                })
+                                
+    
+            }
     checkSession();
     getAIData();
     },[user]);

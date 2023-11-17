@@ -1,11 +1,11 @@
 import { $AI } from "."
 
-export const getAIById = (id) => {
-    const response = $AI.get(`/get/${id}`)
+export const getAIById = async (id) => {
+    const response = await $AI.get(`/get/${id}`)
     return response
 }
 
-export const sendAIRequest = (id, value) => {
+export const sendAIRequest = async (id, value) => {
     const data = {
         "model": "gpt-3.5-turbo",
         "max_tokens": 100,
@@ -16,7 +16,7 @@ export const sendAIRequest = (id, value) => {
             }
         ]
 }
-    const response = $AI.post(`/command/execute/`, data, {
+    const response = await $AI.post(`/command/execute/`, data, {
     params: {
         'ai_id':id,
         'command_name': 'Message'

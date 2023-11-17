@@ -6,7 +6,22 @@
 
 html,
 body {
+  
+::-webkit-scrollbar {
+    border-radius: 50%;
+    width: 5px;
 
+}
+::-webkit-scrollbar-track {
+    background: rgba(95, 95, 95, 0.46);
+    border-radius: 20px; 
+    
+}
+::-webkit-scrollbar-thumb {
+  background-color: #E64C8F;
+  border-radius: 20px; 
+  
+}
   width: 100%;
   max-width: 1920px;
   height: 100%;

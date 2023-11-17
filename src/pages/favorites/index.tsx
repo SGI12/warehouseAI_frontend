@@ -8,14 +8,13 @@ import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header"
 import { H1WithPadding, H2Styled } from "@/components/headers-text/HeaderText";
 import FilterIcon from "@/components/icons/FilterIcon";
-import { TextDefaultStyled } from "@/components/paragraphs/Paragraphs";
 
 import {  SearchFieldFavorites } from "@/components/search-field/styled";
 import { useUserContext } from "@/context/context";
 import { check } from "@/http/AuthAPI";
 import { getUserFavoriteAI } from "@/http/UserApi";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const FavoritesPage = () => {
@@ -30,38 +29,41 @@ const FavoritesPage = () => {
         e.stopPropagation();
         setFilterOpen(!isFilterOpen)
     }
-    
-    const getAIData = async () => {
-        getUserFavoriteAI()
-        .then((res) => {
-           setAIData(res.data?.favorite_ai)
-           
-        })
-        .catch((e) => {
-            console.log(e.response?.status)
-        })
-    }
 
-    const checkSession = async () => {
-        try {
-            await check()
-            user.setIsAuth(true)
-        }
-            catch(err:any)  {
-            if (err.response.status === 404 || err.response.status === 401) {
-                user.setIsAuth(false)
-                router.push('/authpage')
-            }
-            setTimeout(() => setLoading(false), 1000)
-            console.log(err.response?.data.message)
-        };
-    }
     useEffect(() => {
-        checkSession();
-        getAIData();
+    const fetchData = () => {
+        
+        const getAIData = () => {
+            getUserFavoriteAI()
+           .then((res) => {
+              setAIData(res.data?.favorite_ai)
+              setTimeout(() => setLoading(false), 1000)
 
-        setTimeout(() => setLoading(false), 1000)
-        },[user]);
+              
+           })
+           .catch((e) => {
+               console.log(e.response?.status)
+           })
+       }
+        
+            check().then(() =>{
+                user.setIsAuth(true)
+                getAIData()
+            })
+            .catch((err) => {
+                {
+                    if (err.response.status === 401 || err.response.status === 404) {
+                        user.setIsAuth(false)
+                        router.push('/authpage')
+                    }
+                    setTimeout(() => setLoading(false), 1000)
+                    console.log(err.response?.data.message)
+                };
+            })  
+    }
+    fetchData();
+    
+    },[user]);
     if (isLoading) {
         return <Loader/>
     }
@@ -85,8 +87,8 @@ const FavoritesPage = () => {
             </SearchAndFilterContainer>
             {FavoriteAIData.length==0 && <H2Styled color="#ffffff">Вы пока не добавили ни одной нейросети в избранное.</H2Styled>}
             <FavoritesAiGridContainer>
-                {FavoriteAIData.map((props, index) => <AiCard key={index} props={...props}/>)}
                
+            {FavoriteAIData.map((props, index) => <AiCard key={index} props={...props}/>)}
             </FavoritesAiGridContainer>
             <Footer/>
         </FavoritesPageMainContainer>

@@ -35,7 +35,6 @@ export const auth = async( data) => {
 
 
 export const check = async() => {
-    
     const response = await $auth.get('/whoami') 
     return response
 }

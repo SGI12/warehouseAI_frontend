@@ -3,7 +3,7 @@ import { $USER } from "."
 
 
 export const getUserById = async(id) => {
-    const response = $USER.get('/get', {
+    const response = await $USER.get('/get', {
         params: {
             'id': id
         }
@@ -12,6 +12,6 @@ export const getUserById = async(id) => {
 }
 
 export const getUserFavoriteAI = async() => {
-    const response = $USER.get('/favorites')
+    const response = await $USER.get('/favorites')
     return response
 }
