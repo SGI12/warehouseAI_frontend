@@ -398,11 +398,20 @@ display: flex;
 flex-direction: column;
 `
 
-export const FavoritesAiGridContainer = styled.div`
+export const FavoritesAiGrid = styled.div`
+
+
+
+display: grid;
+grid-template-columns: repeat(auto-fill, 413px);
+row-gap: 30px;
+column-gap: 20px;
+
+`
+
+export const FavoritesAIContainer = styled.div`
 
 padding: 0px 80px;
-display: grid;
-grid-template-columns: repeat(3, 413px);
-gap: 130px;
+width: 100vw;
 
 `

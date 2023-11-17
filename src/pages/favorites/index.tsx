@@ -1,7 +1,7 @@
 import Loader from "@/components/Loader/Loader";
 import AiCard from "@/components/ai-card/AiCard";
 import { FilterButton } from "@/components/buttons/button";
-import { FavoritesAiGridContainer, FavoritesPageMainContainer, FilterContainer, FilterMenuContainer, SearchAndFilterContainer } from "@/components/containers/containers"
+import { FavoritesAIContainer, FavoritesAiGrid, FavoritesPageMainContainer, FilterContainer, FilterMenuContainer, SearchAndFilterContainer } from "@/components/containers/containers"
 import { FilterElement } from "@/components/filter-menu/FilterElement";
 import Footer from "@/components/footer/footer";
 
@@ -85,10 +85,12 @@ const FavoritesPage = () => {
                 </FilterContainer>
             </SearchAndFilterContainer>
             {FavoriteAIData.length==0 && <H2Styled color="#ffffff">Вы пока не добавили ни одной нейросети в избранное.</H2Styled>}
-            <FavoritesAiGridContainer>
-               
+            <FavoritesAIContainer>
+            <FavoritesAiGrid>  
             {FavoriteAIData.map((props, index) => <AiCard key={index} props={...props}/>)}
-            </FavoritesAiGridContainer>
+            
+            </FavoritesAiGrid>
+            </FavoritesAIContainer>
             <Footer/>
         </FavoritesPageMainContainer>
     )
