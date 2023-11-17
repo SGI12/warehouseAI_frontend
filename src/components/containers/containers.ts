@@ -1,6 +1,7 @@
 'use client'
 import { Open_Sans } from "next/font/google";
 import styled from "styled-components";
+import { SlideInDown, SlideOutUp } from "../animations/animations";
 
 
 
@@ -349,5 +350,59 @@ export const AiRequestInputContainer = styled.div`
 display: flex;
 flex-direction: column;
 
+
+`
+
+export const FavoritesPageMainContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+align-items: center;
+
+`
+
+export const SearchAndFilterContainer = styled.div`
+
+width: 100%;
+display: flex;
+justify-content: space-between;
+padding: 80px;
+`
+
+export const FilterMenuContainer = styled.div`
+
+border-radius: 16px;
+background: var(--white, #FFF);
+box-shadow: 0px 6px 30px -8px rgba(255, 255, 255, 0.30);
+display: flex;
+flex-direction: column;
+top: 47%;
+z-index: 1;
+position: absolute;
+margin-top: 6px;
+padding: 8px;
+
+
+&.open {
+    animation: ${SlideInDown} .3s ease-in-out;
+}
+
+
+
+
+`
+
+export const FilterContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+`
+
+export const FavoritesAiGridContainer = styled.div`
+
+padding: 0px 80px;
+display: grid;
+grid-template-columns: repeat(3, 413px);
+gap: 130px;
 
 `

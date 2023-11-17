@@ -49,7 +49,6 @@ const AiDescriptionPage = () => {
         name: '',
         picture: ''
     })
-    useEffect(() => {
     const checkSession = async () => {
         try {
             await check()
@@ -57,7 +56,7 @@ const AiDescriptionPage = () => {
 
         }
         catch(err:any)  {
-            if (err.response?.status === 401)
+            if (err.response?.status === 401 || err.response?.status === 404)
                 router.push('/authpage')
 
             console.log(err.response?.data.message)
@@ -92,6 +91,8 @@ const AiDescriptionPage = () => {
                             
 
         }
+    useEffect(() => {
+
     checkSession();
     getAIData();
     },[user]);
@@ -101,7 +102,7 @@ const AiDescriptionPage = () => {
     else 
     return (
         <AiDescriptionContainer>
-            <AiDescriptionBg backgroundUrl='/ai-desc-background.png'/>
+            <AiDescriptionBg background='/ai-desc-background.png'/>
             <Header/>
             <BackLinkWhite/>
             <UseAiContainer>

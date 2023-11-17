@@ -10,8 +10,15 @@ height: 16px;
 
 `
 
-export const BackLinkArrow = styled(Image)`
+export const FilterIco = styled.div`
 
+background-image: url('/funnel.svg');
+width: 19px;
+height: 24px;
+margin-right: 12px;
+`
+
+export const BackLinkArrow = styled(Image)`
 
 
 

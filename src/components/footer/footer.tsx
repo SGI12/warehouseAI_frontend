@@ -27,7 +27,9 @@ const Footer = () => {
                         </LinkNoStyles>
                     </Block>
                     <Block>
+                        <LinkNoStyles href={'/favorites'}>
                         <FooterLink color='#ffffff'>Избранное</FooterLink>
+                        </LinkNoStyles>
                         <AStyled href="https://t.me/gurevnind" target="_blank" rel="noopener noreferrer">
                         <FooterLink color='#ffffff'>Поддержка</FooterLink>
                         </AStyled>

@@ -24,7 +24,9 @@ const NavBar = ({activeModal}:any) => {
             <LinkNoStyles href={`/profile/${userid}`}>
             <NavBarLink color='#ffffff' className={`${pathname?.startsWith('/profile')  ? 'active-bar' : ''}`}>Профиль</NavBarLink>
             </LinkNoStyles>
-            <NavBarLink color='#ffffff'>Избранное</NavBarLink>
+            <LinkNoStyles href={'/favorites'}>
+            <NavBarLink color='#ffffff' className={`${pathname === '/favorites' ? 'active-bar' :''}`}>Избранное</NavBarLink>
+            </LinkNoStyles>
             {/* <LinkNoStyles href={props.loggedIn ? '/ai_create' : '/auth'}>
                 <NavBarLink className={`${pathname === '/ai_create' ? 'active-bar' : ''}`} color='#ffffff'>Добавить свою нейросеть</NavBarLink>
             </LinkNoStyles> */}

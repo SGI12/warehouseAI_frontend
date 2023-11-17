@@ -10,7 +10,7 @@ justify-content: center;
 border-radius: 16px;
 background: #FFF3F8;
 width: 413px;
-height: 460px;
+
 padding: 30px;
 `
 

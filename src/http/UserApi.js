@@ -11,3 +11,7 @@ export const getUserById = async(id) => {
     return response
 }
 
+export const getUserFavoriteAI = async() => {
+    const response = $USER.get('/favorites')
+    return response
+}

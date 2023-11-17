@@ -3,11 +3,18 @@ import { Open_Sans } from "next/font/google"
 const opensans = Open_Sans({subsets: ['cyrillic']})
 import styled from "styled-components"
 
-export const SearchFieldMainPage = styled.input.attrs({
+interface Attrs {
+    placeholder?: string
+  }
+
+
+  
+export const SearchField = styled.input.attrs(({ placeholder = 'Поиск' }: Attrs) => ({
     type: 'search',
-    placeholder: 'Поиск',
+    placeholder,
+    name: 'searchfield',
     className: opensans.className
-})`
+  }))`
 
 width: 413px;
 height: 44px;
@@ -44,4 +51,10 @@ background-repeat: no-repeat;
 &:focus {
     outline: none;
 }
+`
+
+export const SearchFieldFavorites = styled(SearchField)`
+
+width: 528px;
+
 `

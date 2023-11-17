@@ -7,8 +7,8 @@ import UseAIInput from "@/components/ai-input/AiInput";
 import CharCounter from "@/components/ai-input/AiInput";
 import { AIDescTag, StarsContainer, UseAiPageMainContainer, UseAiRequestContainer, UseAiTagsHorizontalContainer } from "@/components/containers/containers"
 import Header from "@/components/header/header"
-import { H2Styled, UseAIH1Styled } from "@/components/headers-text/HeaderText";
-import { InputErrorText, SuccessText, TextLargeStyled } from "@/components/paragraphs/Paragraphs";
+import { H1WithPadding, H2Styled } from "@/components/headers-text/HeaderText";
+import {  SuccessText, TextLargeStyled } from "@/components/paragraphs/Paragraphs";
 import { useUserContext } from "@/context/context";
 import { getAIById, sendAIRequest } from "@/http/AIAPI";
 import { check } from "@/http/AuthAPI";
@@ -70,31 +70,31 @@ const UseAiPage = () => {
         setCopied(true)
         setTimeout(() => setAnimated(false), 500)
     }
-
-    useEffect(() => {
-        const checkSession = async () => {
-            try {
-                await check()
-                user.setIsAuth(true)
-                setTimeout(() => setLoading(false), 1000)
-            }
-                catch(err:any)  {
-                if (err.response?.status === 401 || err.response?.status === 404)
-                    router.push('/')
-                console.log(err.response?.data.message)
-            };
+    const checkSession = async () => {
+        try {
+            await check()
+            user.setIsAuth(true)
+            setTimeout(() => setLoading(false), 1000)
         }
-
-        const getAIData = () => {
-            getAIById(id)
-            .then((AIres) => {
-            setAIData({
-                ...AIData,
-                name: AIres.data.name,
-                description: AIres.data.description,
-            })
-        })
+            catch(err:any)  {
+            if (err.response?.status === 401 || err.response?.status === 404)
+                router.push('/')
+            console.log(err.response?.data.message)
+        };
     }
+
+    const getAIData = () => {
+        getAIById(id)
+        .then((AIres) => {
+        setAIData({
+            ...AIData,
+            name: AIres.data.name,
+            description: AIres.data.description,
+        })
+    })
+}
+    useEffect(() => {
+        
 
         checkSession();
         getAIData();
@@ -113,10 +113,10 @@ const UseAiPage = () => {
         }
         `}</style>
         <UseAiPageMainContainer>
-            <UseAiPageBg backgroundUrl="/use-ai-bg.jpg"/>
+            <UseAiPageBg background="/use-ai-bg.jpg"/>
             <Header/>
             <BackLinkWhite/>
-            <UseAIH1Styled color="#ffffff">{AIData.name}</UseAIH1Styled>
+            <H1WithPadding color="#ffffff">{AIData.name}</H1WithPadding>
             <UseAiTagsHorizontalContainer>
                 <AIDescTag><TextLargeStyled color="#ffffff">#code</TextLargeStyled></AIDescTag>
                 <AIDescTag><TextLargeStyled color="#ffffff"> #php</TextLargeStyled></AIDescTag>

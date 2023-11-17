@@ -1,7 +1,7 @@
 'use client'
 import styled from "styled-components";
 import { Open_Sans } from 'next/font/google'
-import { ButtonDisappearing } from "../animations/animations";
+
 const opensans = Open_Sans({
     subsets: ['cyrillic'],
 })
@@ -139,13 +139,22 @@ cursor: pointer;
 }
 ` 
 
-export const SpinnerButton = styled(ShadowButton)`
 
 
-animation: ${ButtonDisappearing} 2s infinite;
-&.animated {
+export const FilterButton = styled(ButtonStyled)`
 
+max-width: 141px;
+padding: 14px 20px;
+background-color: transparent;
+border: 1px solid  #E64C8F;
+color: #E64C8F;
+
+&:hover {
+    background: #2E2227;
 }
 
-
+&.pressed {
+    background: #E64C8F;
+    color: #ffffff
+}
 `

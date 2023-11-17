@@ -52,39 +52,29 @@ export const slideOutDown = keyframes`
 
 `
 
-export const ButtonDisappearing = keyframes`
+export const SlideInDown = keyframes`
 
-0% {
-    width: 252px;
-}
-10% {
-    width: 222px;
-}
+  from {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
 
-20% {
-    width: 192px;
-}
+  to {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+`
 
-30% {
-    width: 162px;
-}
-40% {
-    width: 132px;
-}
-50% {
-    width: 102px;
-}
-60% {
-    width: 72px;
-}
-70% {
-    width: 42px;
-}
-80% {
-    width: 12px;
-}
+export const SlideOutUp = keyframes`
 
-100% {
-    display: none;
-}
+  from {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
 `

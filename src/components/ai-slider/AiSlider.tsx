@@ -26,12 +26,8 @@ const AiSlider = () => {
         <AiSliderContainer ref={scrollRef} >
             <RightScrollBlock  onMouseEnter={() => { setMove(true); moveRight();}}   onMouseLeave={() => setMove(false)}/>
             <LeftScrollBlock onMouseEnter={() => { setMove(true); moveLeft();}}   onMouseLeave={() => setMove(false)}/>
-            <AiCard ></AiCard>
-            <AiCard ></AiCard>
-            <AiCard ></AiCard>
-            <AiCard ></AiCard>
-            <AiCard ></AiCard>
-            <AiCard ></AiCard>
+            <AiCard/> <AiCard/><AiCard/><AiCard/><AiCard/><AiCard/>
+           
 
         </AiSliderContainer>
     );

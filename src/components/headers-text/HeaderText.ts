@@ -83,7 +83,7 @@ color: #ffffff;
 
 `
 
-export const UseAIH1Styled = styled(H1Styled)`
+export const H1WithPadding = styled(H1Styled)`
 
 z-index: 1;
 padding-top: 100px;

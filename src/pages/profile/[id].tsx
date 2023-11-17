@@ -42,9 +42,23 @@ const UserProfile = () => {
         catch (e:any) {
             console.log(e.response.status)
         }
-        
+         const checkSession = async () => {
+        try {
+            await check()
+            user.setIsAuth(true)
+            
+        }
+            catch(err:any)  {
+            if (err.response.status === 404) {
+                user.setIsAuth(false)
+                router.push('/authpage')
+            }
+
+            console.log(err.response?.data.message)
+        }
+
     }
-    useEffect(() => {
+    }
     const checkSession = async () => {
         try {
             await check()
@@ -85,6 +99,9 @@ const UserProfile = () => {
         }
         
     }
+    useEffect(() => {
+   
+    
     checkSession();
     getUserData();
     setTimeout(() => setLoading(false), 1000)

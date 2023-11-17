@@ -4,46 +4,45 @@ import { AiCardHeader, TextDefaultStyled } from "../paragraphs/Paragraphs"
 import { StarsContainer, TagsContainer } from "../containers/containers"
 import React, { ReactElement } from "react"
 import { AiCardButton } from "../buttons/button"
-import { Arrow } from "../arrows/arrows"
+import { Arrow } from "../icons/icons"
 import { LinkNoStyles } from "../links/link"
-import { useUserContext } from "@/context/context"
+
 
 
 export interface AiCardProps {
     id?: string,
     img?: string,
-    title?: string,
+    name?: string,
     rate?: number,
     tags?: Array<string>,
-    aiPageUrl?: string
+
 }
-const AiCard = ({...props}:AiCardProps)  => {
-   
-    props.id = '069c6d96-4ccd-4f65-a48b-5d51d39a9cd1'
+const AiCard = ({props}:any)  => {
+    const AICardProps = {...props}
+    const name = "ChatGPT"
+    const id = '069c6d96-4ccd-4f65-a48b-5d51d39a9cd1'
     //Временная залупа 
-    props.tags = ['code', 'php', 'apiplatform'];
+    const tags:Array<string> = ['code', 'php', 'apiplatform'];
     
      //Временная залупа 
-   props.rate=5
+   const rate=5
 
     const starArray:Array<ReactElement> = [];
-        for (let i = 0; i < props.rate; i++) {
+        for (let i = 0; i < rate; i++) {
             starArray.push(<Image src={'/star-rate.svg'} alt="star" width={16} height={16}/>)
         }
 
     return (
         <AiBriefCard>
-            <Image src={props.img='/ai-card-img.jpg'} style={{borderRadius: "16px"}} alt="ai_card_image" width={353} height={200}/>
-            <AiCardHeader>{props.title='ChatGPT'}</AiCardHeader>
+            <Image src={'/ai-card-img.jpg'} style={{borderRadius: "16px"}} alt="ai_card_image" width={353} height={200}/>
+            <AiCardHeader>{AICardProps.name || name}</AiCardHeader>
             <StarsContainer>
                {starArray}
             </StarsContainer>
             <TagsContainer>
-                {props.tags.map((tag) =>{
-                    return <TextDefaultStyled key={tag}>{`#`+ tag}</TextDefaultStyled>
-                })}
+                {tags.map((value:string, index:number) =>  <TextDefaultStyled key={index}>{`#`+ value}</TextDefaultStyled>)}
             </TagsContainer>
-            <LinkNoStyles href={`/ai_description/${props.id}`}>
+            <LinkNoStyles href={`/ai_description/${AICardProps.id || id}`}>
             <AiCardButton>Подробнее <Arrow/></AiCardButton>
             </LinkNoStyles>
         </AiBriefCard>

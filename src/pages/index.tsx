@@ -11,7 +11,7 @@ import { BlurDragonImg, BluredOrangeCircleMainPageLeft, BluredOrangeCircleMainPa
 import { SubHeaderPink } from "@/components/paragraphs/Paragraphs";
 import { H1MainPage, TopAIHeader } from "@/components/headers-text/HeaderText";
 import { TaskSolveInput } from "@/components/inputs/TextInputs";
-import { Arrow } from "@/components/arrows/arrows";
+import { Arrow } from "@/components/icons/icons";
 import { BriefCardMainPage } from "@/components/brief-card/styled";
 import AiSlider from "@/components/ai-slider/AiSlider";
 import { useUserContext } from "@/context/context";
@@ -28,8 +28,6 @@ const HomePage = ()  => {
     console.log(checkCookies())
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
-    
-    useEffect(() => {
     const checkSession = async () => {
         try {
             await check()
@@ -41,6 +39,8 @@ const HomePage = ()  => {
             console.log(err.response?.data.message)
         };
     }
+    
+    useEffect(() => {
     checkSession();
     },[user]);
     if (isLoading) {

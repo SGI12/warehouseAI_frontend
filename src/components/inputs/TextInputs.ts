@@ -79,6 +79,7 @@ display: none;
 
 export const InputGray = styled.textarea.attrs({
     className: opensans.className,
+    spellCheck: false,
 })`
 
 width: 846px;
