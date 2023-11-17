@@ -7,16 +7,49 @@ import {  ShadowButton } from "../buttons/button"
 import { UserCountList } from "../lists/styled"
 import { useParams } from "next/navigation"
 import { LinkNoStyles } from "../links/link"
-
+import FavoriteIcon from "../icons/FavoriteIcon"
+import {useState} from 'react'
+import { addAIToFavorites, removeAIFromFavorites } from "@/http/UserApi"
+import { SuccessText } from "../paragraphs/Paragraphs"
 const AiBriefInfo = ({AIData}:any) => {
     const {id}:any = useParams()
     const starArray:Array<ReactElement> = [];
         for (let i = 0; i < 5; i++) {
             starArray.push(<Image src={'/star-rate.svg'} alt="star" width={16} height={16}/>)
         }
+    const [activeIcon, setActiveIcon] = useState(false)
+    const [reqText, setReqText] = useState('')
+   
+    const iconClickHandler = () => {
+        if (!activeIcon) {
+            addAIToFavorites(id)
+            .then((res) =>{
+                console.log(res)
+                setActiveIcon(true)
+                setReqText('Нейросеть добавлена в избранное')
+                
+            })
+            .catch((err) => {
+                console.log(err.response.status)
+            })
+        } 
+        else {
+            removeAIFromFavorites(id)
+            .then((res) => {
+                console.log(res)
+                setActiveIcon(false)
+                setReqText('Нейросеть удалена из избранного')
+            })
+            .catch((err) => {
+                console.log(err.response.status)
+            })
+        }
+        
+    }
     return(
         <AiBriefInfoContainer>
-            <AiDescriptionH1>{AIData.name}<Image style={{cursor: 'pointer'}} src={'/favorite-icon.svg'} alt="bookmark" width={32} height={32}/></AiDescriptionH1>
+            <SuccessText >{reqText}</SuccessText>
+            <AiDescriptionH1>{AIData.name}<span onClick={iconClickHandler}><FavoriteIcon isOpen={activeIcon}/> </span></AiDescriptionH1>
             <StarsContainer>
             {starArray}
             </StarsContainer>

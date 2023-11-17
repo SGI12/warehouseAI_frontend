@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { ButtonStyled } from '../buttons/button'
 import { InputStyled } from '../inputs/TextInputs'
 import { LinkNoStyles, LinkStyled } from '../links/link'
@@ -48,18 +48,18 @@ const AuthCard = observer(() => {
     const [errorText, setErrorText] = useState('')
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const toJson = (obj: object) => {
-        return JSON.stringify(obj)
-    }
+    
     const LoginUserOnSubmit = (event: any) => {
         event.preventDefault();
+        
         const userData = {
             email,
             password,
         };
+        
         AuthUser(userData);
-
     }
+    
 
     return (
 
@@ -71,14 +71,20 @@ const AuthCard = observer(() => {
                 <InputStyled
                     autoComplete="on"
                     placeholder='E-mail'
-                    onChange={e => setEmail(e.target.value)} />
-
+                    onChange={e => setEmail(e.target.value)} 
+                    id='1'
+                    
+                    />
+                    
                 <InputStyled
                     autoComplete="on"
                     type='password'
                     placeholder='Пароль'
-                    onChange={e => setPassword(e.target.value)} />
-                <ButtonStyled type='submit'>Войти</ButtonStyled>
+                    onChange={e => setPassword(e.target.value)} 
+                    
+               
+                    />
+                <ButtonStyled  type='submit'>Войти</ButtonStyled>
             </FormStyled>
             <LinksContainer>
                 <LinksContainer className='with-margin'>

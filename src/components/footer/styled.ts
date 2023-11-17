@@ -75,6 +75,10 @@ flex-direction: column;
 
 export const Policy = styled(TextDefaultStyled)`
 
+&.inactive {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
 cursor: pointer;
 color: var(--pale-pink, #FFB8D7);
 &:hover {

@@ -21,7 +21,7 @@ const FavoritesPage = () => {
     const router = useRouter()
     const filterValues:Array<string> = ['По популярности', 'По оценкам',]
     const [isFilterOpen, setFilterOpen] = useState(false)
-    const [activeIndex, setActiveIndex] = useState(0)
+    const [activeIndex, setActiveIndex] = useState(-1)
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
     const [FavoriteAIData, setAIData] = useState<Array<any>>([])
@@ -29,7 +29,7 @@ const FavoritesPage = () => {
         e.stopPropagation();
         setFilterOpen(!isFilterOpen)
     }
-
+    
     useEffect(() => {
     const fetchData = () => {
         
@@ -63,6 +63,7 @@ const FavoritesPage = () => {
     }
     fetchData();
     },[user]);
+    
     if (isLoading) {
         return <Loader/>
     }
@@ -79,7 +80,7 @@ const FavoritesPage = () => {
                     </FilterButton>
                     {isFilterOpen && 
                         <FilterMenuContainer className={isFilterOpen ? 'open' : 'close'}>
-                             {filterValues.map((value,index) => <FilterElement onClick={() => setActiveIndex(index)} className={activeIndex==index ? 'active' : ''} key={index}>{value}</FilterElement>)}
+                             {filterValues.map((value,index) => <FilterElement onClick={() => setActiveIndex(index)} id={value} className={activeIndex==index ? 'active' : ''} key={index}>{value}</FilterElement>)}
                         </FilterMenuContainer>
                     }
                 </FilterContainer>

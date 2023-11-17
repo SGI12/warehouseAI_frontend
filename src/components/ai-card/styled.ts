@@ -12,6 +12,7 @@ background: #FFF3F8;
 width: 413px;
 
 padding: 30px;
+
 `
 
 export const AiBriefCardImage = styled.div`

@@ -39,7 +39,9 @@ const Footer = () => {
                             setActive(true)
 
                         }} color='#ffffff'>Стать разработчиком</FooterLink>
+                        <AStyled href="https://t.me/gurevnind" target="_blank" rel="noopener noreferrer">
                         <FooterLink color='#ffffff'>Отдел разработки</FooterLink>
+                        </AStyled>
 
                     </Block>
                 </MenuFooter>
@@ -57,10 +59,10 @@ const Footer = () => {
 
             </UpBlock>
             <DownBlock>
-                <Policy>
+                <Policy  className='inactive'>
                     Политика конфиденциальности
                 </Policy>
-                <Policy>
+                <Policy className='inactive'>
                     Политика обработки персональных данных
                 </Policy>
             </DownBlock>

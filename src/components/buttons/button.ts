@@ -94,6 +94,7 @@ gap: 14px;
 export const AiCardButton = styled(GetNeuralButton)`
 
 
+
 font-weight: 400;
 width: 353px;
 height: 49px;
@@ -157,4 +158,11 @@ color: #E64C8F;
     background: #E64C8F;
     color: #ffffff
 }
+`
+
+export const AiRemoveButton = styled(ButtonShortStyled)`
+
+align-self: center;
+margin-top: 12px;
+
 `
