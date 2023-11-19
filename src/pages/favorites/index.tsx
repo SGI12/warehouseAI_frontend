@@ -14,7 +14,7 @@ import { useUserContext } from "@/context/context";
 import { check } from "@/http/AuthAPI";
 import { getUserFavoriteAI } from "@/http/UserApi";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 
 const FavoritesPage = () => {
@@ -28,34 +28,31 @@ const FavoritesPage = () => {
     const [FavoriteAIData, setAIData] = useState<Array<any>>([])
     const [isSearchEmpty, setSearchEmpty] = useState(false)
     const [initialData, setInitialData] = useState<Array<any>>([])
-  
+    const ref = useRef<HTMLDivElement>(null)
     const filterHandler = (e:React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         setFilterOpen(!isFilterOpen)
     }
     const SortHandler = (e:any) => { 
-
-        if (activeIndex !== -1) {
+        
+        console.log(activeIndex ==-1)
+        if (activeIndex ==-1) {
             setAIData(initialData)
         }
-        else {
-            
-            if (e.target.id === 'По популярности') {
+        if (e.target.id === 'По популярности') {
                 FavoriteAIData.sort((a, b) => b.used - a.used)
-             }
-        }    
+        }
+           
     }
 
     const SearchHandler = (e:any) => {
        
         setSearchParams(e.target.value)
         const SearchAIData = initialData.filter((word) => {
-           
             return `${word.name}`.toLowerCase().includes((e.target.value).toLowerCase())
-            
         })
         if (!e.target.value) { 
-            setActiveIndex(-1)
+           
             setAIData(initialData)
         }
         else if (SearchAIData.length != 0) {
@@ -64,7 +61,7 @@ const FavoritesPage = () => {
         }
             
         else {
-            setActiveIndex(-1)
+            
             setSearchEmpty(true)
         }
 
@@ -106,8 +103,8 @@ const FavoritesPage = () => {
     fetchData();
   
     },[user]);
-
-    
+    console.log(initialData)
+   
    
     if (isLoading) {
         return <Loader/>
@@ -120,13 +117,17 @@ const FavoritesPage = () => {
             <SearchAndFilterContainer>
                 <SearchFieldFavorites onChange={(e:any) => SearchHandler(e)} value={searchParams} placeholder="Искать в избранном"/>
                 <FilterContainer>
-                    <FilterButton onClick={e => {filterHandler(e)}}  className={isFilterOpen ? 'pressed' : 'none'}><FilterIcon isOpen={isFilterOpen}/>
+                    <FilterButton onClick={e => {
+                        console.log(activeIndex)
+                        filterHandler(e)
+                        }}  className={isFilterOpen ? 'pressed' : 'none'}><FilterIcon isOpen={isFilterOpen}/>
                     Фильтр
                     </FilterButton>
                     {isFilterOpen && 
                         <FilterMenuContainer className={isFilterOpen ? 'open' : 'close'}>
                              {filterValues.map((value,index) => <FilterElement onClick={(e) => {
                                 activeIndex == index ? setActiveIndex(-1) : setActiveIndex(index)
+                                ref = {ref}
                                 SortHandler(e)
                             }} id={value} className={activeIndex==index ? 'active' : ''} key={index}>{value}</FilterElement>)}
                         </FilterMenuContainer>
