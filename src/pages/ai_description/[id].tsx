@@ -109,11 +109,11 @@ const AiDescriptionPage = () => {
             <BackLinkWhite/>
             <UseAiContainer>
                 <AiBriefInfo AIData={AIData}/>  
-                <AITagsContainer>
+                {/* <AITagsContainer>
                     <AIDescTag><TextLargeStyled color="#ffffff">#code</TextLargeStyled></AIDescTag>
                     <AIDescTag><TextLargeStyled color="#ffffff"> #php</TextLargeStyled></AIDescTag>
                     <AIDescTag><TextLargeStyled color="#ffffff"> #apiplaform</TextLargeStyled></AIDescTag>
-                </AITagsContainer>
+                </AITagsContainer> */}
             </UseAiContainer>
             <AiInfoAndDeveloperContaner>
                 <AiInfo>

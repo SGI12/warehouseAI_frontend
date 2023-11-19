@@ -16,7 +16,7 @@ export interface AiCardProps {
     img?: string,
     name?: string,
     rate?: number,
-    tags?: Array<string>,
+    // tags?: Array<string>,
 
 }
 const AiCard = ({props}:any)  => {
@@ -25,7 +25,7 @@ const AiCard = ({props}:any)  => {
     const name = "ChatGPT"
     const id = '069c6d96-4ccd-4f65-a48b-5d51d39a9cd1'
     //Временная залупа 
-    const tags:Array<string> = ['code', 'php', 'apiplatform'];
+    // const tags:Array<string> = ['code', 'php', 'apiplatform'];
     const pathname = usePathname()
      //Временная залупа 
    const rate=5
@@ -54,7 +54,7 @@ const AiCard = ({props}:any)  => {
                {starArray}
             </StarsContainer>
             <TagsContainer>
-                {tags.map((value:string, index:number) =>  <TextDefaultStyled key={index}>{`#`+ value}</TextDefaultStyled>)}
+                {/* {tags.map((value:string, index:number) =>  <TextDefaultStyled key={index}>{`#`+ value}</TextDefaultStyled>)} */}
             </TagsContainer>
             <LinkNoStyles href={`/ai_description/${AICardProps.id || id}`}>
             <AiCardButton>Подробнее <Arrow/></AiCardButton>

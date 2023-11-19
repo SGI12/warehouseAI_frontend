@@ -115,11 +115,11 @@ const UseAiPage = () => {
             <Header/>
             <BackLinkWhite/>
             <H1WithPadding color="#ffffff">{AIData.name}</H1WithPadding>
-            <UseAiTagsHorizontalContainer>
+            {/* <UseAiTagsHorizontalContainer>
                 <AIDescTag><TextLargeStyled color="#ffffff">#code</TextLargeStyled></AIDescTag>
                 <AIDescTag><TextLargeStyled color="#ffffff"> #php</TextLargeStyled></AIDescTag>
                 <AIDescTag><TextLargeStyled color="#ffffff"> #apiplaform</TextLargeStyled></AIDescTag>
-            </UseAiTagsHorizontalContainer>
+            </UseAiTagsHorizontalContainer> */}
             <StarsContainer>
                 {starArray}
             </StarsContainer>
