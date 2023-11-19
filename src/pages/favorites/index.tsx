@@ -41,17 +41,14 @@ const FavoritesPage = () => {
         const SearchAIData = initialData.filter((word) => {
             return `${word.name}`.toLowerCase().includes((e.target.value).toLowerCase())
         })
-        if (!e.target.value) { 
-           
-            setAIData(initialData)
-        }
-        else if (SearchAIData.length != 0) {
+        console.log(SearchAIData)
+       
+        if (SearchAIData.length > 0) {
             setSearchEmpty(false)
             setAIData(SearchAIData)
         }
             
         else {
-            
             setSearchEmpty(true)
         }
 
@@ -97,12 +94,11 @@ const FavoritesPage = () => {
     useEffect(() => {
         const isFiltered = activeIndex!=-1
         if (filterText == 'По популярности' && isFiltered) {
-                
                 const SortedArray = FavoriteAIData.slice()
                 SortedArray.sort((a, b) => b.used - a.used)      
                 setAIData(SortedArray)
         }
-        if (!isFiltered) {
+        if (!isFiltered && !(searchParams.length > 0)) {
             setAIData(initialData)
         }
         
