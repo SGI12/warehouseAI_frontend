@@ -50,7 +50,7 @@ const ChangeEmailScreen = ({setActive}:any) => {
             {emailValid.isEmailInvalid && <InputErrorText className={emailValid.animation}>{emailValid.errors.emailInvalidError}</InputErrorText>}
             <ButtonContainer>
                 <ButtonShortStyled onClick={() => hide()}>Назад</ButtonShortStyled>
-                <ButtonShortStyled onClick={AcceptHandler} className="active">Подтвердить</ButtonShortStyled>
+                <ButtonShortStyled disabled={emailValid.isEmailInvalid} onClick={AcceptHandler} className="active">Подтвердить</ButtonShortStyled>
 
             </ButtonContainer>
             </DefaultPopUp>
