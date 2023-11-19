@@ -9,6 +9,7 @@ export const useValidation = (value:string, validations:object) => {
     const [isEmailInvalid, setEmailInvalid] = useState(true)
     const [animation, setAnimation] = useState('none')
     const [isPasswordInvalid, setPasswordInvalid] = useState(true)
+    const [isFieldsEmpty, setFieldsEmpty] = useState(true)
     const [errors, setErrors] = useState({
         usernameError: '',
         firstnameError: '',
@@ -16,6 +17,7 @@ export const useValidation = (value:string, validations:object) => {
         emailInvalidError: '',
         emailEmptyError: '',
         passwordInvalidError: '',
+        fieldEmptyError: '',
 
     })
     useEffect(() => {
@@ -71,8 +73,12 @@ export const useValidation = (value:string, validations:object) => {
                         setPasswordInvalid(false)
                     }
                     break;
+                case 'isFieldsEmpty':
+                    value ? setFieldsEmpty(false) : setFieldsEmpty(true)
+                    setErrors({...errors, fieldEmptyError: 'Поля не могут быть пустыми'})
+                    setAnimation('animated')
+                    setTimeout(() => setAnimation('none'), 500)
 
-                
 
             }
         }
@@ -84,7 +90,8 @@ export const useValidation = (value:string, validations:object) => {
         isEmailInvalid,
         isPasswordInvalid,
         errors,
-        animation
+        animation,
+        isFieldsEmpty
     }
 }
 

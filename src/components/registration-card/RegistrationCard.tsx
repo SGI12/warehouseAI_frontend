@@ -116,12 +116,10 @@ const RegistrationCard = () => {
         emailValid.isEmailInvalid, 
         passwordValid.isPasswordInvalid,
         passRepeatValid.isChecked])
-    console.log(isFormValid)
 
     const ClickLoadhandler = () => {
         if (inputFile.current?.files) {
             inputFile.current.click()
-
         }
         
     }

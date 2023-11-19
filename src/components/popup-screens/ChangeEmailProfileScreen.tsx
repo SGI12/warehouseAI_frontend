@@ -9,37 +9,47 @@ import { ButtonShortStyled } from "../buttons/button"
 import { passResetVerify } from "@/http/AuthAPI"
 import { useRouter } from "next/navigation"
 import Footer from "../footer/footer"
+import { updateUserEmail } from "@/http/UserApi"
 
 
-const BeDevScreen = ({setActive}:any) => {
-    const router = useRouter();
-    const [code, setCode] = useState('')
+const ChangeEmailScreen = ({setActive}:any) => {
+    
+    const [email, setEmail] = useState('')
     const [animation, setAnimation] = useState('open')
-    console.log(code)
     const hide = () => {
         setAnimation('close')
         setTimeout(() => setActive(false), 400)
     }
 
+    const AcceptHandler = () => {
+        updateUserEmail(email).then((res) => {
+            console.log(res.data)
+            setAnimation('close')
+            setTimeout(() => setActive(false), 400)
+        })
+        .catch((err) => {
+            console.log(err.response?.statye)
+        })
+       
+    } 
 
     return (
         
         <PopupMainContainer>
             <DefaultPopUp className={animation}>
-            <H2Styled>Хотите стать разработчиком?</H2Styled>
+            <H2Styled>Смена эл.почты</H2Styled>
             <TextSmallStyled>
-                Залупу тебе на воротник, а не разработчиком. 
-                Но ты можешь указать свою почту, нам придет письмо и, возможно, мы подумаем, чтобы дать тебе 
-                возможности разработчика.
+                Пожалуйста, введите новый адрес эл.почты ниже:
             </TextSmallStyled>
             <InputStyled
-                onChange={e => setCode(e.target.value)}
+                onChange={e => setEmail(e.target.value)}
                 placeholder="E-mail"
                 >
             </InputStyled>
             <ButtonContainer>
                 <ButtonShortStyled onClick={() => hide()}>Назад</ButtonShortStyled>
-                <ButtonShortStyled onClick={() => hide()} className="active">Подтвердить</ButtonShortStyled>
+                <ButtonShortStyled onClick={AcceptHandler} className="active">Подтвердить</ButtonShortStyled>
+                
             </ButtonContainer>
             </DefaultPopUp>
             
@@ -49,4 +59,4 @@ const BeDevScreen = ({setActive}:any) => {
 
 }
 
-export default BeDevScreen
+export default ChangeEmailScreen

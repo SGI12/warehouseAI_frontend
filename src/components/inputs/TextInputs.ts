@@ -3,7 +3,10 @@ import styled from 'styled-components'
 import { Open_Sans } from 'next/font/google'
 import { Andika } from "next/font/google";
 const opensans = Open_Sans({subsets: ['cyrillic', 'latin']})
-
+const andika = Andika({
+    subsets: ['cyrillic'],
+    weight: '400'
+})
 
 
 
@@ -118,3 +121,40 @@ resize: none;
 
 
 `
+
+export const ProfileInput = styled(InputStyled)`
+
+width: 100%;
+background-color: transparent;
+margin: 0px;
+padding: 0px;
+border-radius: 0px;
+&.editable {
+    border: 1px solid var(--accent, #E64C8F);
+}
+`
+
+export const UserNameProfileInput = styled(ProfileInput)`
+
+color: #FFB8D7;
+font-size: 16px;
+font-style: normal;
+font-weight: 400;
+
+`
+
+export const NamesInput = styled(ProfileInput).attrs({
+    className: andika.className
+})`
+
+
+
+color: #ffffff;
+font-size: 50px;
+font-style: normal;
+font-weight: 700;
+line-height: 120%;
+height: 100%;
+`
+
+

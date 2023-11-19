@@ -139,7 +139,6 @@ const FavoritesPage = () => {
             <FavoritesAIContainer>
             {!isSearchEmpty && <FavoritesAiGrid>  
             {FavoriteAIData.map((props, index) => <AiCard key={index} props={...props}/>)}
-            
             </FavoritesAiGrid>}
             </FavoritesAIContainer>
             <Footer/>

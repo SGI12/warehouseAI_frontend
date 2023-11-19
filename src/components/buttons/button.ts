@@ -166,3 +166,9 @@ align-self: center;
 margin-top: 12px;
 
 `
+
+export const ProfileButtonStyled = styled(GetNeuralButton)`
+
+padding: 0;
+
+`

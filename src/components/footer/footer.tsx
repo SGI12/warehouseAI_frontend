@@ -5,7 +5,7 @@ import { usePathname } from 'next/navigation';
 import { AStyled, FooterLink, LinkNoStyles, NavBarLink } from '../links/link';
 import Image from 'next/image';
 import { getCookie } from 'cookies-next';
-import BeDevScreen from '../be-dev-screen/BeDevScreen';
+import BeDevScreen from '../popup-screens/BeDevScreen';
 import {useState} from 'react'
 const Footer = () => {
     const [active, setActive] = useState(false)

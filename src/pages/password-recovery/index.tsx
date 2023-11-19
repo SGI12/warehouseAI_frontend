@@ -1,6 +1,6 @@
 import BackLinkBlack from "@/components/back-link/BackLinkBlack"
 import { PasswordRecoveryMainContainer } from "@/components/containers/containers"
-import EmailCodeScreen from "@/components/email-code-screen/EmailCodeScreen"
+import EmailCodeScreen from "@/components/popup-screens/EmailCodeScreen"
 import {  LogoResetPass, LogoResetPassContainer } from "@/components/logo/logo"
 import PassResetBlock from "@/components/password-reset-block/PassResetBlock"
 import Image from "next/image"

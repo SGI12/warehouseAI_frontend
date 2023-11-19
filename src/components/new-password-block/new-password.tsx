@@ -21,26 +21,6 @@ const ChangePassBlock = () => {
     const [errorMessage, setErrorMessage] = useState('')
     const [animation, setAnimation] = useState('none')
 
-    // const PassValidate = () => {
-    //     let isValid:boolean = false
-    //     if (password != repeatPassword) {
-    //         setErrorMessage('Пароли не совпадают')
-    //         setAnimation('animated')
-    //         setIsError(true)
-    //         setTimeout(() => setAnimation('none'), 500)
-    //     }
-
-    //     else if ((password=='') || (repeatPassword =='')) {
-    //         setErrorMessage('Поля не должны быть пустыми')
-    //         setAnimation('animated')
-    //         setIsError(true)
-    //         setTimeout(() => setAnimation('none'), 500)
-    //     }
-
-    //     else isValid = true
-
-    //     return isValid
-    // }
     const passwordCheck = usePassRepeatCheck(password, repeatPassword)
     const passwordValid = useValidation(password, {isPasswordInvalid: true})
     const PassUpdate = async (data:any) => {

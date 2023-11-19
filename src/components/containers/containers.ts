@@ -387,9 +387,6 @@ padding: 8px;
     animation: ${SlideInDown} .3s ease-in-out;
 }
 
-
-
-
 `
 
 export const FilterContainer = styled.div`
@@ -413,5 +410,24 @@ export const FavoritesAIContainer = styled.div`
 
 padding: 0px 80px;
 width: 100vw;
+
+`
+
+export const NamesConatiner = styled.div`
+
+display: flex;
+gap: 20px;
+
+`
+
+export const NameLabel = styled.div`
+
+`
+
+export const ProfileDefaultButtonsContainer = styled.div`
+
+display: flex;
+width: 50vw;
+justify-content: space-between;
 
 `

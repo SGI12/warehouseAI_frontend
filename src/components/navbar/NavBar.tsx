@@ -5,7 +5,7 @@ import { LinkNoStyles, NavBarLink } from '../links/link';
 import { usePathname } from 'next/navigation';
 
 import { getCookie } from 'cookies-next';
-import BeDevScreen from '../be-dev-screen/BeDevScreen';
+import BeDevScreen from '../popup-screens/BeDevScreen';
 
 
 const NavBar = ({activeModal}:any) => {

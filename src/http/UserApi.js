@@ -33,3 +33,31 @@ export const removeAIFromFavorites = async (id) => {
 }
 
 
+export const updateUserData = async (username, fitstname, lastname) => {
+    const data = {
+        username: username,
+        firstname: fitstname,
+        lastname: lastname
+    }
+    const response = await $USER.patch('/update', data)
+    return response
+}
+
+
+export const updateUserEmail = async (email) => {
+    const data = {
+        email: email,
+    }
+    const response = await $USER.patch('/update/email', data)
+    return response
+}
+
+export const updateUserPassword = async (oldpass, newpass) => {
+    const data = {
+        old_password: oldpass,
+        password: newpass
+    }
+
+    const response = await $USER.patch('/update/password', data)
+    return response
+}
