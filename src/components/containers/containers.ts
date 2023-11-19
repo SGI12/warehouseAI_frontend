@@ -374,17 +374,18 @@ export const FilterMenuContainer = styled.div`
 border-radius: 16px;
 background: var(--white, #FFF);
 box-shadow: 0px 6px 30px -8px rgba(255, 255, 255, 0.30);
-display: flex;
+
 flex-direction: column;
 top: 47%;
 z-index: 1;
 position: absolute;
 margin-top: 6px;
 padding: 8px;
-
+display: none;
 
 &.open {
     animation: ${SlideInDown} .3s ease-in-out;
+    display: flex;
 }
 
 `

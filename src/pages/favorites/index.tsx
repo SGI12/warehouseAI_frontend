@@ -25,26 +25,16 @@ const FavoritesPage = () => {
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
     const [searchParams, setSearchParams] = useState('');
+    const [filterText, setFilterText] = useState('')
     const [FavoriteAIData, setAIData] = useState<Array<any>>([])
     const [isSearchEmpty, setSearchEmpty] = useState(false)
     const [initialData, setInitialData] = useState<Array<any>>([])
-    const ref = useRef<HTMLDivElement>(null)
     const filterHandler = (e:React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         setFilterOpen(!isFilterOpen)
     }
-    const SortHandler = (e:any) => { 
-        
-        console.log(activeIndex ==-1)
-        if (activeIndex ==-1) {
-            setAIData(initialData)
-        }
-        if (e.target.id === 'По популярности') {
-                FavoriteAIData.sort((a, b) => b.used - a.used)
-        }
-           
-    }
 
+    
     const SearchHandler = (e:any) => {
        
         setSearchParams(e.target.value)
@@ -66,7 +56,7 @@ const FavoritesPage = () => {
         }
 
     }
- 
+   
     useEffect(() => {
     const fetchData = () => {
         
@@ -103,8 +93,20 @@ const FavoritesPage = () => {
     fetchData();
   
     },[user]);
-    console.log(initialData)
    
+    useEffect(() => {
+        const isFiltered = activeIndex!=-1
+        if (filterText == 'По популярности' && isFiltered) {
+                
+                const SortedArray = FavoriteAIData.slice()
+                SortedArray.sort((a, b) => b.used - a.used)      
+                setAIData(SortedArray)
+        }
+        if (!isFiltered) {
+            setAIData(initialData)
+        }
+        
+    }, [activeIndex, FavoriteAIData])
    
     if (isLoading) {
         return <Loader/>
@@ -118,26 +120,25 @@ const FavoritesPage = () => {
                 <SearchFieldFavorites onChange={(e:any) => SearchHandler(e)} value={searchParams} placeholder="Искать в избранном"/>
                 <FilterContainer>
                     <FilterButton onClick={e => {
-                        console.log(activeIndex)
                         filterHandler(e)
                         }}  className={isFilterOpen ? 'pressed' : 'none'}><FilterIcon isOpen={isFilterOpen}/>
                     Фильтр
                     </FilterButton>
-                    {isFilterOpen && 
+                    
                         <FilterMenuContainer className={isFilterOpen ? 'open' : 'close'}>
-                             {filterValues.map((value,index) => <FilterElement onClick={(e) => {
-                                activeIndex == index ? setActiveIndex(-1) : setActiveIndex(index)
-                                ref = {ref}
-                                SortHandler(e)
+                             {filterValues.map((value,index) => <FilterElement onClick={() => {
+                                activeIndex === index ? setActiveIndex(-1) : setActiveIndex(index)
+                                setFilterText(value)
+
                             }} id={value} className={activeIndex==index ? 'active' : ''} key={index}>{value}</FilterElement>)}
                         </FilterMenuContainer>
-                    }
+                    
                 </FilterContainer>
             </SearchAndFilterContainer>
             {(FavoriteAIData.length==0 || isSearchEmpty) && <H2Styled color="#ffffff">Ничего не найдено.</H2Styled>}
             <FavoritesAIContainer>
             {!isSearchEmpty && <FavoritesAiGrid>  
-            {FavoriteAIData.map((props, index) => <AiCard key={index} props={...props}/>)}
+                {FavoriteAIData.map((props, index) => <AiCard key={index} props={...props}/>)}
             </FavoritesAiGrid>}
             </FavoritesAIContainer>
             <Footer/>
