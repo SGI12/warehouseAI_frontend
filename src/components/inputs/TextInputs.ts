@@ -124,8 +124,8 @@ resize: none;
 
 export const ProfileInput = styled(InputStyled)`
 
-overflow: visible;
 
+box-sizing: content-box;
 width: 100%;
 padding-inline: 0px;
 background-color: transparent;
