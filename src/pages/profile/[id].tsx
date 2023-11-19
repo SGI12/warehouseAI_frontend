@@ -1,7 +1,7 @@
 import Loader from "@/components/Loader/Loader";
 import BeDevScreen from "@/components/popup-screens/BeDevScreen";
 import { GetNeuralButton, ProfileBigButton, ShadowButton } from "@/components/buttons/button";
-import { NameLabel, NamesConatiner, ProfileButtonsContainer, ProfileDefaultButtonsContainer, UserNameAndButtonContainer, UserProfileDataContainer, UserProfileMainContainer } from "@/components/containers/containers"
+import { NamesLabel, NamesConatiner, ProfileButtonsContainer, ProfileDefaultButtonsContainer, UserNameAndButtonContainer, UserProfileDataContainer, UserProfileMainContainer } from "@/components/containers/containers"
 import Footer from "@/components/footer/footer";
 
 import Header from "@/components/header/header"
@@ -191,15 +191,20 @@ const UserProfile = () => {
             <Header activeModal={activeDevModal}/>
             <UserProfileDataContainer>
                 <Image style={{
+                 
+                    width: '305px',
+                    height: '305px',
                     borderRadius: '50%',
                     border: '2px solid #FFB8D7',
                     boxShadow: '0px -3px 105px -1px rgba(251, 157, 198, 0.32)'
                     }} 
-                    src={userData.picture} alt="avatar" width={305} height={305}/>
+                    src={userData.picture} 
+                    alt="avatar" width={305} height={305}/>
                 <UserNameAndButtonContainer>
                     <NamesConatiner>
-                        <NameLabel>
+                        <NamesLabel>
                         <UserNameProfileInput 
+                        
                         size={(userData.username?.length || 0)} 
                         placeholder="username"
                         readOnly={!isEditable}
@@ -207,26 +212,26 @@ const UserProfile = () => {
                         className={isEditable ? 'editable' : 'none'} 
                         value={userData.username} 
                         color="#FFB8D7"/>
-                        </NameLabel>
+                        </NamesLabel>
                     </NamesConatiner>
-                    
-                    
+               
                     
                     <NamesConatiner>
-                        <NameLabel>
+                        <NamesLabel>
+                         
                             <NamesInput 
                             placeholder="Имя"
                             name="firstname"
-                       
+                            
                             onChange={NameChangeHandler}
                             readOnly={!isEditable}
                             className={isEditable ? 'editable' : 'none'} 
                             size={(userData.firstname?.length || 0)} 
                             value={(userData?.firstname || '') }/> 
-                           
+                          
                             
-                        </NameLabel>  
-                        <NameLabel>
+                        </NamesLabel>  
+                        <NamesLabel>
                             <NamesInput 
                             placeholder="Фамилия"
                             
@@ -238,7 +243,7 @@ const UserProfile = () => {
                             value={(userData?.lastname || '')  }/> 
                             
                             
-                        </NameLabel> 
+                        </NamesLabel> 
                         {!isEditable &&  <div onClick={pencilIconHandlerClick}><PencilIcon/></div>}
                         {isEditable && <div onClick={checkMarkIconhandler}><CheckMarkIcon /></div>}
                     </NamesConatiner>

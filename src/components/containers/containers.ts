@@ -416,11 +416,20 @@ width: 100vw;
 export const NamesConatiner = styled.div`
 
 display: flex;
-gap: 20px;
+
 
 `
 
-export const NameLabel = styled.div`
+export const NamesLabel = styled.label`
+
+
+display: inline-flex;
+
+&>input {
+  border: none;
+  background: none; 
+ 
+}
 
 `
 

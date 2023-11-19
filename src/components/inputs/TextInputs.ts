@@ -124,8 +124,9 @@ resize: none;
 
 export const ProfileInput = styled(InputStyled)`
 
+display: block;
 width: 100%;
-padding-inline-end: 0px;
+padding-inline: 0px;
 background-color: transparent;
 margin: 0px;
 padding: 0px;
@@ -157,5 +158,7 @@ font-weight: 700;
 line-height: 120%;
 height: 100%;
 `
+
+
 
 
