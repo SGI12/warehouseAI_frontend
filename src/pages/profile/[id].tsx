@@ -57,7 +57,6 @@ const UserProfile = () => {
         }
 
         if (isEditable && e.keyCode == 27) {
-            console.log(e.keyCode)
             setUserData(initialData)
             setEditable(false)
         }
@@ -91,8 +90,8 @@ const UserProfile = () => {
             setInitialData(userData)
             updateUserData(userData.username, userData.firstname, userData.lastname)
             
-        .then((res) => {
-            console.log(res.data)
+        .then(() => {
+            console.log('Данные обновлены')
 
         })
         .catch((err) => {

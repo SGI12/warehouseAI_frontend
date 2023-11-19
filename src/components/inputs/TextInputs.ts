@@ -125,6 +125,7 @@ resize: none;
 export const ProfileInput = styled(InputStyled)`
 
 width: 100%;
+padding-inline-end: 0px;
 background-color: transparent;
 margin: 0px;
 padding: 0px;
