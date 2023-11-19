@@ -415,7 +415,8 @@ width: 100vw;
 
 export const NamesConatiner = styled.div`
 
-display: inline-flex;
+display: flex;
+align-items: center;
 
 `
 

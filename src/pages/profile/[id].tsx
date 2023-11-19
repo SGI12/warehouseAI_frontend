@@ -31,22 +31,25 @@ const UserProfile = () => {
     const [isPasswordModalActive, setPasswordModalActive] = useState(false)
     const [isEditable, setEditable] = useState(false)
     interface IUserData {
+        names:string,
+        // firstname: string,
+        // lastname: string,
         username:string,
-        firstname:string,
-        lastname:string,
         picture: string,
     }
     const [userData, setUserData] = useState<IUserData>({
-        firstname: '',
-        lastname: '',
+        names: '',
+        // firstname: '',
+        // lastname: '',
         username: '',
         picture: '',
 
     })
 
     const [initialData, setInitialData] = useState<IUserData>({
-        firstname: '',
-        lastname: '',
+        names: '',
+        // firstname: '',
+        // lastname: '',
         username: '',
         picture: '',
     })
@@ -84,14 +87,16 @@ const UserProfile = () => {
     }
 
     const checkMarkIconhandler = () => {
+        const firstname = userData.names.split(' ')[0]
+        const lastname = userData.names.split(' ')[1]
         const isEqual = JSON.stringify(userData) === JSON.stringify(initialData)
         setEditable(false)
         if (fieldsNotEmpty && !isEqual) {
             setInitialData(userData)
-            updateUserData(userData.username, userData.firstname, userData.lastname)
+            updateUserData(userData.username, firstname, lastname)
             
-        .then(() => {
-            console.log('Данные обновлены')
+        .then((res) => {
+            console.log(res.data)
 
         })
         .catch((err) => {
@@ -105,19 +110,19 @@ const UserProfile = () => {
     const NameChangeHandler = (e:any) => {
         setUserData({
             ...userData, 
-            firstname: e.target.value
+            names: e.target.value
         })
     }
 
-    const LastNameChangeHandler = (e:any) => {
-        setUserData({
-            ...userData, 
-            lastname: e.target.value
-        })
-    }
-    let fieldsNotEmpty = (userData.username && userData.firstname && userData.lastname)
+    // const LastNameChangeHandler = (e:any) => {
+    //     setUserData({
+    //         ...userData, 
+    //         lastname: e.target.value
+    //     })
+    // }
+    let fieldsNotEmpty = (userData.names && userData.username)
     const profileValid = useValidation(fieldsNotEmpty, {isFieldsEmpty: true})
-    
+   
     useEffect(() => {
         const getUserData =  () => {
             let pictureUrl = '/mock-avatar.jpg'
@@ -130,15 +135,15 @@ const UserProfile = () => {
                 setUserData({
                     ...userData,
                     username: res.data.username,
-                    firstname: res.data.firstname,
-                    lastname: res.data.lastname,
+                    names: res.data.firstname + " " + res.data.lastname,
+                    // lastname: res.data.lastname,
                     picture: pictureUrl,
                 })
                 setInitialData({
                     ...initialData,
                     username: res.data.username,
-                    firstname: res.data.firstname,
-                    lastname: res.data.lastname,
+                    names: res.data.firstname + " " + res.data.lastname,
+                    // lastname: res.data.lastname,
                     picture: pictureUrl,
                 })
                 
@@ -220,18 +225,18 @@ const UserProfile = () => {
                         <NamesLabel>
                          
                             <NamesInput 
-                            placeholder="Имя"
+                            placeholder="Имя Фамилия"
                             name="firstname"
                             
                             onChange={NameChangeHandler}
                             readOnly={!isEditable}
                             className={isEditable ? 'editable' : 'none'} 
-                            size={(userData.firstname?.length || 0)} 
-                            value={(userData?.firstname || '') }/> 
+                            size={(userData.names?.length || 0)} 
+                            value={(userData?.names || '') }/> 
                            
                             
                         </NamesLabel>  
-                        <NamesLabel>
+                        {/* <NamesLabel>
                             <NamesInput 
                             placeholder="Фамилия"
                             
@@ -243,7 +248,7 @@ const UserProfile = () => {
                             value={(userData?.lastname || '')  }/> 
                             
                             
-                        </NamesLabel> 
+                        </NamesLabel>  */}
                         {!isEditable &&  <div onClick={pencilIconHandlerClick}><PencilIcon/></div>}
                         {isEditable && <div onClick={checkMarkIconhandler}><CheckMarkIcon /></div>}
                     </NamesConatiner>
