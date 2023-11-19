@@ -124,7 +124,8 @@ resize: none;
 
 export const ProfileInput = styled(InputStyled)`
 
-display: block;
+overflow: visible;
+
 width: 100%;
 padding-inline: 0px;
 background-color: transparent;
@@ -137,6 +138,7 @@ border-radius: 0px;
 `
 
 export const UserNameProfileInput = styled(ProfileInput)`
+
 
 color: #FFB8D7;
 font-size: 16px;
