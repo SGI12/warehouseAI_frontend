@@ -212,7 +212,7 @@ const UserProfile = () => {
                         <UserNameProfileInput 
                         
                         size={(userData.username?.length || 0)} 
-                        placeholder="username"
+                        placeholder="Имя пользователя"
                         readOnly={!isEditable}
                         onChange={usernameChangeHandler} 
                         className={isEditable ? 'editable' : 'none'} 

@@ -27,7 +27,7 @@ const FavoritesPage = () => {
     const [searchParams, setSearchParams] = useState('');
     const [FavoriteAIData, setAIData] = useState<Array<any>>([])
     const [isSearchEmpty, setSearchEmpty] = useState(false)
-    
+    const [initialData, setInitialData] = useState<Array<any>>([])
   
     const filterHandler = (e:React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
@@ -36,10 +36,7 @@ const FavoritesPage = () => {
     const SortHandler = (e:any) => { 
 
         if (activeIndex !== -1) {
-            getUserFavoriteAI().then((res) => {
-                setAIData(res.data?.favorite_ai)
-            })
-            
+            setAIData(initialData)
         }
         else {
             
@@ -50,20 +47,18 @@ const FavoritesPage = () => {
     }
 
     const SearchHandler = (e:any) => {
-        
+       
         setSearchParams(e.target.value)
         const SearchAIData = FavoriteAIData.filter((word) => {
-            console.log(word.name)
+           
             return `${word.name}`.toLowerCase().includes((e.target.value).toLowerCase())
             
         })
-        if (!e.target.value) {
+        if (!e.target.value) { 
             setActiveIndex(-1)
-            getUserFavoriteAI().then((res) => {
-            setAIData(res.data?.favorite_ai)
-            })
+            setAIData(initialData)
         }
-        if (SearchAIData.length !== 0) {
+        else if (SearchAIData.length != 0) {
             setSearchEmpty(false)
             setAIData(SearchAIData)
         }
@@ -74,13 +69,16 @@ const FavoritesPage = () => {
         }
 
     }
+ 
     useEffect(() => {
     const fetchData = () => {
         
         const getAIData = () => {
             getUserFavoriteAI()
            .then((res) => {
+           
               setAIData(res.data?.favorite_ai)
+              setInitialData(res.data?.favorite_ai)
               setTimeout(() => setLoading(false), 1000)
            })
            .catch((e) => {
@@ -110,7 +108,7 @@ const FavoritesPage = () => {
     },[user]);
 
     
-    
+   
     if (isLoading) {
         return <Loader/>
     }
