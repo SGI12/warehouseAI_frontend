@@ -49,7 +49,7 @@ const FavoritesPage = () => {
     const SearchHandler = (e:any) => {
        
         setSearchParams(e.target.value)
-        const SearchAIData = FavoriteAIData.filter((word) => {
+        const SearchAIData = initialData.filter((word) => {
            
             return `${word.name}`.toLowerCase().includes((e.target.value).toLowerCase())
             
