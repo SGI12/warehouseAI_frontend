@@ -129,6 +129,7 @@ const UserProfile = () => {
             const userId = getCookie('userId')
             
                 getUserById(userId).then(res => {
+                console.log(res)
                 if (res.data.picture != '') {
                     pictureUrl = res.data.picture
                 }
