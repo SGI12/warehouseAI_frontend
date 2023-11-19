@@ -47,13 +47,13 @@ const Footer = () => {
                 </MenuFooter>
                 <SociaL>
                     <ChildBlok>
-                        <Image src={'/telegram-icon.svg'} alt='tg_logo' width={32} height={32}/>
+                        <Image style={{cursor: 'not-allowed', opacity: '0.5'}} src={'/telegram-icon.svg'} alt='tg_logo' width={32} height={32}/>
                     </ChildBlok>
                     <ChildBlok>
-                        <Image src={'/vk-icon.svg'} alt='vk_logo' width={32} height={32}/>
+                        <Image style={{cursor: 'not-allowed', opacity: '0.5'}} src={'/vk-icon.svg'} alt='vk_logo' width={32} height={32}/>
                     </ChildBlok>
                     <ChildBlok>
-                    <Image src={'/twitter-icon.svg'} alt='twitter_logo' width={32} height={32}/>
+                    <Image style={{cursor: 'not-allowed', opacity: '0.5'}}  src={'/twitter-icon.svg'} alt='twitter_logo' width={32} height={32}/>
                     </ChildBlok>
                 </SociaL>
 
