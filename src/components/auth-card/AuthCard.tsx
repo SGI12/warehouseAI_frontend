@@ -89,7 +89,7 @@ const AuthCard = observer(() => {
             <LinksContainer>
                 <LinksContainer className='with-margin'>
                     <TextDefaultStyled>или</TextDefaultStyled>
-                    <LinkNoStyles href={'/Registration'}>
+                    <LinkNoStyles href={'/register'}>
                         <LinkStyled >Зарегистрироваться</LinkStyled>
                     </LinkNoStyles>
                 </LinksContainer>

@@ -11,11 +11,11 @@ const andika = Andika({
 
 
 
-export const InputStyled = styled.input.attrs(({ placeholder, type }) => ({
+export const InputStyled = styled.input.attrs(({ placeholder, type, name }) => ({
     placeholder:  placeholder || "E-mail",
     className: opensans.className,
     type: type || 'text',
-    name: 'input'
+    name:  name || 'input'
     
   }))`
 
