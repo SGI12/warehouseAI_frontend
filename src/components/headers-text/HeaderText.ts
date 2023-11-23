@@ -40,7 +40,7 @@ export const H3Styled = styled.h3.attrs({
     className: andika.className
 
 })`
-${props => props.color  ?  props.color : '#242424' };
+color: ${props => props.color  ?  props.color : '#242424' };
 
 ${globalstyle}
 font-size: 30px;

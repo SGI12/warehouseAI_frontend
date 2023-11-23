@@ -441,3 +441,14 @@ width: 50vw;
 justify-content: space-between;
 
 `
+
+export const RegisterConfirmMainContainer = styled.div`
+
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 30px;
+
+
+`

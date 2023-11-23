@@ -26,6 +26,7 @@ const AiDescriptionPage = () => {
     const {id}:any = useParams()
 
     interface IAIProps {
+        backround: string,
         name: string,
         description: string,
         used: number,
@@ -39,6 +40,7 @@ const AiDescriptionPage = () => {
 
 
     const [AIData, setAIData] = useState<IAIProps>({
+        backround: '',
         name: '',
         description: '',
         used: 0,
@@ -70,8 +72,10 @@ const AiDescriptionPage = () => {
         const getAIData = () => {
                     getAIById(id)
                     .then((AIres) => {
+                          
                     setAIData({
                         ...AIData,
+                        backround: AIres.data.background_url,
                         name: AIres.data.name,
                         description: AIres.data.description,
                         used: AIres.data.used,
@@ -97,6 +101,7 @@ const AiDescriptionPage = () => {
     
             }
     fetchData();
+    console.log(AIData)
     },[user]);
     if (isLoading) {
         return <Loader/>
@@ -104,7 +109,7 @@ const AiDescriptionPage = () => {
     else 
     return (
         <AiDescriptionContainer>
-            <AiDescriptionBg background='/ai-desc-background.png'/>
+            <AiDescriptionBg background={AIData.backround}/>
             <Header/>
             <BackLinkWhite/>
             <UseAiContainer>

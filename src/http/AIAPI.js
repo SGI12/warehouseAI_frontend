@@ -1,7 +1,21 @@
 import { $AI } from "."
 
 export const getAIById = async (id) => {
-    const response = await $AI.get(`/get/${id}`)
+    
+    const response = await $AI.get(`/get/`, {
+        params: {
+            'id' : id
+        }
+    })
+    return response
+}
+
+export const getSeveralAIs = async(query) => {
+    const response = await $AI.get(`/get/many`, {
+        params: {
+            'id' : query
+        }
+    })
     return response
 }
 

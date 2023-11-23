@@ -83,6 +83,16 @@ export const passResetConfirm = async(data) => {
     return response
 }
 
+export const registerConfirm = async (user, token) => {
+    const response = await $auth.get('/register/confirm', {
+        params: {
+            'user': user,
+            'token': token
+        }
+    })
+    return response
+}
+
 
 
 

@@ -48,7 +48,7 @@ const AiCard = ({props}:any)  => {
     return (
         
         <AiBriefCard>
-            <Image src={'/ai-card-img.jpg'} style={{borderRadius: "16px"}} alt="ai_card_image" width={353} height={200}/>
+            <Image src={props?.background_url || '/ai-card-img.jpg'} style={{borderRadius: "16px"}} alt="ai_card_image" width={353} height={200}/>
             <AiCardHeader>{AICardProps.name || name}</AiCardHeader>
             <StarsContainer>
                {starArray}

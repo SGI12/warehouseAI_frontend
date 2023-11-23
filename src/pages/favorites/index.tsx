@@ -11,6 +11,7 @@ import FilterIcon from "@/components/icons/FilterIcon";
 
 import {  SearchFieldFavorites } from "@/components/search-field/styled";
 import { useUserContext } from "@/context/context";
+import { getAIById, getSeveralAIs } from "@/http/AIAPI";
 import { check } from "@/http/AuthAPI";
 import { getUserFavoriteAI } from "@/http/UserApi";
 import { useRouter } from "next/router";
@@ -29,6 +30,7 @@ const FavoritesPage = () => {
     const [FavoriteAIData, setAIData] = useState<Array<any>>([])
     const [isSearchEmpty, setSearchEmpty] = useState(false)
     const [initialData, setInitialData] = useState<Array<any>>([])
+    const AIIdsArray:Array<any> = []
     const filterHandler = (e:React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         setFilterOpen(!isFilterOpen)
@@ -58,11 +60,24 @@ const FavoritesPage = () => {
     const fetchData = () => {
         
         const getAIData = () => {
+            let queryParams:string
             getUserFavoriteAI()
            .then((res) => {
-           
-              setAIData(res.data?.favorite_ai)
-              setInitialData(res.data?.favorite_ai)
+               queryParams = res.data.map((item:any) => {
+                return item['ai_id']
+              }).toString()
+              
+              getSeveralAIs(queryParams)
+
+              .then((res) => {
+                setAIData(res.data)
+                setInitialData(res.data)
+                console.log(FavoriteAIData)
+              })
+              .catch((e) => {
+                console.log(e.response?.status)
+              })
+              
               setTimeout(() => setLoading(false), 1000)
            })
            .catch((e) => {
@@ -86,12 +101,14 @@ const FavoritesPage = () => {
                     console.log(err.response?.data.message)
                 };
             })  
+            
     }
     fetchData();
   
     },[user]);
    
     useEffect(() => {
+        console.log('bimbimbambam')
         const isFiltered = activeIndex!=-1
         if (filterText == 'По популярности' && isFiltered) {
                 const SortedArray = FavoriteAIData.slice()
@@ -102,7 +119,7 @@ const FavoritesPage = () => {
             setAIData(initialData)
         }
         
-    }, [activeIndex, FavoriteAIData])
+    }, [activeIndex, searchParams])
    
     if (isLoading) {
         return <Loader/>
