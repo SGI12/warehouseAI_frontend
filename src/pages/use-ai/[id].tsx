@@ -23,10 +23,12 @@ const UseAiPage = () => {
     const {id}:any = useParams()
     const ref = useRef<HTMLHeadingElement>(null);
     interface IAIProps {
+        background: string,
         name: string,
         description: string,
     }
     const [AIData, setAIData] = useState<IAIProps>({
+        background: '',
         name: '',
         description: '',
     })
@@ -88,6 +90,7 @@ const UseAiPage = () => {
         .then((AIres) => {
         setAIData({
             ...AIData,
+            background: AIres.data.background_url,
             name: AIres.data.name,
             description: AIres.data.description,
         })
@@ -111,7 +114,7 @@ const UseAiPage = () => {
         }
         `}</style>
         <UseAiPageMainContainer>
-            <UseAiPageBg background="/use-ai-bg.jpg"/>
+            <UseAiPageBg background={AIData.background}/>
             <Header/>
             <BackLinkWhite/>
             <H1WithPadding color="#ffffff">{AIData.name}</H1WithPadding>

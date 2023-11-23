@@ -18,17 +18,19 @@ export const getUserFavoriteAI = async() => {
 
 export const addAIToFavorites = async (id) => {
     const data = {
-        id: id
+        "ai_id": "0487b43e-b7cf-4a13-996e-315d2debf105"
     }
     const response = await $USER.patch('/favorites/add', data)
     return response
 }
 
 export const removeAIFromFavorites = async (id) => {
-    const data = {
-        id: id
-    }
-    const response = await $USER.patch('/favorites/remove', data)
+    
+    const response = await $USER.delete('/favorites/delete', {
+        data: {
+            "ai_id": id
+        }
+    })
     return response
 }
 

@@ -31,6 +31,7 @@ const AiDescriptionPage = () => {
         description: string,
         used: number,
         developerId: string,
+        isFavorite: boolean,
     }
 
     interface IDeveloperProps {
@@ -45,6 +46,7 @@ const AiDescriptionPage = () => {
         description: '',
         used: 0,
         developerId: '',
+        isFavorite: false,
     })
 
     const [developerData, setDevData] = useState<IDeveloperProps>({
@@ -79,6 +81,7 @@ const AiDescriptionPage = () => {
                         name: AIres.data.name,
                         description: AIres.data.description,
                         used: AIres.data.used,
+                        isFavorite: AIres.data.is_favorite
                     })
                     getUserById(AIres.data.owner)
                     .then((devRes) => {

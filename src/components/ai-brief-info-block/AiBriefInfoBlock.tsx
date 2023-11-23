@@ -17,10 +17,11 @@ const AiBriefInfo = ({AIData}:any) => {
         for (let i = 0; i < 5; i++) {
             starArray.push(<Image src={'/star-rate.svg'} alt="star" width={16} height={16}/>)
         }
-    const [activeIcon, setActiveIcon] = useState(false)
+    const [activeIcon, setActiveIcon] = useState(AIData.isFavorite)
     const [reqText, setReqText] = useState('')
-   
+        
     const iconClickHandler = () => {
+
         if (!activeIcon) {
             addAIToFavorites(id)
             .then((res) =>{
@@ -41,15 +42,16 @@ const AiBriefInfo = ({AIData}:any) => {
                 setReqText('Нейросеть удалена из избранного')
             })
             .catch((err) => {
-                console.log(err.response.status)
+                console.log(err.response?.status)
             })
         }
         
     }
+    
     return(
         <AiBriefInfoContainer>
             <SuccessText >{reqText}</SuccessText>
-            <AiDescriptionH1>{AIData.name}<span onClick={iconClickHandler}><FavoriteIcon isOpen={activeIcon}/> </span></AiDescriptionH1>
+            <AiDescriptionH1>{AIData.name}<span onClick={iconClickHandler}><FavoriteIcon isActive={activeIcon}/> </span></AiDescriptionH1>
             <StarsContainer>
             {starArray}
             </StarsContainer>

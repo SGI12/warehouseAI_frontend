@@ -2,7 +2,7 @@ import { $AI } from "."
 
 export const getAIById = async (id) => {
     
-    const response = await $AI.get(`/get/`, {
+    const response = await $AI.get(`/get`, {
         params: {
             'id' : id
         }
