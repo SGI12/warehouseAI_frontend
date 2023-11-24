@@ -15,7 +15,7 @@ import { useUserContext } from "@/context/context";
 import { check, logOut } from "@/http/AuthAPI";
 import { getUserById, updateUserData } from "@/http/UserApi";
 import { useValidation } from "@/validation/validation";
-import { getCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -127,8 +127,11 @@ const UserProfile = () => {
         const getUserData =  () => {
             let pictureUrl = '/mock-avatar.jpg'
             const userId = getCookie('userId')
-            
+                
                 getUserById(userId).then(res => {
+                if (res.data.id != userId) {
+                    router.push('/')
+                }
                 console.log(res)
                 if (res.data.picture != '') {
                     pictureUrl = res.data.picture
@@ -257,7 +260,7 @@ const UserProfile = () => {
                     <ProfileDefaultButtonsContainer>
                     <ShadowButton onClick={() => {
                         setActiveDevModal(true)
-                    }}>Стать разработчиком</ShadowButton>
+                    }}>Подключить нейронку</ShadowButton>
                     <ShadowButton onClick={() => {
                         setEmailModalActive(true)
                     }}>Сменить E-mail</ShadowButton>

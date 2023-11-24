@@ -31,7 +31,7 @@ const NavBar = ({activeModal}:any) => {
                 <NavBarLink className={`${pathname === '/ai_create' ? 'active-bar' : ''}`} color='#ffffff'>Добавить свою нейросеть</NavBarLink>
             </LinkNoStyles> */}
              
-            <NavBarLink onClick={() => setActive(true)} className={`${(active || activeModal.activeModal) ? 'active-bar' : ''} `} color='#ffffff'>Стать разработчиком</NavBarLink>
+            <NavBarLink onClick={() => setActive(true)} className={`${(active || activeModal.activeModal) ? 'active-bar' : ''} `} color='#ffffff'>Подключить нейронку</NavBarLink>
             
         </NavBarContainer>
         </>
