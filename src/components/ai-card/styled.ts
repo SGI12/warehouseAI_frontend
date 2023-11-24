@@ -4,6 +4,7 @@ import styled from "styled-components"
 
 export const AiBriefCard = styled.div`
 
+overflow-x: hidden;
 display: flex;
 flex-direction: column;
 justify-content: center;

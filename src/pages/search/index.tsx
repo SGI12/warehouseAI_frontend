@@ -24,6 +24,7 @@ const Searchpage = () => {
     const [initialData, setInitialData] = useState<Array<any>>([])
     const filterValues:Array<string> = ['По популярности',]
     const [isFilterOpen, setFilterOpen] = useState(false)
+    const [error, setError] = useState('Ничего не найдено')
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
     const filterHandler = (e:React.MouseEvent<HTMLButtonElement>) => {
@@ -32,18 +33,22 @@ const Searchpage = () => {
     }
     useEffect(() => {
         const fetchData = () => {
-            
+            setActiveIndex(-1)
             const field = searchPageParams?.get('field')
             const value = searchPageParams?.get('value')
             const getAIData = () => {
                 searchAI(field, value)
                .then((res) => {
-                    
+                    setError('Ничего не найдено')
                     setSearchResults(res.data)
                     setInitialData(res.data)
-                    console.log(res.data)
+                    
                })
                .catch((e) => {
+                    if (e.response?.status === 400) {
+                        setError('В строке поиска должно быть минимум 3 символа.')
+                    }
+                    
                    console.log(e.response?.status)
                })
            }
@@ -114,7 +119,7 @@ const Searchpage = () => {
                     
                 </FilterContainer>
             </SearchAndFilterContainer>
-            {(searchResults.length==0) && <H2Styled color="#ffffff">Ничего не найдено.</H2Styled>}
+            {(searchResults.length==0) && <H2Styled color="#ffffff">{error}</H2Styled>}
             <AIGridContainer>
            <AICardsGrid>  
                 {searchResults.map((props, index) => <AiCard key={index} props={...props}/>)}
