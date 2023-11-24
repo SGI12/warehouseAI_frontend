@@ -1,4 +1,4 @@
-import BackLink from "../back-link/BackLinkWhite"
+
 import { AiBriefInfoContainer, ButtonAndStatsContainer, StarsContainer } from "../containers/containers"
 import { AiDescriptionH1 } from "../headers-text/HeaderText"
 import { ReactElement } from "react"
@@ -11,6 +11,7 @@ import FavoriteIcon from "../icons/FavoriteIcon"
 import {useState} from 'react'
 import { addAIToFavorites, removeAIFromFavorites } from "@/http/UserApi"
 import { SuccessText } from "../paragraphs/Paragraphs"
+import { Rating } from "@mui/material/";
 const AiBriefInfo = ({AIData}:any) => {
     const {id}:any = useParams()
     const starArray:Array<ReactElement> = [];
@@ -53,7 +54,7 @@ const AiBriefInfo = ({AIData}:any) => {
             <SuccessText >{reqText}</SuccessText>
             <AiDescriptionH1>{AIData.name}<span onClick={iconClickHandler}><FavoriteIcon isActive={activeIcon}/> </span></AiDescriptionH1>
             <StarsContainer>
-            {starArray}
+            <Rating defaultValue={5} readOnly/>
             </StarsContainer>
             <ButtonAndStatsContainer>
                 <LinkNoStyles href={`/use-ai/${id}`}>

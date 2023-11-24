@@ -131,6 +131,7 @@ const UseAiPage = () => {
                     setRating(newValue);
                     }} 
                 size="large" 
+                precision={0.5}
                 value={rating}/>
             </StarsContainer>
             

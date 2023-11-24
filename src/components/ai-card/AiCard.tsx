@@ -9,7 +9,7 @@ import { LinkNoStyles } from "../links/link"
 import { removeAIFromFavorites } from "@/http/UserApi"
 import {useState} from 'react'
 import { usePathname } from "next/navigation"
-
+import { Rating } from "@mui/material/";
 
 export interface AiCardProps {
     id?: string,
@@ -21,9 +21,10 @@ export interface AiCardProps {
 }
 const AiCard = ({props}:any)  => {
     const AICardProps = {...props}
+    const [rating, setRating] = useState(5)
     const [isRemoved, setRemoved] = useState(false)
     const name = "ChatGPT"
-    const id = '069c6d96-4ccd-4f65-a48b-5d51d39a9cd1'
+    const id = '0487b43e-b7cf-4a13-996e-315d2debf105'
     //Временная залупа 
     // const tags:Array<string> = ['code', 'php', 'apiplatform'];
     const pathname = usePathname()
@@ -51,7 +52,7 @@ const AiCard = ({props}:any)  => {
             <Image src={props?.background_url || '/ai-card-img.jpg'} style={{borderRadius: "16px"}} alt="ai_card_image" width={353} height={200}/>
             <AiCardHeader>{AICardProps.name || name}</AiCardHeader>
             <StarsContainer>
-               {starArray}
+               <Rating readOnly defaultValue={rate}/>
             </StarsContainer>
             <TagsContainer>
                 {/* {tags.map((value:string, index:number) =>  <TextDefaultStyled key={index}>{`#`+ value}</TextDefaultStyled>)} */}
