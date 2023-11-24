@@ -11,7 +11,7 @@ import { useUserContext } from '@/context/context';
 import { searchAI } from '@/http/AIAPI';
 import { check, checkCookies } from '@/http/AuthAPI';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React from 'react';
+import React, { useMemo } from 'react';
 import {useState, useEffect} from 'react'
 
 const Searchpage = () => {
@@ -31,6 +31,7 @@ const Searchpage = () => {
         e.stopPropagation();
         setFilterOpen(!isFilterOpen)
     }
+   
     useEffect(() => {
         const fetchData = () => {
             setActiveIndex(-1)

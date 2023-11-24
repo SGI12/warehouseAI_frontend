@@ -53,6 +53,7 @@ margin-bottom: 10px;
 export const AiCardHeader = styled(TextDefaultStyled).attrs({
     className: andika.className
 })`
+overflow: hidden;
 padding-top: 20px;
 color: var(--text-dark, #242424);
 font-size: 30px;
