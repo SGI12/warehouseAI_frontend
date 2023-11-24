@@ -18,6 +18,7 @@ import { useRouter } from "next/router";
 import { useEffect, useState, useRef } from "react";
 import Footer from "@/components/footer/footer";
 import { LoadingRing } from "@/components/loading-ring/LoadingRing";
+import { Rating } from "@mui/material/";
 
 const UseAiPage = () => {
     const {id}:any = useParams()
@@ -36,6 +37,7 @@ const UseAiPage = () => {
     for (let i = 0; i < 5; i++) {
         starArray.push(<Image key={i} src={'/star-rate.svg'} alt="star" width={32} height={32}/>)
     }
+    const [rating, setRating] = useState<number | null>(2);
     const [reqText, setText] = useState('')
     const router = useRouter()
     const [isLoading, setLoading] = useState(true);
@@ -124,7 +126,12 @@ const UseAiPage = () => {
                 <AIDescTag><TextLargeStyled color="#ffffff"> #apiplaform</TextLargeStyled></AIDescTag>
             </UseAiTagsHorizontalContainer> */}
             <StarsContainer>
-                {starArray}
+                <Rating 
+                onChange={(e, newValue) => {
+                    setRating(newValue);
+                    }} 
+                size="large" 
+                value={rating}/>
             </StarsContainer>
             
             <UseAiRequestContainer>
