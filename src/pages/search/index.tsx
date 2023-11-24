@@ -5,7 +5,7 @@ import { AICardsGrid, AIGridContainer, FilterContainer, FilterMenuContainer, Sea
 import { FilterElement } from '@/components/filter-menu/FilterElement';
 import Footer from '@/components/footer/footer';
 import Header from '@/components/header/header';
-import { H1WithPadding } from '@/components/headers-text/HeaderText';
+import { H1WithPadding, H2Styled } from '@/components/headers-text/HeaderText';
 import FilterIcon from '@/components/icons/FilterIcon';
 import { useUserContext } from '@/context/context';
 import { searchAI } from '@/http/AIAPI';
@@ -32,6 +32,7 @@ const Searchpage = () => {
     }
     useEffect(() => {
         const fetchData = () => {
+            
             const field = searchPageParams?.get('field')
             const value = searchPageParams?.get('value')
             const getAIData = () => {
@@ -113,7 +114,7 @@ const Searchpage = () => {
                     
                 </FilterContainer>
             </SearchAndFilterContainer>
-           
+            {(searchResults.length==0) && <H2Styled color="#ffffff">Ничего не найдено.</H2Styled>}
             <AIGridContainer>
            <AICardsGrid>  
                 {searchResults.map((props, index) => <AiCard key={index} props={...props}/>)}
