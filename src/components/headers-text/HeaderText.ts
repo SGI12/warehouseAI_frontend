@@ -85,7 +85,7 @@ color: #ffffff;
 
 export const H1WithPadding = styled(H1Styled)`
 
-z-index: 1;
+z-index: 0;
 padding-top: 100px;
 
 `

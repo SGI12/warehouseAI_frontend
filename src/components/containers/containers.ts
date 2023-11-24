@@ -361,12 +361,16 @@ align-items: center;
 
 `
 
+export const SearchPageMainContainer = styled(FavoritesPageMainContainer)``
+
 export const SearchAndFilterContainer = styled.div`
 
 width: 100%;
 display: flex;
 justify-content: space-between;
 padding: 80px;
+
+
 `
 
 export const FilterMenuContainer = styled.div`
@@ -392,11 +396,12 @@ display: none;
 
 export const FilterContainer = styled.div`
 
+margin-left: auto;
 display: flex;
 flex-direction: column;
 `
 
-export const FavoritesAiGrid = styled.div`
+export const AICardsGrid = styled.div`
 
 
 
@@ -407,7 +412,7 @@ column-gap: 20px;
 
 `
 
-export const FavoritesAIContainer = styled.div`
+export const AIGridContainer = styled.div`
 
 padding: 0px 80px;
 width: 100vw;

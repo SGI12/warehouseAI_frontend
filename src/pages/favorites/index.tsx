@@ -1,7 +1,7 @@
 import Loader from "@/components/Loader/Loader";
 import AiCard from "@/components/ai-card/AiCard";
 import { FilterButton } from "@/components/buttons/button";
-import { FavoritesAIContainer, FavoritesAiGrid, FavoritesPageMainContainer, FilterContainer, FilterMenuContainer, SearchAndFilterContainer } from "@/components/containers/containers"
+import { AICardsGrid, AIGridContainer, FavoritesPageMainContainer, FilterContainer, FilterMenuContainer, SearchAndFilterContainer } from "@/components/containers/containers"
 import { FilterElement } from "@/components/filter-menu/FilterElement";
 import Footer from "@/components/footer/footer";
 
@@ -142,18 +142,18 @@ const FavoritesPage = () => {
                              {filterValues.map((value,index) => <FilterElement onClick={() => {
                                 activeIndex === index ? setActiveIndex(-1) : setActiveIndex(index)
                                 setFilterText(value)
-
+                                setFilterOpen(false)
                             }} id={value} className={activeIndex==index ? 'active' : ''} key={index}>{value}</FilterElement>)}
                         </FilterMenuContainer>
                     
                 </FilterContainer>
             </SearchAndFilterContainer>
             {(FavoriteAIData.length==0 || isSearchEmpty) && <H2Styled color="#ffffff">Ничего не найдено.</H2Styled>}
-            <FavoritesAIContainer>
-            {!isSearchEmpty && <FavoritesAiGrid>  
+            <AIGridContainer>
+            {!isSearchEmpty && <AICardsGrid>  
                 {FavoriteAIData.map((props, index) => <AiCard key={index} props={...props}/>)}
-            </FavoritesAiGrid>}
-            </FavoritesAIContainer>
+            </AICardsGrid>}
+            </AIGridContainer>
             <Footer/>
         </FavoritesPageMainContainer>
     )

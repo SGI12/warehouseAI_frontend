@@ -17,6 +17,7 @@ import AiSlider from "@/components/ai-slider/AiSlider";
 import { useUserContext } from "@/context/context";
 import { check, checkCookies } from "@/http/AuthAPI";
 import Loader from "@/components/Loader/Loader";
+import { useRouter } from "next/navigation";
 
 
 
@@ -25,7 +26,18 @@ import Loader from "@/components/Loader/Loader";
 
 
 const HomePage = ()  => {
-    console.log(checkCookies())
+    const router = useRouter()
+    const [searchValue, setSearchValue] = useState('')
+    const searchByNameHandler = (e:any) => {
+        if (e.key === 'Enter') {
+            router.push(`/search?field=description&value=${searchValue}`)
+        }
+    }
+
+    const searchAIClickHandler = () => {
+        router.push(`/search?field=description&value=${searchValue}`)
+    }
+    checkCookies()
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
     const checkSession = async () => {
@@ -66,8 +78,8 @@ const HomePage = ()  => {
             <HeadersMainPageContainer>
                 <SubHeaderPink>Всего лишь в два клика</SubHeaderPink>
                 <H1MainPage color="#ffffff">Оживите свои идеи с помощью нейросетей</H1MainPage>
-                <TaskSolveInput placeholder="Какую задачу хотите решить?"/>
-                <GetNeuralButton>
+                <TaskSolveInput onChange={(e:any) => setSearchValue(e.target.value)} onKeyDown={searchByNameHandler} placeholder="Какую задачу хотите решить?"/>
+                <GetNeuralButton onClick={searchAIClickHandler}>
                     Подобрать нейросеть
                     <Arrow/>
                 </GetNeuralButton>

@@ -8,12 +8,20 @@ import { HeaderContainer, LogoSmall, SearchAndButtonContainer } from "./styled";
 
 import Image from "next/image";
 import { observer } from "mobx-react-lite";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 
 const Header = observer((activeModal: any) => {
-    
+    const router = useRouter()
+    const [searchValue, setSearchValue] = useState('')
+    const searchByNameHandler = (e:any) => {
+        if (e.key === 'Enter') {
+            router.push(`/search?field=name&value=${searchValue}`)
+        }
+    }
     const {user} = useUserContext()
-    
+    console.log(searchValue)
     return (
         <HeaderContainer>
             <LogoSmall>
@@ -21,7 +29,7 @@ const Header = observer((activeModal: any) => {
             </LogoSmall>
             <NavBar activeModal={activeModal}/>
             <SearchAndButtonContainer>
-            <SearchField/>
+            <SearchField onChange={(e:any) => setSearchValue(e.target.value)} onKeyDown={searchByNameHandler}/>
             {!user.isAuth &&
             <LinkNoStyles href={'/authpage'}>
                 <AuthButtonHomePage> Войти </AuthButtonHomePage>

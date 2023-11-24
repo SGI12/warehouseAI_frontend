@@ -38,3 +38,13 @@ export const sendAIRequest = async (id, value) => {
     })
     return response
 }
+
+export const searchAI = async (field, value) => {
+    const response = await $AI.get('/search', {
+        params: {
+            'field': field,
+            'value': value,
+        }
+    })
+    return response
+}
