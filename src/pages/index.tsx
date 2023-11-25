@@ -64,7 +64,7 @@ const HomePage = ()  => {
         <HomePageMainContainer>
             <Header/>
             <DragonBluredBlock>
-            <DragonImg src={'/dragon-img.png'} alt="dragonimg" width={880}  loading="lazy" height={650} blurDataURL="data:..." placeholder="blur"/>
+            <DragonImg src={'/dragon-img.png'} alt="dragonimg" width={880}  height={650} blurDataURL="data:..." placeholder="blur"/>
             <BriefCardMainPage>
                 <ListWithStars>
                     <li>Быстрый поиск инструмента под нужную задачу</li>

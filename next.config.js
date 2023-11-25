@@ -9,6 +9,10 @@ const nextConfig = {
     images: {
         domains: ['s3.warehousai.com'],
     },
+    i18n: {
+        locales: ["ru"],
+        defaultLocale: "ru",
+      },
     
 }
 

@@ -25,6 +25,7 @@ export default function App({ Component, pageProps }:AppProps) {
     <React.Fragment>
       <Head>
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        
         <title>Warehouse AI</title>
       </Head>
       <AuthContextProvider>
