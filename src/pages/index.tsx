@@ -64,7 +64,7 @@ const HomePage = ()  => {
         <HomePageMainContainer>
             <Header/>
             <DragonBluredBlock>
-            <DragonImg src={'/dragon-img.png'} alt="dragonimg" width={880}  loading="lazy" height={650} blurDataURL={`/_next/image?url=/dragon-img.png&w=16&q=1`} placeholder="blur"/>
+            <DragonImg src={'/dragon-img.png'} alt="dragonimg" width={880}  loading="lazy" height={650} blurDataURL="data:..." placeholder="blur"/>
             <BriefCardMainPage>
                 <ListWithStars>
                     <li>Быстрый поиск инструмента под нужную задачу</li>
@@ -72,7 +72,7 @@ const HomePage = ()  => {
                     <li>Удобный интерфейс для любого пользователя</li>
                 </ListWithStars>
             </BriefCardMainPage>
-            <BlurDragonImg src={'/dragon-blur-circle.png'} alt="bluredCircle" loading="lazy" width={820} height={340}/>
+            <BlurDragonImg src={'/dragon-blur-circle.png'} alt="bluredCircle" blurDataURL="data:..." placeholder="blur" loading="lazy" width={820} height={340}/>
             </DragonBluredBlock>
             
             <HeadersMainPageContainer>
@@ -86,13 +86,13 @@ const HomePage = ()  => {
                 
             </HeadersMainPageContainer> 
             <TopAIHeader color="#ffffff"> 
-            <BluredOrangeCircleMainPageLeft src={'/wave.jpg'} alt="waveCircle" width={544} height={506} loading="lazy"/>
+            <BluredOrangeCircleMainPageLeft src={'/wave.jpg'} blurDataURL="data:..." placeholder="blur" alt="waveCircle" width={544} height={506} loading="lazy"/>
                 Топ нейронок этой недели
             </TopAIHeader>
             <AiSlider/>
 
             <TopAIHeader color="#ffffff">
-            <BluredOrangeCircleMainPageRight src={'/top-ai-main-page-right.jpg'} alt="rightCircle" width={401} height={354} loading="lazy"/>
+            <BluredOrangeCircleMainPageRight src={'/top-ai-main-page-right.jpg'} blurDataURL="data:..." placeholder="blur" alt="rightCircle" width={401} height={354} loading="lazy"/>
                 Топ нейронок этого месяца
             </TopAIHeader>
             <AiSlider/>
