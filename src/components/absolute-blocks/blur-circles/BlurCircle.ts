@@ -7,7 +7,6 @@ export const BlurDragonImg = styled(Image)`
 position: absolute;
 z-index: 1;
 right: 150px;
-
 border-radius: 2px;
 filter: blur(153px);
 
@@ -35,9 +34,7 @@ position: absolute;
 top: 1900px;
 right: 0;
 z-index: 0;
-
 border-radius: 2px;
-
 border-radius: 504px;
 transform: rotate(-39.577deg);
 
