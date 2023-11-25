@@ -37,7 +37,8 @@ const RegistrationCard = () => {
         lastname:string,
         password:string,
         picture?:File | string,
-        email:string
+        email:string,
+        pictureSize: number,
     }
     const [isRegister, setIsRegister] = useState(false)
     const [registerAnimation, setRegAnimation] = useState('none')
@@ -47,6 +48,7 @@ const RegistrationCard = () => {
         lastname: '',
         password: '',
         picture: '',
+        pictureSize: 0,
         email: '',
 
     })
@@ -89,6 +91,8 @@ const RegistrationCard = () => {
     const newPasswordHandle = (e: any) => {
         setNewPassword(e.target.value)
     }
+    
+   
 
     const inputFile = useRef<HTMLInputElement | null>(null);
 
@@ -98,14 +102,15 @@ const RegistrationCard = () => {
     const emailValid  = useValidation(userData.email, {isEmailInvalid: true})
     const passwordValid = useValidation(userData.password, {isPasswordInvalid: true})
     const passRepeatValid = usePassRepeatCheck(userData.password, newPassword)
-
+    const pictureSizeValid = useValidation(userData.pictureSize, {isPictureSizeInvalid: true})
     const [isFormValid, setFormValid] = useState(false)
     useEffect(() => {
         if (!(usernameValid.isUserNameEmpty || 
             firstnameValid.isFirstnameEmpty || 
             lastnameValid.isLastnameEmpty || 
             emailValid.isEmailInvalid || 
-            passwordValid.isPasswordInvalid ||
+            passwordValid.isPasswordInvalid || 
+            pictureSizeValid.isPictureSizeInvalid ||
             !passRepeatValid.isChecked))
             setFormValid(true)
         else setFormValid(false)
@@ -115,7 +120,8 @@ const RegistrationCard = () => {
         lastnameValid.isLastnameEmpty, 
         emailValid.isEmailInvalid, 
         passwordValid.isPasswordInvalid,
-        passRepeatValid.isChecked])
+        passRepeatValid.isChecked, 
+        pictureSizeValid.isPictureSizeInvalid])
 
     const ClickLoadhandler = () => {
         if (inputFile.current?.files) {
@@ -123,7 +129,7 @@ const RegistrationCard = () => {
         }
         
     }
-    console.log(userData.picture)
+    console.log(userData.pictureSize)
     return (
         <RegistrationCardStyled>
             <H2StyledRegister>Регистрация</H2StyledRegister>
@@ -207,14 +213,17 @@ const RegistrationCard = () => {
                 <LinkStyled onClick={ClickLoadhandler}><LoadFileInput 
                 onChange={(e:any) => 
                     {
+                    
                     setPictureName(e.target.files[0]?.name || 'Загрузить аватарку');
                     setUserData({
                         ...userData,
-                        picture: e.target.files[0]
+                        picture: e.target.files[0],
+                        pictureSize: e.target.files[0]?.size,
                     })
                 }} 
                 ref={inputFile} 
                 type="file"></LoadFileInput>{pictureName}</LinkStyled>
+                {pictureSizeValid.isPictureSizeInvalid && <InputErrorText className={pictureSizeValid.animation}>{pictureSizeValid.errors.pictureSizeError}</InputErrorText>}
 
                 
                 <ButtonStyled disabled={!isFormValid} type="submit">Зарегистрироваться</ButtonStyled>

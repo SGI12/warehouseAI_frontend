@@ -1,8 +1,8 @@
-import { error } from "console"
+
 import { useEffect, useState } from "react"
 
 
-export const useValidation = (value:string, validations:object) => {
+export const useValidation = (value:string | number, validations:object) => {
     const [isUserNameEmpty, setUserNameEmpty] = useState(true)
     const [isFirstnameEmpty, setFirstnameEmpty] = useState(true)
     const [isLastnameEmpty, setLastnameEmpty] = useState(true)
@@ -10,6 +10,7 @@ export const useValidation = (value:string, validations:object) => {
     const [animation, setAnimation] = useState('none')
     const [isPasswordInvalid, setPasswordInvalid] = useState(true)
     const [isFieldsEmpty, setFieldsEmpty] = useState(true)
+    const [isPictureSizeInvalid, setPictureSizeInvalid] = useState(false)
     const [errors, setErrors] = useState({
         usernameError: '',
         firstnameError: '',
@@ -18,6 +19,7 @@ export const useValidation = (value:string, validations:object) => {
         emailEmptyError: '',
         passwordInvalidError: '',
         fieldEmptyError: '',
+        pictureSizeError: '',
 
     })
     useEffect(() => {
@@ -78,8 +80,14 @@ export const useValidation = (value:string, validations:object) => {
                     setErrors({...errors, fieldEmptyError: 'Поля не могут быть пустыми'})
                     setAnimation('animated')
                     setTimeout(() => setAnimation('none'), 500)
+                    break;
 
-
+                case 'isPictureSizeInvalid':
+                    (Number(value) < 3000000) ? setPictureSizeInvalid(false) : setPictureSizeInvalid(true)
+                    setErrors({...errors, pictureSizeError: 'Размер файла должен быть меньше 3 MB'})
+                    setAnimation('animated')
+                    setTimeout(() => setAnimation('none'), 500)
+                    break;
             }
         }
     }, [value])
@@ -91,7 +99,8 @@ export const useValidation = (value:string, validations:object) => {
         isPasswordInvalid,
         errors,
         animation,
-        isFieldsEmpty
+        isFieldsEmpty,
+        isPictureSizeInvalid
     }
 }
 
