@@ -26,10 +26,10 @@ const AiSlider = () => {
       };
     return(
         <AiSliderContainer ref={scrollRef} >
-            <RightScrollBlock  onMouseEnter={() => { setMove(true); moveRight();}}   onMouseLeave={() => setMove(false)}>
+            <RightScrollBlock onMouseUp={() => setMove(false)} onMouseDown={() => { setMove(true); moveRight();}} onMouseEnter={() => { setMove(true); moveRight();}}   onMouseLeave={() => setMove(false)}>
               <IconSliderArrow props={{transform: 'rotate(180deg)',}}/>
             </RightScrollBlock>
-            <LeftScrollBlock onMouseEnter={() => { setMove(true); moveLeft();}}   onMouseLeave={() => setMove(false)}>
+            <LeftScrollBlock onMouseUp={() => setMove(false)} onMouseDown={() => { setMove(true); moveLeft();}}  onMouseEnter={() => { setMove(true); moveLeft();}}   onMouseLeave={() => setMove(false)}>
               <IconSliderArrow/>
             </LeftScrollBlock>
             <AiCard/> <AiCard/><AiCard/><AiCard/><AiCard/><AiCard/>
