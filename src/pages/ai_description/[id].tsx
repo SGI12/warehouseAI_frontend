@@ -4,7 +4,7 @@ import AiBriefInfo from "@/components/ai-brief-info-block/AiBriefInfoBlock";
 import AiDeveloperBlock from "@/components/ai-description-developer-info/AiDeveloperInfoBlock";
 import BackLinkWhite from "@/components/back-link/BackLinkWhite";
 
-import { AIDescTag, AITagsContainer, AiBriefInfoContainer, AiDescriptionContainer, AiInfo, AiInfoAndDeveloperContaner, UseAiContainer } from "@/components/containers/containers";
+import { AiDescriptionContainer, AiInfo, AiInfoAndDeveloperContaner, UseAiContainer } from "@/components/containers/containers";
 import Footer from "@/components/footer/footer";
 import Header from "@/components/header/header"
 import { H2Styled } from "@/components/headers-text/HeaderText";
@@ -53,7 +53,7 @@ const AiDescriptionPage = () => {
         name: '',
         picture: ''
     })
- 
+
     useEffect(() => {
         const fetchData = () => {
                 check().then(() => {

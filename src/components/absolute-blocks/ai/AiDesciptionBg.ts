@@ -1,5 +1,6 @@
 'use client'
 
+import Image from "next/image"
 import styled from "styled-components"
 
 interface IBgProps {
@@ -12,6 +13,7 @@ z-index: 0;
 width: 100vw;
 height: 100%;
 max-height: 80vh;
+
 background: ${props => `linear-gradient(0deg, #242424 15.54%, rgba(36, 36, 36, 0.00) 100%), url(${props.background}) `};
 background-repeat: no-repeat;
 background-size: 100%;
@@ -25,6 +27,20 @@ height: 637px;
 background-size: 100%;
 z-index: 0;
 
+
+
+`
+
+export const AiDescriptionBgImage = styled(Image)`
+
+position: absolute;
+z-index: 0;
+width: 100vw;
+height: 100%;
+max-height: 80vh;
+background: linear-gradient(0deg, #242424 15.54%, rgba(36, 36, 36, 0.00) 100%);
+background-repeat: no-repeat;
+background-size: 100%;
 
 
 `

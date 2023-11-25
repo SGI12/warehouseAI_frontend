@@ -1,7 +1,7 @@
 
 import { AiBriefInfoContainer, ButtonAndStatsContainer, StarsContainer } from "../containers/containers"
 import { AiDescriptionH1 } from "../headers-text/HeaderText"
-import { ReactElement } from "react"
+import { ReactElement, useEffect } from "react"
 import Image from "next/image"
 import {  ShadowButton } from "../buttons/button"
 import { UserCountList } from "../lists/styled"
@@ -48,7 +48,12 @@ const AiBriefInfo = ({AIData}:any) => {
         }
         
     }
-    
+    const [ending, setEnding] = useState('')
+    useEffect (() => {
+        if (AIData.used%10 == 1) setEnding('запрос')
+        else if (AIData.used%10 == 2 || AIData.used%10 == 4 || AIData.used%10 == 3) setEnding('запроса')
+        else setEnding('запросов')
+    }, [AIData.used])
     return(
         <AiBriefInfoContainer>
             <SuccessText >{reqText}</SuccessText>
@@ -60,7 +65,7 @@ const AiBriefInfo = ({AIData}:any) => {
                 <LinkNoStyles href={`/use-ai/${id}`}>
                 <ShadowButton>Воспользоваться</ShadowButton>
                 </LinkNoStyles>
-                <UserCountList>{AIData.used} запросов</UserCountList>
+                <UserCountList>{AIData.used} {ending}</UserCountList>
             </ButtonAndStatsContainer>
         </AiBriefInfoContainer>
     )
