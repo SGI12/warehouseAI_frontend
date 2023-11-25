@@ -66,7 +66,13 @@ const UseAiPage = () => {
         }
         
     }
-
+    const keyPressHandler = (e:any) => {
+        
+        if (e.key === "Enter") {
+            e.preventDefault()
+            sendRequsetHandler()
+        }
+    }
     const copyClickHandler = () => {
 
         navigator.clipboard.writeText(answer)
@@ -138,7 +144,7 @@ const UseAiPage = () => {
             <UseAiRequestContainer>
                 <AiRequestCircle/>
                 <H2Styled color="#ffffff">Введите текст запроса</H2Styled>
-                <UseAIInput text={reqText} setText={setText}/>
+                <div onKeyDown={keyPressHandler}><UseAIInput text={reqText} setText={setText}/></div>
                 {!requestLoading && <ShadowButton onClick={sendRequsetHandler}>Отправить запрос</ShadowButton>}
                 {requestLoading && <LoadingRing/>}
             </UseAiRequestContainer>
