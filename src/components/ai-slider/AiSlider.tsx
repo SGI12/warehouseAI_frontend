@@ -2,9 +2,11 @@ import { useRef } from "react";
 import AiCard from "../ai-card/AiCard";
 import { AiSliderContainer } from "../containers/containers";
 import { LeftScrollBlock, RightScrollBlock } from "../absolute-blocks/home/ScrollBlocks";
+import IconSliderArrow from "../icons/SliderArrow";
 
 
 const AiSlider = () => {
+    
     const step = 10;
     const isScrollRef = useRef();
     const scrollRef = useRef<HTMLDivElement>(null);
@@ -24,8 +26,12 @@ const AiSlider = () => {
       };
     return(
         <AiSliderContainer ref={scrollRef} >
-            <RightScrollBlock  onMouseEnter={() => { setMove(true); moveRight();}}   onMouseLeave={() => setMove(false)}/>
-            <LeftScrollBlock onMouseEnter={() => { setMove(true); moveLeft();}}   onMouseLeave={() => setMove(false)}/>
+            <RightScrollBlock  onMouseEnter={() => { setMove(true); moveRight();}}   onMouseLeave={() => setMove(false)}>
+              <IconSliderArrow props={{transform: 'rotate(180deg)',}}/>
+            </RightScrollBlock>
+            <LeftScrollBlock onMouseEnter={() => { setMove(true); moveLeft();}}   onMouseLeave={() => setMove(false)}>
+              <IconSliderArrow/>
+            </LeftScrollBlock>
             <AiCard/> <AiCard/><AiCard/><AiCard/><AiCard/><AiCard/>
            
 

@@ -32,11 +32,12 @@ padding-left: 80px;
 
 
 export const AiSliderContainer = styled.div`
-padding-top: 64px;
+margin-top: 64px;
 z-index: 0;
 display: flex;
 gap: 20px;
-width: 100%;
+width: 90%;
+border-radius: 16px;
 overflow-x: hidden;
 `
 
