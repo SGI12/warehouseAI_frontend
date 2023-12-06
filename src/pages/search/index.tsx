@@ -47,7 +47,10 @@ const Searchpage = () => {
                })
                .catch((e) => {
                     if (e.response?.status === 400) {
+                        
+                        
                         setError('В строке поиска должно быть минимум 3 символа.')
+                        setSearchResults([])
                     }
                     
                    console.log(e.response?.status)
