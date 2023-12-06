@@ -38,7 +38,7 @@ const Footer = () => {
                         <FooterLink onClick={() => {
                             setActive(true)
 
-                        }} color='#ffffff'>Стать разработчиком</FooterLink>
+                        }} color='#ffffff'>Подключить нейронку</FooterLink>
                         <AStyled href="https://t.me/gurevnind" target="_blank" rel="noopener noreferrer">
                         <FooterLink color='#ffffff'>Отдел разработки</FooterLink>
                         </AStyled>
