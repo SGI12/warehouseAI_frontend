@@ -20,7 +20,7 @@ import { useEffect, useRef, useState } from "react";
 
 const FavoritesPage = () => {
     const router = useRouter()
-    const filterValues:Array<string> = ['По популярности',]
+    const filterValues:Array<string> = ['По популярности', 'По оценкам']
     const [isFilterOpen, setFilterOpen] = useState(false)
     const [activeIndex, setActiveIndex] = useState(-1)
     const [isLoading, setLoading] = useState(true);

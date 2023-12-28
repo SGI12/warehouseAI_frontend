@@ -33,12 +33,9 @@ const AiCard = ({props}:any)  => {
     // const tags:Array<string> = ['code', 'php', 'apiplatform'];
     const pathname = usePathname()
      //Временная залупа 
-   const rate=5
+   
     console.log(AICardProps)
-    const starArray:Array<ReactElement> = [];
-        for (let i = 0; i < rate; i++) {
-            starArray.push(<Image key={i} src={'/star-rate.svg'} alt="star" width={16} height={16}/>)
-        }
+    
     const removeAIClickHandler = () => {
         removeAIFromFavorites(props.id || id).then((res) => {
             console.log(res.data)
@@ -49,17 +46,8 @@ const AiCard = ({props}:any)  => {
         })
     }
     useEffect(() => {
-        const getRating = () => {
-            getAIRating(AICardProps.id)
-            .then((res) => {
-                setRating(res.data.avg_rating)
-            })
-            .catch((err) => {
-                if (err.response?.status === 500)
-                    setRating(0)
-            })
-        }
-    getRating()
+        
+    setRating(AICardProps.rate)
     }, [AICardProps])
     if (isRemoved) return (null)
     else
@@ -69,7 +57,7 @@ const AiCard = ({props}:any)  => {
             <Image src={props?.background_url || '/ai-card-img.jpg'} style={{borderRadius: "16px"}} alt="ai_card_image" width={353} height={200}/>
             <AiCardHeader>{AICardProps.name || name}</AiCardHeader>
             <StarsContainer>
-               <Rating readOnly value={rating}/>
+               <Rating readOnly value={AICardProps.rate || 5}/>
             </StarsContainer>
             <TagsContainer>
                 {/* {tags.map((value:string, index:number) =>  <TextDefaultStyled key={index}>{`#`+ value}</TextDefaultStyled>)} */}

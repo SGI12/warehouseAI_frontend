@@ -22,7 +22,7 @@ const Searchpage = () => {
     const [FilterResults, setFilterResults] = useState<Array<any>>([])
     const [searchResults, setSearchResults] = useState<Array<any>>([])
     const [initialData, setInitialData] = useState<Array<any>>([])
-    const filterValues:Array<string> = ['По популярности',]
+    const filterValues:Array<string> = ['По популярности', 'По оценкам']
     const [isFilterOpen, setFilterOpen] = useState(false)
     const [error, setError] = useState('Ничего не найдено')
     const [isLoading, setLoading] = useState(true);
@@ -40,15 +40,32 @@ const Searchpage = () => {
             const getAIData = () => {
                 
                 searchAI(field, value)
-               
+                
                .then((res) => {
-                    
                     setError('Ничего не найдено')
-                    setSearchResults(res.data)
-                    setInitialData(res.data)
-                   
+                    res.data.forEach((element: {id: string}, index: number) => {
+                        getAIRating(element.id)
+                        .then((response) => {
+                            res.data[index].rate = response.data.avg_rating
+                        })
+                        .then(() => {
+                            setSearchResults(res.data)
+                            setInitialData(res.data)
+                        })
+                        
+                    
+                    });
+                    
                     
                })
+
+              
+
+              
+               
+               
+
+               
 
             
                .catch((e) => {
@@ -102,10 +119,17 @@ const Searchpage = () => {
         
         const isFiltered = activeIndex!=-1
         if (filterText == 'По популярности' && isFiltered) {
+                setSearchResults(initialData)
                 const SortedArray = searchResults.slice()
                 SortedArray.sort((a, b) => b.used - a.used)      
                 setSearchResults(SortedArray)
         }
+        if (filterText == 'По оценкам' && isFiltered) {
+            setSearchResults(initialData)
+            const SortedArray = searchResults.slice()
+            SortedArray.sort((a, b) => b.rate - a.rate)      
+            setSearchResults(SortedArray)
+    }
         if (!isFiltered) {
             setSearchResults(initialData)
         }
