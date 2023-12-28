@@ -25,7 +25,7 @@ const AiCard = ({props}:any)  => {
     
     const AICardProps = {...props}
 
-    const [rating, setRating] = useState(5)
+    const [rating, setRating] = useState(0)
     const [isRemoved, setRemoved] = useState(false)
     const name = "ChatGPT"
     const id = 'fc67112e-f61f-4bb9-8318-5c4c2b27ac03'
