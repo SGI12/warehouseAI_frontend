@@ -151,7 +151,7 @@ const FavoritesPage = () => {
             {(FavoriteAIData.length==0 || isSearchEmpty) && <H2Styled color="#ffffff">Ничего не найдено.</H2Styled>}
             <AIGridContainer>
             {!isSearchEmpty && <AICardsGrid>  
-                {FavoriteAIData.map((props, index) => <AiCard key={index} props={...props}/>)}
+                {FavoriteAIData.map((props, index) => <AiCard key={index} props={props}/>)}
             </AICardsGrid>}
             </AIGridContainer>
             <Footer/>

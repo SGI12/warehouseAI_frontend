@@ -8,7 +8,7 @@ import Header from '@/components/header/header';
 import { H1WithPadding, H2Styled } from '@/components/headers-text/HeaderText';
 import FilterIcon from '@/components/icons/FilterIcon';
 import { useUserContext } from '@/context/context';
-import { searchAI } from '@/http/AIAPI';
+import { getAIRating, searchAI } from '@/http/AIAPI';
 import { check, checkCookies } from '@/http/AuthAPI';
 import { useRouter, useSearchParams } from 'next/navigation';
 import React, { useMemo } from 'react';
@@ -33,18 +33,24 @@ const Searchpage = () => {
     }
    
     useEffect(() => {
-        const fetchData = () => {
+        const fetchData = async () => {
             setActiveIndex(-1)
             const field = searchPageParams?.get('field')
             const value = searchPageParams?.get('value')
             const getAIData = () => {
+                
                 searchAI(field, value)
+               
                .then((res) => {
+                    
                     setError('Ничего не найдено')
                     setSearchResults(res.data)
                     setInitialData(res.data)
+                   
                     
                })
+
+            
                .catch((e) => {
                     if (e.response?.status === 400) {
                         
@@ -55,14 +61,22 @@ const Searchpage = () => {
                     
                    console.log(e.response?.status)
                })
+
+              
            }
+
             
                 check()
                 .then(() =>{
                     user.setIsAuth(true)
                     getAIData()
                     
+                    
                 })
+                
+
+                
+                
                 .then(() => {
                     setTimeout(() => setLoading(false), 1000)
                 })
@@ -78,7 +92,10 @@ const Searchpage = () => {
                 })  
                 
         }
+
+
         fetchData();
+        
       
         },[user]);
     useEffect(() => {
@@ -94,7 +111,7 @@ const Searchpage = () => {
         }
         
     }, [activeIndex])
-   
+    
     if (isLoading) {
         return <Loader/>
     }
@@ -126,7 +143,7 @@ const Searchpage = () => {
             {(searchResults.length==0) && <H2Styled color="#ffffff">{error}</H2Styled>}
             <AIGridContainer>
            <AICardsGrid>  
-                {searchResults.map((props, index) => <AiCard key={index} props={...props}/>)}
+                {searchResults.map((props, index) => <AiCard key={index} props={props}/>)}
             </AICardsGrid>
             </AIGridContainer>
             <Footer/>

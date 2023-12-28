@@ -10,7 +10,7 @@ import Header from "@/components/header/header"
 import { H1WithPadding, H2Styled } from "@/components/headers-text/HeaderText";
 import {  SuccessText, TextLargeStyled } from "@/components/paragraphs/Paragraphs";
 import { useUserContext } from "@/context/context";
-import { getAIById, sendAIRequest } from "@/http/AIAPI";
+import { getAIById, getAIRating, sendAIRequest, setAIRating } from "@/http/AIAPI";
 import { check } from "@/http/AuthAPI";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -45,6 +45,7 @@ const UseAiPage = () => {
     const [answer, setAnwser] = useState('')
     const [requestLoading, setRequestLoading] = useState(false)
     const [copied, setCopied] = useState(false)
+    const [isReadable, setReadable] = useState(false)
     const [animatedText, setAnimated] = useState(false)
     const sendRequsetHandler = () => {
         if (reqText != '' && reqText != 'Запрос не может быть пустым.') {
@@ -80,12 +81,19 @@ const UseAiPage = () => {
         setCopied(true)
         setTimeout(() => setAnimated(false), 500)
     }
+
+    
+    
     const fetchData =  () => {
         
-            check().then(() => { 
+            check()
+            .then(() => { 
                 getAIData()
-                user.setIsAuth(true)
+               
             })
+            .then(() => getRating())
+
+            .then(() =>  user.setIsAuth(true))
             .catch((err) => {
                 if (err.response?.status === 401 || err.response?.status === 404)
                     router.push('/')
@@ -105,6 +113,14 @@ const UseAiPage = () => {
         setTimeout(() => setLoading(false), 1000)
     })
 }
+    const getRating = () => {
+        getAIRating(id)
+        .then((res) => {
+            setRating(res.data.avg_rating)
+        })
+
+        .catch((err) => {console.log(err.response?.status)})
+    }
     useEffect(() => {
         fetchData();
         },[user]);
@@ -126,6 +142,7 @@ const UseAiPage = () => {
             <Header/>
             <BackLinkWhite/>
             <H1WithPadding color="#ffffff">{AIData.name}</H1WithPadding>
+            {isReadable && <SuccessText>Спасибо за оценку!</SuccessText>}
             {/* <UseAiTagsHorizontalContainer>
                 <AIDescTag><TextLargeStyled color="#ffffff">#code</TextLargeStyled></AIDescTag>
                 <AIDescTag><TextLargeStyled color="#ffffff"> #php</TextLargeStyled></AIDescTag>
@@ -134,11 +151,15 @@ const UseAiPage = () => {
             <StarsContainer>
                 <Rating 
                 onChange={(e, newValue) => {
+                    setAIRating(id, newValue).then((res) => console.log(res.data))
                     setRating(newValue);
+                    setReadable(true)
                     }} 
+                readOnly={isReadable}
                 size="large" 
-                precision={0.5}
+                precision={1}
                 value={rating}/>
+                
             </StarsContainer>
             
             <UseAiRequestContainer>

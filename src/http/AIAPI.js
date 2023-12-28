@@ -1,3 +1,4 @@
+import { formToJSON } from "axios"
 import { $AI } from "."
 
 export const getAIById = async (id) => {
@@ -46,5 +47,25 @@ export const searchAI = async (field, value) => {
             'value': value,
         }
     })
+    return response
+}
+
+export const getAIRating = async(ai_id) => {
+    const response = await $AI.get('/rating/get', {
+        params: {
+            'ai_id': ai_id
+        }
+    })
+
+    return response
+}
+
+export const setAIRating = async(ai_id, rate) => {
+
+    const data = {
+        "ai_id": ai_id,
+        "rate": rate
+    }
+    const response = await $AI.post('/rating/set', data)
     return response
 }

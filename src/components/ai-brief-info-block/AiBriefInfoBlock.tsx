@@ -12,12 +12,10 @@ import {useState} from 'react'
 import { addAIToFavorites, removeAIFromFavorites } from "@/http/UserApi"
 import { SuccessText } from "../paragraphs/Paragraphs"
 import { Rating } from "@mui/material/";
+import { getAIRating } from "@/http/AIAPI"
 const AiBriefInfo = ({AIData}:any) => {
     const {id}:any = useParams()
-    const starArray:Array<ReactElement> = [];
-        for (let i = 0; i < 5; i++) {
-            starArray.push(<Image src={'/star-rate.svg'} alt="star" width={16} height={16}/>)
-        }
+    const [rating, setRating] = useState(0)
     const [activeIcon, setActiveIcon] = useState(AIData.isFavorite)
     const [reqText, setReqText] = useState('')
         
@@ -53,13 +51,25 @@ const AiBriefInfo = ({AIData}:any) => {
         if (AIData.used%10 == 1) setEnding('запрос')
         else if (AIData.used%10 == 2 || AIData.used%10 == 4 || AIData.used%10 == 3) setEnding('запроса')
         else setEnding('запросов')
-    }, [AIData.used])
+    }, [AIData])
+
+    useEffect(() => {
+        
+        const getRating = () => {
+            getAIRating(AIData.id)
+            .then((res) => {
+                setRating(res.data.avg_rating)
+            })
+        }
+    getRating()
+    }, [AIData])
+    console.log(AIData)
     return(
         <AiBriefInfoContainer>
             <SuccessText >{reqText}</SuccessText>
             <AiDescriptionH1>{AIData.name}<span onClick={iconClickHandler}><FavoriteIcon isActive={activeIcon}/> </span></AiDescriptionH1>
             <StarsContainer>
-            <Rating defaultValue={5} readOnly/>
+            <Rating value={rating} readOnly/>
             </StarsContainer>
             <ButtonAndStatsContainer>
                 <LinkNoStyles href={`/use-ai/${id}`}>

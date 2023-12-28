@@ -10,7 +10,7 @@ import Header from "@/components/header/header"
 import { H2Styled } from "@/components/headers-text/HeaderText";
 import { TextDefaultStyled, TextLargeStyled } from "@/components/paragraphs/Paragraphs";
 import { useUserContext } from "@/context/context"
-import { getAIById } from "@/http/AIAPI";
+import { getAIById, getAIRating } from "@/http/AIAPI";
 import { check } from "@/http/AuthAPI";
 import { getUserById } from "@/http/UserApi";
 import { useParams } from "next/navigation";
@@ -26,10 +26,12 @@ const AiDescriptionPage = () => {
     const {id}:any = useParams()
 
     interface IAIProps {
+        id: string,
         backround: string,
         name: string,
         description: string,
         used: number,
+     
         developerId: string,
         isFavorite: boolean,
     }
@@ -41,10 +43,12 @@ const AiDescriptionPage = () => {
 
 
     const [AIData, setAIData] = useState<IAIProps>({
+        id: '',
         backround: '',
         name: '',
         description: '',
         used: 0,
+     
         developerId: '',
         isFavorite: false,
     })
@@ -72,11 +76,15 @@ const AiDescriptionPage = () => {
             }) 
         }
         const getAIData = () => {
-                    getAIById(id)
+
+                    
+                     getAIById(id)
+                    
                     .then((AIres) => {
-                          
+                    
                     setAIData({
                         ...AIData,
+                        id: AIres.data.id,
                         backround: AIres.data.background_url,
                         name: AIres.data.name,
                         description: AIres.data.description,
@@ -98,7 +106,7 @@ const AiDescriptionPage = () => {
                     setTimeout(() => setLoading(false), 1000)
      
                 }).catch((err) => {
-                    console.log(err.response.status)
+                    console.log(err.response?.status)
                 })
                                 
     

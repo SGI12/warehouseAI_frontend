@@ -18,7 +18,7 @@ export const getUserFavoriteAI = async() => {
 
 export const addAIToFavorites = async (id) => {
     const data = {
-        "ai_id": "0487b43e-b7cf-4a13-996e-315d2debf105"
+        "ai_id": id
     }
     const response = await $USER.patch('/favorites/add', data)
     return response

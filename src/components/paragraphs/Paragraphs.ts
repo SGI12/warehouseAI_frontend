@@ -126,6 +126,7 @@ export const SuccessText = styled.p.attrs({
     animation: ${horizontalShaking} 0.5s infinite;
 }
 color: green;
+z-index: 1;
 font-size: 14px;
 font-style: normal;
 font-weight: 400;

@@ -59,11 +59,14 @@ const Footer = () => {
 
             </UpBlock>
             <DownBlock>
-                <Policy  className='inactive'>
-                    Политика конфиденциальности
+                <Policy >
+                    Публичная оферта
                 </Policy>
-                <Policy className='inactive'>
+                <Policy >
                     Политика обработки персональных данных
+                </Policy>
+                <Policy >
+                    Пользовательское соглашение
                 </Policy>
             </DownBlock>
         </FooterContainer>
