@@ -11,17 +11,24 @@ import { useUserContext } from '@/context/context';
 import { getAIRating, searchAI } from '@/http/AIAPI';
 import { check, checkCookies } from '@/http/AuthAPI';
 import { useRouter, useSearchParams } from 'next/navigation';
-import React, { useMemo } from 'react';
+import React from 'react';
 import {useState, useEffect} from 'react'
 
 const Searchpage = () => {
+     interface IAICardProps {
+        
+        id: string,
+        img: string,
+        name: string,
+        rate: number,
+        used: number
+    }
     const searchPageParams = useSearchParams()
     const router = useRouter()
     const [filterText, setFilterText] = useState('')
     const [activeIndex, setActiveIndex] = useState(-1)
-    const [FilterResults, setFilterResults] = useState<Array<any>>([])
-    const [searchResults, setSearchResults] = useState<Array<any>>([])
-    const [initialData, setInitialData] = useState<Array<any>>([])
+    const [searchResults, setSearchResults] = useState<Array<IAICardProps>>([])
+    const [initialData, setInitialData] = useState<Array<IAICardProps>>([])
     const filterValues:Array<string> = ['По популярности', 'По оценкам']
     const [isFilterOpen, setFilterOpen] = useState(false)
     const [error, setError] = useState('Ничего не найдено')
@@ -31,41 +38,51 @@ const Searchpage = () => {
         e.stopPropagation();
         setFilterOpen(!isFilterOpen)
     }
-   
+    const field = searchPageParams?.get('field')
+    const value = searchPageParams?.get('value')
     useEffect(() => {
-        const fetchData = async () => {
+        const fetchData =  () => {
+            setLoading(true)
+            let ratingArray: any[] = []
             setActiveIndex(-1)
-            const field = searchPageParams?.get('field')
-            const value = searchPageParams?.get('value')
+            
             const getAIData = () => {
                 
                 searchAI(field, value)
                 
-               .then((res) => {
+               .then((AIres) => {
                     setError('Ничего не найдено')
-                    res.data.forEach((element: {id: string}, index: number) => {
+                     
+                    
+                    
+                      AIres.data.forEach((element: {id: string}, index: number) => {
+                      
                         getAIRating(element.id)
                         .then((response) => {
-                            res.data[index].rate = response.data.avg_rating
-                        })
-                        .then(() => {
-                            setSearchResults(res.data)
-                            setInitialData(res.data)
-                        })
-                        
+                            const newAI = {
+                                id: AIres.data[index].id,
+                                img: AIres.data[index].background_url,
+                                name: AIres.data[index].name,
+                                rate: response.data.avg_rating,
+                                used: AIres.data[index].used
+
+                            }
+                            setSearchResults(prev => [...prev, newAI])
+                            setInitialData(prev => [...prev, newAI])
+                            
+                            
+                            
+                           
+                        }) 
                     
                     });
-                    
+
                     
                })
-
-              
-
-              
-               
                
 
                
+
 
             
                .catch((e) => {
@@ -115,6 +132,7 @@ const Searchpage = () => {
         
       
         },[user]);
+        
     useEffect(() => {
         
         const isFiltered = activeIndex!=-1
@@ -168,6 +186,7 @@ const Searchpage = () => {
             <AIGridContainer>
            <AICardsGrid>  
                 {searchResults.map((props, index) => <AiCard key={index} props={props}/>)}
+                
             </AICardsGrid>
             </AIGridContainer>
             <Footer/>

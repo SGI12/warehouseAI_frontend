@@ -11,7 +11,7 @@ import FilterIcon from "@/components/icons/FilterIcon";
 
 import {  SearchFieldFavorites } from "@/components/search-field/styled";
 import { useUserContext } from "@/context/context";
-import { getAIById, getSeveralAIs } from "@/http/AIAPI";
+import { getAIById, getAIRating, getSeveralAIs } from "@/http/AIAPI";
 import { check } from "@/http/AuthAPI";
 import { getUserFavoriteAI } from "@/http/UserApi";
 import { useRouter } from "next/router";
@@ -19,6 +19,14 @@ import { useEffect, useRef, useState } from "react";
 
 
 const FavoritesPage = () => {
+    interface IAICardProps {
+        
+        id: string,
+        img: string,
+        name: string,
+        rate: number,
+        used: number
+    }
     const router = useRouter()
     const filterValues:Array<string> = ['По популярности', 'По оценкам']
     const [isFilterOpen, setFilterOpen] = useState(false)
@@ -27,10 +35,10 @@ const FavoritesPage = () => {
     const {user} = useUserContext()
     const [searchParams, setSearchParams] = useState('');
     const [filterText, setFilterText] = useState('')
-    const [FavoriteAIData, setAIData] = useState<Array<any>>([])
+    const [FavoriteAIData, setAIData] = useState<Array<IAICardProps>>([])
     const [isSearchEmpty, setSearchEmpty] = useState(false)
-    const [initialData, setInitialData] = useState<Array<any>>([])
-    const AIIdsArray:Array<any> = []
+    const [initialData, setInitialData] = useState<Array<IAICardProps>>([])
+   
     const filterHandler = (e:React.MouseEvent<HTMLButtonElement>) => {
         e.stopPropagation();
         setFilterOpen(!isFilterOpen)
@@ -57,6 +65,7 @@ const FavoritesPage = () => {
     }
    
     useEffect(() => {
+    let ratingArray: any[] = []
     const fetchData = () => {
         
         const getAIData = () => {
@@ -68,11 +77,31 @@ const FavoritesPage = () => {
               }).toString()
               
               getSeveralAIs(queryParams)
+              
 
-              .then((res) => {
-                setAIData(res.data)
-                setInitialData(res.data)
-                console.log(FavoriteAIData)
+              .then( (AIres) => {
+                AIres.data.forEach((element: {id: string}, index: number) => {
+                      
+                    getAIRating(element.id)
+                    .then((response) => {
+                        const newAI = {
+                            id: AIres.data[index].id,
+                            img: AIres.data[index].background_url,
+                            name: AIres.data[index].name,
+                            rate: response.data.avg_rating,
+                            used: AIres.data[index].used
+
+                        }
+                        setAIData(prev => [...prev, newAI])
+                        setInitialData(prev => [...prev, newAI])
+                        
+                        
+                        
+                       
+                    }) 
+                
+                });
+               
               })
               .catch((e) => {
                 console.log(e.response?.status)
@@ -108,6 +137,7 @@ const FavoritesPage = () => {
     },[user]);
    
     useEffect(() => {
+        
         console.log('bimbimbambam')
         const isFiltered = activeIndex!=-1
         if (filterText == 'По популярности' && isFiltered) {
@@ -115,6 +145,11 @@ const FavoritesPage = () => {
                 SortedArray.sort((a, b) => b.used - a.used)      
                 setAIData(SortedArray)
         }
+        if (filterText == 'По оценкам' && isFiltered) {
+            const SortedArray = FavoriteAIData.slice()
+            SortedArray.sort((a, b) => b.rate - a.rate)      
+            setAIData(SortedArray)
+    }
         if (!isFiltered && !(searchParams.length > 0)) {
             setAIData(initialData)
         }

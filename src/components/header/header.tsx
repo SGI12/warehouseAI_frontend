@@ -18,6 +18,7 @@ const Header = observer((activeModal: any) => {
     const searchByNameHandler = (e:any) => {
         if (e.key === 'Enter') {
             router.push(`/search?field=name&value=${searchValue}`)
+            
         }
     }
     const {user} = useUserContext()
