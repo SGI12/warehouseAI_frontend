@@ -9,10 +9,11 @@ interface IInputProps {
     setText?: any
     overFilled?: boolean,
     text?: string
+    type: string,
 
     
 }
-const UseAIInput = ({withCounter, text, readonly, setText}:IInputProps) => {
+const UseAIInput = ({withCounter, text, readonly, setText, type}:IInputProps) => {
     
     const [RemainCount, setRemains] = useState(100)
     const charMaxCount = 100;
@@ -23,8 +24,8 @@ const UseAIInput = ({withCounter, text, readonly, setText}:IInputProps) => {
     }
     return (
     <AiRequestInputContainer>
-        <InputGray value={text} readOnly={readonly} onChange={inputChangeHandler}/>
-        {withCounter && <CharCounterText className={(RemainCount <= 0) ? 'empty' : ''} color="#ffffff">{RemainCount}/{charMaxCount}</CharCounterText>}
+        {type === 'text' && <InputGray value={text} readOnly={readonly} onChange={inputChangeHandler}/>}
+        {type === 'text' && withCounter && <CharCounterText className={(RemainCount <= 0) ? 'empty' : ''} color="#ffffff">{RemainCount}/{charMaxCount}</CharCounterText>}
        
     </AiRequestInputContainer>
     )

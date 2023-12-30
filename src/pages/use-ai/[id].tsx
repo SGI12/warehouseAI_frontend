@@ -8,7 +8,7 @@ import CharCounter from "@/components/ai-input/AiInput";
 import { AIDescTag, StarsContainer, UseAiPageMainContainer, UseAiRequestContainer, UseAiTagsHorizontalContainer } from "@/components/containers/containers"
 import Header from "@/components/header/header"
 import { H1WithPadding, H2Styled } from "@/components/headers-text/HeaderText";
-import {  SuccessText, TextLargeStyled } from "@/components/paragraphs/Paragraphs";
+import {  SuccessText } from "@/components/paragraphs/Paragraphs";
 import { useUserContext } from "@/context/context";
 import { getAIById, getAIRating, sendAIRequest, setAIRating } from "@/http/AIAPI";
 import { check } from "@/http/AuthAPI";
@@ -37,7 +37,8 @@ const UseAiPage = () => {
     for (let i = 0; i < 5; i++) {
         starArray.push(<Image key={i} src={'/star-rate.svg'} alt="star" width={32} height={32}/>)
     }
-    const [rating, setRating] = useState<number | null>(2);
+    const [rating, setRating] = useState<number | null>(0);
+    console.log(rating)
     const [reqText, setText] = useState('')
     const router = useRouter()
     const [isLoading, setLoading] = useState(true);
@@ -104,6 +105,7 @@ const UseAiPage = () => {
     const getAIData = () => {
         getAIById(id)
         .then((AIres) => {
+        console.log(AIres.data)
         setAIData({
             ...AIData,
             background: AIres.data.background_url,
@@ -151,28 +153,29 @@ const UseAiPage = () => {
             <StarsContainer>
                 <Rating 
                 onChange={(e, newValue) => {
-                    setAIRating(id, newValue).then((res) => console.log(res.data))
-                    setRating(newValue);
+                    console.log(newValue)
+                    setAIRating(id, newValue || rating).then((res) => console.log(res.data))
+                    setRating(newValue || rating);
                     setReadable(true)
                     }} 
                 readOnly={isReadable}
                 size="large" 
-                precision={1}
+                
                 value={rating}/>
                 
             </StarsContainer>
             
             <UseAiRequestContainer>
                 <AiRequestCircle/>
-                <H2Styled color="#ffffff">Введите текст запроса</H2Styled>
-                <div onKeyDown={keyPressHandler}><UseAIInput text={reqText} setText={setText}/></div>
+                <H2Styled color="#ffffff">Введите запрос</H2Styled>
+                <div onKeyDown={keyPressHandler}><UseAIInput type="text" text={reqText} setText={setText}/></div>
                 {!requestLoading && <ShadowButton onClick={sendRequsetHandler}>Отправить запрос</ShadowButton>}
                 {requestLoading && <LoadingRing/>}
             </UseAiRequestContainer>
             <UseAiRequestContainer>
                 <H2Styled ref={ref} color="#ffffff">Примите результат</H2Styled>
             
-                <UseAIInput  text={answer} readonly />
+                <UseAIInput type="text"  text={answer} readonly />
                
                 {copied && <SuccessText className={animatedText ? 'animated' : ''}>Текст скопирован в буфер обмена.</SuccessText>}
                 <ShadowButton onClick={copyClickHandler}>Скопировать текст</ShadowButton>
