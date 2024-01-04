@@ -10,7 +10,7 @@ import Header from "@/components/header/header"
 import { H1WithPadding, H2Styled } from "@/components/headers-text/HeaderText";
 import {  SuccessText } from "@/components/paragraphs/Paragraphs";
 import { useUserContext } from "@/context/context";
-import { getAIById, getAIRating, sendChatGPTRequest, sendImagineRequest, setAIRating } from "@/http/AIAPI";
+import { getAIById, getAIRating, sendChatGPTRequest, sendELRequest, sendImagineRequest, setAIRating } from "@/http/AIAPI";
 import { check } from "@/http/AuthAPI";
 import Image from "next/image";
 import { useParams } from "next/navigation";
@@ -20,6 +20,7 @@ import Footer from "@/components/footer/footer";
 import { LoadingRing } from "@/components/loading-ring/LoadingRing";
 import { Rating } from "@mui/material/";
 import { saveAs } from "file-saver";
+import { url } from "inspector";
 
 
 const UseAiPage = () => {
@@ -32,6 +33,7 @@ const UseAiPage = () => {
         description: string,
     }
     interface ICurrentCommandProps {
+        name: string,
         input_type: string,
         output_type: string,
 
@@ -46,7 +48,7 @@ const UseAiPage = () => {
         starArray.push(<Image key={i} src={'/star-rate.svg'} alt="star" width={32} height={32}/>)
     }
     const [rating, setRating] = useState<number | null>(0);
-    const [imgURL, setURL] = useState('')
+    const [fileURL, setURL] = useState('')
     const [currentCommand, setCurrentCommand] = useState<ICurrentCommandProps>()
     const [reqText, setText] = useState('')
     const [AICommands, setAICommands] = useState<Array<any>>([])
@@ -101,6 +103,30 @@ const UseAiPage = () => {
                     setText('Запрос не может быть пустым.')
                 }
         }
+
+        else if (AIData.name == 'ElevenLabs') {
+            if (reqText != '' && reqText != 'Запрос не может быть пустым.') {
+                setRequestLoading(true)
+                sendELRequest(id, reqText, currentCommand?.name)
+                .then((res) => {
+                    
+                    
+                    console.log(res)
+                    setURL(URL.createObjectURL(res.data))
+                    
+                    setRequestLoading(false)
+                    if (ref.current)
+                    ref.current.scrollIntoView({ behavior: 'smooth' });
+                })
+                .catch((e:any) => {
+                    console.log(e.response?.data)
+                    setRequestLoading(false)
+                })
+                }
+                else {
+                    setText('Запрос не может быть пустым.')
+                }
+        }
         
         
     }
@@ -120,7 +146,7 @@ const UseAiPage = () => {
     }
 
     const saveImageHandler = () => {
-        saveAs(imgURL, 'warehouseAI_img.png')
+        saveAs(fileURL, 'warehouseAI_img.png')
     }
     
     
@@ -169,7 +195,8 @@ const UseAiPage = () => {
     useEffect(() => {
         fetchData();
         },[user]);
-    console.log(imgURL)
+    console.log(currentCommand?.name)
+    console.log(fileURL)
     if (isLoading) {
         return <Loader/>
     }
@@ -231,11 +258,12 @@ const UseAiPage = () => {
             <UseAiRequestContainer>
                 <H2Styled ref={ref} color="#ffffff">Примите результат</H2Styled>
             
-                <UseAIInput type={currentCommand?.output_type || 'Text'}  text={answer} readonly res={imgURL}/>
+                <UseAIInput type={currentCommand?.output_type || 'Text'}  text={answer} readonly res={fileURL}/>
                
                 {copied && <SuccessText className={animatedText ? 'animated' : ''}>Текст скопирован в буфер обмена.</SuccessText>}
                 {currentCommand?.output_type == 'Text' && <ShadowButton onClick={copyClickHandler}>Скопировать текст</ShadowButton>}
                 {currentCommand?.output_type == 'Image' && <ShadowButton onClick={saveImageHandler}>Скачать изображение</ShadowButton>}
+                
             </UseAiRequestContainer>
             <Footer/>
         </UseAiPageMainContainer>

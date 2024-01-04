@@ -40,6 +40,20 @@ export const sendChatGPTRequest = async (id, value) => {
     return response
 }
 
+export const sendELRequest = async (id, value, command) => {
+    const data = {
+        "text": value
+}
+    const response = await $AI.post(`/command/execute/`, data, {
+    params: {
+        'ai_id':id,
+        'command_name': command
+    },
+    responseType: 'blob'
+    })
+    return response
+}
+
 export const sendImagineRequest = async(id, value) => {
     const AIFormdata = new FormData()
     AIFormdata.append('prompt', value)

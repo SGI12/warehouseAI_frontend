@@ -4,6 +4,7 @@ import {  ImageInput, InputGray } from "../inputs/TextInputs";
 import { CharCounterText, TextDefaultStyled } from "../paragraphs/Paragraphs"
 import {useState} from 'react'
 import { AIImageResponse } from "../images/styled";
+import { AIResponsePlayer } from "../audio-player/styled";
 
 interface IInputProps {
     withCounter?: boolean,
@@ -34,6 +35,7 @@ const UseAIInput = ({withCounter, text, readonly, setText, type, res}:IInputProp
                 {res != '' && <AIImageResponse src={res} alt="response_image" />}
                 
             </ImageInput>}
+        {type === "Audio" && <AIResponsePlayer controls src={res}/>}
     </AiRequestInputContainer>
     )
 }
