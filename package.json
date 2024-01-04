@@ -1,11 +1,11 @@
 {
   "name": "warehouseai",
-  "version": "0.1.0",
+  "version": "0.1.0 alpha",
   "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 4000",
     "lint": "next lint"
   },
   "dependencies": {
