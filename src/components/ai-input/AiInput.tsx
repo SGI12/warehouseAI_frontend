@@ -25,12 +25,13 @@ const UseAIInput = ({withCounter, text, readonly, setText, type, res}:IInputProp
         setText(e.target.value)
         setRemains(charMaxCount-Number(currentCount))
     }
+    console.log(res)
     return (
     <AiRequestInputContainer>
         {type === 'Text' && <InputGray value={text} readOnly={readonly} onChange={inputChangeHandler}/>  }
         {type === 'Text' && withCounter && <CharCounterText className={(RemainCount <= 0) ? 'empty' : ''} color="#ffffff">{RemainCount}/{charMaxCount}</CharCounterText>}
         {type === 'Image' && <ImageInput>
-                <AIImageResponse src={res} alt="response_image" />
+                {res != '' && <AIImageResponse src={res} alt="response_image" />}
                 
             </ImageInput>}
     </AiRequestInputContainer>
