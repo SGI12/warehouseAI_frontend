@@ -351,6 +351,8 @@ export const AiRequestInputContainer = styled.div`
 
 display: flex;
 flex-direction: column;
+justify-content: center;
+align-items: center;
 
 
 `
@@ -458,4 +460,26 @@ align-items: center;
 gap: 30px;
 
 
+`
+
+export const ChooseAICommandContainer = styled.div`
+
+z-index: 0;
+padding-top: 250px;
+display: flex;
+flex-direction: column;
+gap: 50px;
+align-items: center;
+`
+
+export const AICommandsContainer = styled.div`
+
+
+
+display: grid;
+grid-template-columns: repeat(2, auto);
+grid-template-rows: repeat(2, auto);
+grid-auto-columns: auto;
+grid-column-gap: 20px;
+grid-row-gap: 20px;
 `

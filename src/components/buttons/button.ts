@@ -9,6 +9,7 @@ const opensans = Open_Sans({
 export const ButtonStyled = styled.button.attrs({
     className: opensans.className
 })` 
+    overflow: hidden;
     display: flex;
     justify-content: center;
     white-space: nowrap;
@@ -39,7 +40,8 @@ export const ButtonStyled = styled.button.attrs({
 
 export const ButtonShortStyled = styled(ButtonStyled)`
     padding: 10px 30px;
-    width: 190px;
+    width: 100%;
+    min-width: 190px;
     background-color: #ffffff;
     color: var(--accent, #E64C8F);
     border: 1px solid var(--accent, #E64C8F);
@@ -171,4 +173,20 @@ export const ProfileButtonStyled = styled(GetNeuralButton)`
 
 padding: 0;
 
+`
+
+export const ButtonDarkStyled = styled(ButtonStyled)`
+
+background-color: transparent;
+border: 1px solid var(--accent, #E64C8F);
+color: #E64C8F;
+
+&:hover {
+    background: #2E2227;
+}
+
+&.active {
+    color: #ffffff;
+    background: var(--accent, #E64C8F);
+}
 `

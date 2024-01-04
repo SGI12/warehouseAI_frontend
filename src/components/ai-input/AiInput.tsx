@@ -1,7 +1,9 @@
+import Image from "next/image";
 import { AiRequestInputContainer } from "../containers/containers";
-import {  InputGray } from "../inputs/TextInputs";
+import {  ImageInput, InputGray } from "../inputs/TextInputs";
 import { CharCounterText, TextDefaultStyled } from "../paragraphs/Paragraphs"
 import {useState} from 'react'
+import { AIImageResponse } from "../images/styled";
 
 interface IInputProps {
     withCounter?: boolean,
@@ -10,10 +12,11 @@ interface IInputProps {
     overFilled?: boolean,
     text?: string
     type: string,
+    res?: any
 
     
 }
-const UseAIInput = ({withCounter, text, readonly, setText, type}:IInputProps) => {
+const UseAIInput = ({withCounter, text, readonly, setText, type, res}:IInputProps) => {
     
     const [RemainCount, setRemains] = useState(100)
     const charMaxCount = 100;
@@ -24,9 +27,12 @@ const UseAIInput = ({withCounter, text, readonly, setText, type}:IInputProps) =>
     }
     return (
     <AiRequestInputContainer>
-        {type === 'text' && <InputGray value={text} readOnly={readonly} onChange={inputChangeHandler}/>}
-        {type === 'text' && withCounter && <CharCounterText className={(RemainCount <= 0) ? 'empty' : ''} color="#ffffff">{RemainCount}/{charMaxCount}</CharCounterText>}
-       
+        {type === 'Text' && <InputGray value={text} readOnly={readonly} onChange={inputChangeHandler}/>  }
+        {type === 'Text' && withCounter && <CharCounterText className={(RemainCount <= 0) ? 'empty' : ''} color="#ffffff">{RemainCount}/{charMaxCount}</CharCounterText>}
+        {type === 'Image' && <ImageInput>
+                <AIImageResponse src={res} alt="response_image" />
+                
+            </ImageInput>}
     </AiRequestInputContainer>
     )
 }

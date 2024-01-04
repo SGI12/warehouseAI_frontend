@@ -122,6 +122,20 @@ resize: none;
 
 `
 
+
+export const ImageInput = styled.div`
+
+display: flex;
+justify-content: center;
+align-items: center;
+border-radius: 20px;
+border: 1px solid #5F5F5F;
+background: rgba(95, 95, 95, 0.46);
+width: 693px;
+height: 462px;
+
+
+`
 export const ProfileInput = styled(InputStyled)`
 
 

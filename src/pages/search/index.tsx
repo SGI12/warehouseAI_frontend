@@ -47,7 +47,7 @@ const Searchpage = () => {
             setActiveIndex(-1)
             
             const getAIData = () => {
-                
+                setSearchResults([])
                 searchAI(field, value)
                 
                .then((AIres) => {

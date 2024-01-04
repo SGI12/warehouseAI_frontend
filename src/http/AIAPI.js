@@ -20,10 +20,10 @@ export const getSeveralAIs = async(query) => {
     return response
 }
 
-export const sendAIRequest = async (id, value) => {
+export const sendChatGPTRequest = async (id, value) => {
     const data = {
-        "model": "gpt-3.5-turbo",
-        "max_tokens": 100,
+        "model": "gpt-4",
+
         "messages": [
             {
                 "role": "user",
@@ -34,10 +34,30 @@ export const sendAIRequest = async (id, value) => {
     const response = await $AI.post(`/command/execute/`, data, {
     params: {
         'ai_id':id,
-        'command_name': 'Message'
+        'command_name': 'Сhat completion'
     }
     })
     return response
+}
+
+export const sendImagineRequest = async(id, value) => {
+    const AIFormdata = new FormData()
+    AIFormdata.append('prompt', value)
+    AIFormdata.append('style_id', 29)
+    
+    const response = await $AI.post('/command/execute', AIFormdata, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        },
+        params: {
+            'ai_id':id,
+            'command_name': 'Text To Image'
+        },
+        responseType: 'blob'
+    })
+
+    return response
+    
 }
 
 export const searchAI = async (field, value) => {
