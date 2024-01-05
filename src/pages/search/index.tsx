@@ -18,7 +18,7 @@ const Searchpage = () => {
      interface IAICardProps {
         
         id: string,
-        img: string,
+        background_url: string,
         name: string,
         rate: number,
         used: number
@@ -61,7 +61,7 @@ const Searchpage = () => {
                         .then((response) => {
                             const newAI = {
                                 id: AIres.data[index].id,
-                                img: AIres.data[index].background_url,
+                                background_url: AIres.data[index].background_url,
                                 name: AIres.data[index].name,
                                 rate: response.data.avg_rating,
                                 used: AIres.data[index].used

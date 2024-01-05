@@ -3,6 +3,7 @@ import AiCard from "../ai-card/AiCard";
 import { AiSliderContainer } from "../containers/containers";
 import { LeftScrollBlock, RightScrollBlock } from "../absolute-blocks/home/ScrollBlocks";
 import IconSliderArrow from "../icons/SliderArrow";
+import { MockSliderData } from "@/utils/MockSliderData";
 
 
 const AiSlider = () => {
@@ -32,7 +33,7 @@ const AiSlider = () => {
             <LeftScrollBlock onMouseUp={() => setMove(false)} onMouseDown={() => { setMove(true); moveLeft();}}  onMouseEnter={() => { setMove(true); moveLeft();}}   onMouseLeave={() => setMove(false)}>
               <IconSliderArrow/>
             </LeftScrollBlock>
-            <AiCard/> <AiCard/><AiCard/><AiCard/><AiCard/><AiCard/>
+            {MockSliderData.map((props, index) => <AiCard key={index} props={props}/>)}
            
 
         </AiSliderContainer>

@@ -6,10 +6,11 @@ import { ButtonShortStyled, ButtonStyled } from "../buttons/button";
 import { InputErrorText, TextDefaultStyled } from "../paragraphs/Paragraphs";
 import { ButtonContainer, H2StyledRegister, RegistrationCardStyled, SubHeaderStyledRegistration } from "./styled"
 import { InputStyled, LoadFileInput } from "../inputs/TextInputs";
-import { LinkNoStyles, LinkStyled } from "../links/link";
+import { APinkStyled, AStyled, LinkNoStyles, LinkStyled } from "../links/link";
 import { useRouter } from 'next/router'
 import { registration } from "@/http/AuthAPI";
 import { usePassRepeatCheck, useValidation} from '@/validation/validation'
+import RegistrationSuccessPopup from "../popup-screens/RegistrationSuccess";
 
 
 
@@ -21,9 +22,11 @@ const RegistrationCard = () => {
     // JSON.stringify(data)
     try {
         await registration(data)
-        router.push('/authpage')
+        await setPopup(true)
+        
     } catch (e:any) {
         if (e.response.status == 409) {
+           
             setIsRegister(true)
             setRegAnimation('animated')
             setTimeout(() => setRegAnimation('none'), 500)
@@ -40,6 +43,7 @@ const RegistrationCard = () => {
         email:string,
         pictureSize: number,
     }
+    const [popup, setPopup] = useState(false)
     const [isRegister, setIsRegister] = useState(false)
     const [registerAnimation, setRegAnimation] = useState('none')
     const [userData, setUserData] = useState<IUserData>({
@@ -131,10 +135,12 @@ const RegistrationCard = () => {
     }
     console.log(userData.pictureSize)
     return (
+        
         <RegistrationCardStyled>
+            {popup && <RegistrationSuccessPopup email={userData.email}/>}
             <H2StyledRegister>Регистрация</H2StyledRegister>
             
-            <InputsContainer>
+            {/* <InputsContainer>
             <SubHeaderStyledRegistration>Выберите свой статус</SubHeaderStyledRegistration> 
                 <ButtonContainer>
                     <ButtonShortStyled 
@@ -155,7 +161,7 @@ const RegistrationCard = () => {
                     </ButtonShortStyled>
                 </ButtonContainer>
             
-            </InputsContainer>
+            </InputsContainer> */}
             <FormStyled noValidate autoComplete="off" onSubmit={handleSubmit}>
                 <InputStyled 
                
@@ -227,7 +233,7 @@ const RegistrationCard = () => {
 
                 
                 <ButtonStyled disabled={!isFormValid} type="submit">Зарегистрироваться</ButtonStyled>
-                
+                <TextDefaultStyled>Регистрируясь на платформе, я соглашаюсь с <LinkStyled download href="/docs/WarehouseAI_Согласие_на_обработку_персональных_данных.pdf">политикой обработки персональных данных.</LinkStyled></TextDefaultStyled>
             </FormStyled>
             <LinksContainer>
                 <TextDefaultStyled>или</TextDefaultStyled>

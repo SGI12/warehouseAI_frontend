@@ -24,6 +24,6 @@
       
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/context.jsx", "src/store/userStore.js", "src/http/AuthAPI.js", "src/http/index.js", "src/validation/hooks.json.js", "src/http/AIAPI.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/context/context.jsx", "src/store/userStore.js", "src/http/AuthAPI.js", "src/http/index.js", "src/validation/hooks.json.js", "src/http/AIAPI.js", "src/utils/MockSliderData.js"],
   "exclude": ["node_modules"]
 }

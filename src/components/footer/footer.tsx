@@ -2,7 +2,7 @@
 import React from 'react';
 import { FooterContainer, Block, MenuFooter, SociaL, ChildBlok, Logo, DownBlock, UpBlock, Policy, BorderFooter} from './styled';
 import { usePathname } from 'next/navigation';
-import { AStyled, FooterLink, LinkNoStyles, NavBarLink } from '../links/link';
+import { AStyled, FooterLink, LinkNoStyles, LinkStyled, NavBarLink } from '../links/link';
 import Image from 'next/image';
 import { getCookie } from 'cookies-next';
 import BeDevScreen from '../popup-screens/BeDevScreen';
@@ -59,15 +59,24 @@ const Footer = () => {
 
             </UpBlock>
             <DownBlock>
+                <LinkStyled>
                 <Policy >
                     Публичная оферта
                 </Policy>
+                </LinkStyled>
+                
+                <LinkStyled download href='/docs/WarehouseAI_Политика_конфиденциальности.pdf'>
                 <Policy >
-                    Политика обработки персональных данных
+                    Политика конфиденциальности
                 </Policy>
-                <Policy >
-                    Пользовательское соглашение
-                </Policy>
+                </LinkStyled>
+
+                <LinkStyled download href='/docs/WarehouseAI_Пользовательское_соглашение.pdf'>
+                    <Policy >
+                        Пользовательское соглашение
+                    </Policy>
+                </LinkStyled>
+                
             </DownBlock>
         </FooterContainer>
     );

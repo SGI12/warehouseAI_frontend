@@ -14,7 +14,7 @@ import { getAIRating } from "@/http/AIAPI"
 
 export interface AiCardProps {
     id: string,
-    img: string,
+    background_url: string,
     name: string,
     rate: number,
     // tags?: Array<string>,
@@ -24,7 +24,7 @@ const AiCard = ({props}:any)  => {
 
     
     const AICardProps = {...props}
-    
+    console.log(AICardProps)
     const [rating, setRating] = useState(0)
     const [isRemoved, setRemoved] = useState(false)
     const name = "ChatGPT"
@@ -65,7 +65,7 @@ const AiCard = ({props}:any)  => {
     return (
         
         <AiBriefCard>
-            <Image src={props?.img || '/ai-card-img.jpg'} style={{borderRadius: "16px"}} alt="ai_card_image" width={353} height={200}/>
+            <Image src={props?.background_url || '/ai-card-img.jpg'} style={{borderRadius: "16px"}} alt="ai_card_image" width={353} height={200}/>
             <AiCardHeader>{AICardProps.name || name}</AiCardHeader>
             <StarsContainer>
                <Rating readOnly value={AICardProps.rate}/>

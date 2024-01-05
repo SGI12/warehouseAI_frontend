@@ -12,7 +12,7 @@ text-decoration: none;
 
 `
 
-export const LinkStyled = styled.div.attrs({
+export const LinkStyled = styled.a.attrs({
 
     className: opensans.className,
 })`
@@ -67,8 +67,25 @@ export const FooterLink = styled(NavBarLink)`
 
 `
 
-export const AStyled = styled.a`
+export const AStyled = styled.a.attrs({
+    className: opensans.className
+})`
 
 text-decoration: none;
+
+`
+
+export const APinkStyled = styled(AStyled)`
+text-decoration: underline;
+cursor: pointer;
+color: #E64C8F;
+
+&:hover {
+    color: #F467A4;
+}
+
+&:active {
+    color: #C83575;
+}
 
 `
