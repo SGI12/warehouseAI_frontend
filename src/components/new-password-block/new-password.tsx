@@ -49,7 +49,7 @@ const ChangePassBlock = () => {
     const ResetPasswordOnClick =  (event:any) => {
         event.preventDefault();
         const data = {
-            userId: getCookie('userId'),
+            user_id: getCookie('userId'),
             password,
                   
         };
