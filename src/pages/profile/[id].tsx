@@ -152,7 +152,7 @@ const UserProfile = () => {
                 })
                 
 
-                setTimeout(() => setLoading(false), 1000)
+                setLoading(false)
             })
              .catch ((err) => {
                 if (err.response.status === 500)

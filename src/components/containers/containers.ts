@@ -192,6 +192,7 @@ width: 100vw;
 height: 100vh;
 justify-content: center;
 align-items: center;
+
 `
 
 export const AiInfoAndDeveloperContaner = styled.div`

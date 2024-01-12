@@ -103,7 +103,7 @@ const AiDescriptionPage = () => {
                             picture: pictureUrl
                         })
                     })
-                    setTimeout(() => setLoading(false), 1000)
+                    setLoading(false)
      
                 }).catch((err) => {
                     console.log(err.response?.status)

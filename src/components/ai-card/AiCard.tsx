@@ -24,7 +24,7 @@ const AiCard = ({props}:any)  => {
 
     
     const AICardProps = {...props}
-    console.log(AICardProps)
+    
     const [rating, setRating] = useState(0)
     const [isRemoved, setRemoved] = useState(false)
     const name = "ChatGPT"

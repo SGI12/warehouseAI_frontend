@@ -178,7 +178,7 @@ const UseAiPage = () => {
                 })
                 setAICommands(AIres.data.commands)
                 setCurrentCommand(AIres.data.commands[0])
-                setTimeout(() => setLoading(false), 1000)
+                setLoading(false)
             })
     }
 

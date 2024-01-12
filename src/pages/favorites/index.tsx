@@ -79,36 +79,49 @@ const FavoritesPage = () => {
               getSeveralAIs(queryParams)
               
 
-              .then( (AIres) => {
-                AIres.data.forEach((element: {id: string}, index: number) => {
+              .then((AIres) => {
+                if (AIres.data?.length != 0) {
+                    AIres.data.forEach((element: {id: string}, index: number) => {
                       
-                    getAIRating(element.id)
-                    .then((response) => {
-                        const newAI = {
-                            id: AIres.data[index].id,
-                            background_url: AIres.data[index].background_url,
-                            name: AIres.data[index].name,
-                            rate: response.data.avg_rating,
-                            used: AIres.data[index].used
-
-                        }
-                        setAIData(prev => [...prev, newAI])
-                        setInitialData(prev => [...prev, newAI])
-                        
-                        
-                        
-                       
-                    }) 
+                        getAIRating(element.id)
+                        .then((response) => {
+                            const newAI = {
+                                id: AIres.data[index].id,
+                                background_url: AIres.data[index].background_url,
+                                name: AIres.data[index].name,
+                                rate: response.data.avg_rating,
+                                used: AIres.data[index].used
+    
+                            }
+                            setAIData(prev => [...prev, newAI])
+                            setInitialData(prev => [...prev, newAI])
+                            
+                            
+                            
+                           
+                        }) 
+                        .then(() => {
+                            setLoading(false)
+                        })
+                        .catch((e:any) => {
+                            console.log(e.response?.status)
+                          })
+                    
+                    });
+                }
+                else {
+                    setLoading(false)
+                }
                 
-                });
                
               })
               .catch((e) => {
                 console.log(e.response?.status)
               })
               
-              setTimeout(() => setLoading(false), 1000)
+              
            })
+           
            .catch((e) => {
                console.log(e.response?.status)
            })
@@ -126,7 +139,7 @@ const FavoritesPage = () => {
                         user.setIsAuth(false)
                         router.push('/authpage')
                     }
-                    setTimeout(() => setLoading(false), 1000)
+                    
                     console.log(err.response?.data.message)
                 };
             })  

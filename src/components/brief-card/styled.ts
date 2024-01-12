@@ -13,7 +13,7 @@ position: absolute;
 `
 
 export const BriefCardMainPage = styled(BriefCard)`
-    z-index: 0;
+    
     right: 80px;
     top: 550px;
     bottom: 0;

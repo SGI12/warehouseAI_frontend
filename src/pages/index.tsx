@@ -18,6 +18,7 @@ import { useUserContext } from "@/context/context";
 import { check, checkCookies } from "@/http/AuthAPI";
 import Loader from "@/components/Loader/Loader";
 import { useRouter } from "next/navigation";
+import { getCookie } from "cookies-next";
 
 
 
@@ -40,22 +41,27 @@ const HomePage = ()  => {
     checkCookies()
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
-    const checkSession = async () => {
-        try {
-            await check()
-            user.setIsAuth(true)
-            setTimeout(() => setLoading(false), 1000)
-        }
-            catch(err:any)  {
-            setTimeout(() => setLoading(false), 1000)
+    const checkSession =  () => {
+        check()
+        .then((res) => {
+            if (user.isAuth == false) {
+                console.log('asdasdad')
+                user.setIsAuth(true)
+            }
+            setLoading(false)
+            
+        })
+        .catch((err) => {
+            setLoading(false)
             console.log(err.response?.data.message)
-        };
+        })
+       
     }
     
     useEffect(() => {
     checkSession();
     },[user]);
-    if (isLoading) {
+        if (isLoading) {
         return <Loader/>
     }
     else 
@@ -78,7 +84,7 @@ const HomePage = ()  => {
             <HeadersMainPageContainer>
                 <SubHeaderPink>Всего лишь в два клика</SubHeaderPink>
                 <H1MainPage color="#ffffff">Оживите свои идеи с помощью нейросетей</H1MainPage>
-                <TaskSolveInput onChange={(e:any) => setSearchValue(e.target.value)} onKeyDown={searchByNameHandler} placeholder="Какую задачу хотите решить?"/>
+                <TaskSolveInput autoComplete="on" onChange={(e:any) => setSearchValue(e.target.value)} onKeyDown={searchByNameHandler} placeholder="Какую задачу хотите решить?"/>
                 <GetNeuralButton onClick={searchAIClickHandler}>
                     Подобрать нейросеть
                     <Arrow/>

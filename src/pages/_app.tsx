@@ -4,18 +4,20 @@ import { AuthContextProvider, useUserContext } from '@/context/context'
 import React, { useEffect, useState } from 'react'
 import Head from 'next/head'
 import Loader from '@/components/Loader/Loader'
+import { getCookie } from 'cookies-next'
 export default function App({ Component, pageProps }:AppProps) {
  
 
-
+  
+  
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
     if (typeof window !== 'undefined') {
-        setTimeout(() => setLoading(false), 1000)
+        setLoading(false)
     }
     });
   
-
+  
   if (isLoading) {
       return <Loader/>
   }

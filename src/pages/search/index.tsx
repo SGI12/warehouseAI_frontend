@@ -54,29 +54,37 @@ const Searchpage = () => {
                     setError('Ничего не найдено')
                      
                     
-                    
-                      AIres.data.forEach((element: {id: string}, index: number) => {
+                      if (AIres.data?.length != 0) {
+                        AIres.data.forEach((element: {id: string}, index: number) => {
                       
-                        getAIRating(element.id)
-                        .then((response) => {
-                            const newAI = {
-                                id: AIres.data[index].id,
-                                background_url: AIres.data[index].background_url,
-                                name: AIres.data[index].name,
-                                rate: response.data.avg_rating,
-                                used: AIres.data[index].used
-
-                            }
-                            setSearchResults(prev => [...prev, newAI])
-                            setInitialData(prev => [...prev, newAI])
-                            
-                            
-                            
-                           
-                        }) 
-                    
-                    });
-
+                            getAIRating(element.id)
+                            .then((response) => {
+                                const newAI = {
+                                    id: AIres.data[index].id,
+                                    background_url: AIres.data[index].background_url,
+                                    name: AIres.data[index].name,
+                                    rate: response.data.avg_rating,
+                                    used: AIres.data[index].used
+    
+                                }
+                                setSearchResults(prev => [...prev, newAI])
+                                setInitialData(prev => [...prev, newAI])
+                                
+                                
+                                
+                               
+                            }) 
+                            .then(() => {
+                                setLoading(false)
+                            })
+                        
+                        });
+    
+                      }
+                    else {
+                        setLoading(false)
+                    }
+                      
                     
                })
                
@@ -111,9 +119,7 @@ const Searchpage = () => {
 
                 
                 
-                .then(() => {
-                    setTimeout(() => setLoading(false), 1000)
-                })
+               
                 .catch((err) => {
                     {
                         if (err.response.status === 401 || err.response.status === 404) {
