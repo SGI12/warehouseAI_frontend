@@ -11,11 +11,11 @@ import FilterIcon from "@/components/icons/FilterIcon";
 
 import {  SearchFieldFavorites } from "@/components/search-field/styled";
 import { useUserContext } from "@/context/context";
-import { getAIById, getAIRating, getSeveralAIs } from "@/http/AIAPI";
+import { getAIRating, getSeveralAIs } from "@/http/AIAPI";
 import { check } from "@/http/AuthAPI";
 import { getUserFavoriteAI } from "@/http/UserApi";
 import { useRouter } from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 
 const FavoritesPage = () => {
@@ -65,7 +65,7 @@ const FavoritesPage = () => {
     }
    
     useEffect(() => {
-    let ratingArray: any[] = []
+    
     const fetchData = () => {
         
         const getAIData = () => {
