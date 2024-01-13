@@ -30,7 +30,7 @@ const Header = observer((activeModal: any) => {
             </LogoSmall>
             <NavBar activeModal={activeModal}/>
             <SearchAndButtonContainer>
-            <SearchField onChange={(e:any) => setSearchValue(e.target.value)} onKeyDown={searchByNameHandler}/>
+            <SearchField autoComplete="on" onChange={(e:any) => setSearchValue(e.target.value)} onKeyDown={searchByNameHandler}/>
             {!user.isAuth &&
             <LinkNoStyles href={'/authpage'}>
                 <AuthButtonHomePage> Войти </AuthButtonHomePage>

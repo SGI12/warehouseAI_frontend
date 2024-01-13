@@ -178,7 +178,7 @@ const FavoritesPage = () => {
             <Header/>
             <H1WithPadding color="#ffffff">Избранное</H1WithPadding>
             <SearchAndFilterContainer>
-                <SearchFieldFavorites onChange={(e:any) => SearchHandler(e)} value={searchParams} placeholder="Искать в избранном"/>
+                <SearchFieldFavorites autoComplete="on" onChange={(e:any) => SearchHandler(e)} value={searchParams} placeholder="Искать в избранном"/>
                 <FilterContainer>
                     <FilterButton onClick={e => {
                         filterHandler(e)
