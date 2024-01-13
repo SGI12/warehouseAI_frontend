@@ -22,7 +22,7 @@ const Header = observer((activeModal: any) => {
         }
     }
     const {user} = useUserContext()
-    console.log(searchValue)
+    
     return (
         <HeaderContainer>
             <LogoSmall>

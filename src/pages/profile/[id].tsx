@@ -24,6 +24,8 @@ import ChangePassScreen from "@/components/popup-screens/ChangePassProfileScreen
 
 const UserProfile = () => {
     const router = useRouter()
+
+    
     const [isLoading, setLoading] = useState(true);
     const {user} = useUserContext()
     const [activeDevModal, setActiveDevModal] = useState(false)
@@ -103,7 +105,7 @@ const UserProfile = () => {
             console.log(err.response?.status)
         })
         }
-        else console.log('bimbimbambam')
+        
         
     }
 
@@ -127,8 +129,12 @@ const UserProfile = () => {
         const getUserData =  () => {
             let pictureUrl = '/mock-avatar.jpg'
             const userId = getCookie('userId')
-                
-                getUserById(userId).then(res => {
+                if (userId == '' || userId == undefined) {
+                    router.push('/authpage')
+                }
+                else {
+                getUserById(userId)
+            .then(res => {
                 if (res.data.id != userId) {
                     router.push('/')
                 }
@@ -159,6 +165,8 @@ const UserProfile = () => {
                     router.push('/')
                 console.log(err.response.status)
             }) 
+                }
+                
             
         }
         const fetchData = () => {
@@ -172,11 +180,11 @@ const UserProfile = () => {
 
                 
                 .catch((err) => {
-                    if (err.response.status === 404) {
+                    if (err.response.status === 404 || err.response.status === 401) {
                         user.setIsAuth(false)
                         router.push('/authpage')
                     }
-        
+                    
                     console.log(err.response?.data.message)
                 })  
     

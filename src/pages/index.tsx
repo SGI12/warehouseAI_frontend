@@ -45,7 +45,7 @@ const HomePage = ()  => {
         check()
         .then((res) => {
             if (user.isAuth == false) {
-                console.log('asdasdad')
+                
                 user.setIsAuth(true)
             }
             setLoading(false)

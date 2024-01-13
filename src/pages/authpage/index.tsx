@@ -10,10 +10,12 @@ import Image from 'next/image'
 
 
 
+
 const AuthPage = () => {
   return (
     
     <AuthMainContainer>
+        
         <LogoBig>
             <Image width={197} priority={true} height={197} src={"./logo_big.svg"} alt="Logo" />
         </LogoBig>
