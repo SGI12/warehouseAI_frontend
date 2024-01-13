@@ -49,7 +49,7 @@ export const logOut = async() => {
 export const passResetReq = async(data) => {
     const response = await $auth.post('/reset/request', data)
     if (response.status === 200) {
-        setCookie('passResetTokenId', response.data?.id, {maxAge: 60*7})
+        setCookie('passResetTokenId', response.data?.token_id, {maxAge: 60*7})
     }
     return response
 }
@@ -84,6 +84,7 @@ export const passResetConfirm = async(data) => {
 }
 
 export const registerConfirm = async (user, token) => {
+    
     const response = await $auth.get('/register/confirm', {
         params: {
             'user': user,

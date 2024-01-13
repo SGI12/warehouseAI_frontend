@@ -14,7 +14,7 @@ const EmailCodeScreen = ({setShowPopUp}:any) => {
     const router = useRouter();
     const [code, setCode] = useState('')
     const [animation, setAnimation] = useState('open')
-    console.log(code)
+    
     const hide = async () => {
         setAnimation('close')
         setTimeout(() => setShowPopUp(false), 400)

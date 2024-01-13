@@ -15,28 +15,31 @@ const RegisterConfirm = () => {
     const confirmParams = useSearchParams()
     const user = confirmParams?.get('user')
     const token = confirmParams?.get('token')
-    const [timer, setTimer] = useState(5);
+    const [timer, setTimer] = useState(3);
     const ref = useRef<any>(null);
     const router = useRouter()
+    
     const clear = () => {
         window.clearInterval(ref.current)
     }
     useEffect(() => {
-        registerConfirm(user, token).then((res) => {
-            console.log(res.data)
-            ref.current = window.setInterval(() => {
-                setTimer((time) => time - 1)
-            }, 1000)
-            return () => clear();
-        })
-        .catch((e) => {
-            if (e.response?.status === 404) {
-                router.push('/authpage')
-            }
-            console.log(e.response?.status)
-        })
         
-    }, [])
+        if (user != null && token != null) {
+            registerConfirm(user, token).then((res) => {
+                console.log(res.data)
+                ref.current = window.setInterval(() => {
+                    setTimer((time) => time - 1)
+                }, 1000)
+                return () => clear();
+            })
+            .catch((e) => {
+                if (e.response?.status === 404) {
+                    router.push('/authpage')
+                }
+                console.log(e.response)
+            })
+        } 
+    }, [user, token])
 
     useEffect(() => {
         if (timer === 0) {

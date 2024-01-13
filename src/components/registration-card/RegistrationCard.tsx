@@ -1,12 +1,12 @@
     
 
 import {  useEffect, useState, useRef } from "react";
-import { FormStyled, InputsContainer, LinksContainer } from "../auth-card/styled";
-import { ButtonShortStyled, ButtonStyled } from "../buttons/button";
+import { FormStyled, LinksContainer } from "../auth-card/styled";
+import { ButtonStyled } from "../buttons/button";
 import { InputErrorText, TextDefaultStyled } from "../paragraphs/Paragraphs";
-import { ButtonContainer, H2StyledRegister, RegistrationCardStyled, SubHeaderStyledRegistration } from "./styled"
+import {  H2StyledRegister, RegistrationCardStyled } from "./styled"
 import { InputStyled, LoadFileInput } from "../inputs/TextInputs";
-import { APinkStyled, AStyled, LinkNoStyles, LinkStyled } from "../links/link";
+import { LinkNoStyles, LinkStyled } from "../links/link";
 import { useRouter } from 'next/router'
 import { registration } from "@/http/AuthAPI";
 import { usePassRepeatCheck, useValidation} from '@/validation/validation'
@@ -67,7 +67,7 @@ const RegistrationCard = () => {
         new_password: false,
         email: false
     })
-    console.log((userData))
+    
     const [active, setActive] = useState("1");
     const handleActiveClick = (event:any) => {
         setActive(event.target.id);
@@ -133,7 +133,7 @@ const RegistrationCard = () => {
         }
         
     }
-    console.log(userData.pictureSize)
+    
     return (
         
         <RegistrationCardStyled>

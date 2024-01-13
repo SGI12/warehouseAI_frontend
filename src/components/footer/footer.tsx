@@ -59,23 +59,26 @@ const Footer = () => {
 
             </UpBlock>
             <DownBlock>
-                <LinkStyled>
+                
                 <Policy >
+                    <LinkStyled></LinkStyled>
                     Публичная оферта
                 </Policy>
-                </LinkStyled>
                 
-                <LinkStyled download href='/docs/WarehouseAI_Политика_конфиденциальности.pdf'>
+                
+                
                 <Policy >
+                    <LinkStyled download href='/docs/WarehouseAI_Политика_конфиденциальности.pdf'></LinkStyled>
                     Политика конфиденциальности
                 </Policy>
-                </LinkStyled>
+                
 
-                <LinkStyled download href='/docs/WarehouseAI_Пользовательское_соглашение.pdf'>
+                
                     <Policy >
+                    <LinkStyled download href='/docs/WarehouseAI_Пользовательское_соглашение.pdf'></LinkStyled>
                         Пользовательское соглашение
                     </Policy>
-                </LinkStyled>
+                
                 
             </DownBlock>
         </FooterContainer>
