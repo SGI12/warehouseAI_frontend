@@ -71,7 +71,7 @@ const UserProfile = () => {
         try {
             await logOut()
             user.setIsAuth(false)
-            router.push('/authpage')
+            router.push('/')
         }
         catch (e:any) {
             console.log(e.response.status)
